@@ -4,7 +4,7 @@
   My name is Sofia Botechia Hernandes. I’m a Computer Engineering student, passionate about technology, with solid theoretical and practical knowledge in full-stack development using programming languages ​​such as JavaScript and Python and frameworks such as React Native Next.js; in addition to several accessory tools such as Tailwind CSS, Bootstrap, Microsoft Excel, Canva and countless APIs. In addition to skills in teamwork, communication and problem solving.💡
 
 ### 🌼 Sobre mim:  
-  Estudante de Engenharia da Computação proativa e apaixonada por tecnologia, com sólidos conhecimentos tanto teóricos quanto práticos em desenvolvimento full-stack utilizando linguagens como JavaScript e Python e frameworks como React Native Next.js; além de diversas ferramentas acessórias como Tailwind CSS, Bootstrap, Microsoft Excel, Canva e incontáveis APIs. Além de habilidades em trabalhos em equipe, comunicação e resolução de problemas.💡
+  Meu nome é Sofia Botechia Hernandes. Sou uma estudante de Engenharia da Computação proativa e apaixonada por tecnologia, com sólidos conhecimentos tanto teóricos quanto práticos em desenvolvimento full-stack utilizando linguagens como JavaScript e Python e frameworks como React Native Next.js; além de diversas ferramentas acessórias como Tailwind CSS, Bootstrap, Microsoft Excel, Canva e incontáveis APIs. Além de habilidades em trabalhos em equipe, comunicação e resolução de problemas.💡
 
 <br>
 
