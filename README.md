@@ -6,6 +6,8 @@
 ### 🌼 Sobre mim:  
   Estudante de Engenharia da Computação proativa e apaixonada por tecnologia, com sólidos conhecimentos tanto teóricos quanto práticos em desenvolvimento full-stack utilizando linguagens como JavaScript e Python e frameworks como React Native Next.js; além de diversas ferramentas acessórias como Tailwind CSS, Zustand, Clerk, Bootstrap, Excel, Canva e incontáveis APIs. Além de habilidades em trabalhos em equipe, comunicação e resolução de problemas.💡
 
+<br>
+
 ### 🛠 Tools
 <div align="center">
 	<code><img width="40" src="https://raw.githubusercontent.com/marwin1991/profile-technology-icons/refs/heads/main/icons/git.png" alt="Git" title="Git"/></code>
@@ -35,7 +37,9 @@
 	<code><img width="40" src="https://raw.githubusercontent.com/marwin1991/profile-technology-icons/refs/heads/main/icons/material_ui.png" alt="MaterialUI" title="MaterialUI"/></code>
 </div>
 
-### 📩 CONNECT WITH ME!
+<br>
+
+## 📩 CONNECT WITH ME!
 Linkedin: [Sofia B. Hernandes](https://www.linkedin.com/in/sofia-botechia-hernandes-4a5379349?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app)  
 Instagram: [@sofiabfit](https://www.instagram.com/sofiabfit/)  
 Email: [sofiahernandes.dev@gmail.com](mailto:sofiahernandes.dev@gmail.com)  
