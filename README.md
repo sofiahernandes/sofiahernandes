@@ -7,6 +7,9 @@
   Meu nome é Sofia Botechia Hernandes. Sou uma estudante de Ciência da Computação proativa e apaixonada por tecnologia, com sólidos conhecimentos tanto teóricos quanto práticos em desenvolvimento full-stack utilizando linguagens como JavaScript e Python e frameworks como React.js e Next.js; tal como diversas ferramentas acessórias como Tailwind CSS, Bootstrap, Microsoft Excel, Canva e incontáveis APIs. Além de habilidades em trabalhos em equipe, comunicação e resolução de problemas.💡
 <br>
 
+### 💼 CV/Currículo
+[Click here to access my CV!](https://drive.google.com/file/d/1P-lT48CcjOS_TB7uYpJW4qxuUnfGHNJe/view?usp=drivesdk)
+
 <br>
 
 ### 🛠 Tools
@@ -39,6 +42,8 @@
 </div>
 
 <br>
+
+![GitHub Stats](https://github-readme-stats.vercel.app/api?username=sofiahernandes&theme=graywhite&show_icons=true)
 <br>
 
 ## 📩 CONNECT WITH ME!
