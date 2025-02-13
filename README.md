@@ -9,7 +9,7 @@
 <br>
 
 ### 💼 CV/Currículo
-[Click here to access my CV!](https://drive.google.com/file/d/1j6p6sXuwzJw9KNUBXqoE8KCLePgAlvJh/view?usp=drivesdk)
+[Click here to access my CV!](https://drive.google.com/file/d/1bWe6sVQjC9X3Cy1eypPXjIHuvtZKFGUp/view?usp=drivesdk)
 
 <br>
 
