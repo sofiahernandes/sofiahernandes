@@ -1,16 +1,16 @@
 # 👩‍💻 Sofia Botechia  
 
 ### 🌼 About me:  
-  My name is Sofia Botechia Hernandes. I’m a Computer Science student, passionate about technology, with solid theoretical and practical knowledge in full-stack development using programming languages ​​such as JavaScript and Python and frameworks such as React.js and Next.js; as well as several accessory tools such as Tailwind CSS, Bootstrap, Microsoft Excel, Canva and countless APIs. In addition to skills in teamwork, communication and problem solving.💡
+  My name is Sofia Botechia Hernandes. I’m a Computer Science student, passionate about technology, with solid theoretical and practical knowledge in full-stack development- focused on front-end.💡
 
 ### 🌼 Sobre mim:  
-  Meu nome é Sofia Botechia Hernandes. Sou uma estudante de Ciência da Computação proativa e apaixonada por tecnologia, com sólidos conhecimentos tanto teóricos quanto práticos em desenvolvimento full-stack utilizando linguagens como JavaScript e Python e frameworks como React.js e Next.js; tal como diversas ferramentas acessórias como Tailwind CSS, Bootstrap, Microsoft Excel, Canva e incontáveis APIs. Além de habilidades em trabalhos em equipe, comunicação e resolução de problemas.💡
+  Meu nome é Sofia Botechia Hernandes. Sou uma estudante de Ciência da Computação proativa e apaixonada por tecnologia, com sólidos conhecimentos tanto teóricos quanto práticos em desenvolvimento full-stack- com foco no front-end.💡
 <br>
 <br>
 
-### 💼 Currículo/CV
-[Clique para acessar meu currículo (pt-BR)!](https://drive.google.com/file/d/18RmFzxMZWp1UVJnfxrkUcdK9tS2-9Twp/view?usp=drivesdk) <br>
-[Click to acces my Curriculum Vitae (en-US)!](https://drive.google.com/file/d/1OdFy674MHF5mkao0zgYhxdZNhKbNQR5W/view?usp=sharing)
+### 💼 CV / Currículo
+[Click to acces my Curriculum Vitae (en-US)!](https://drive.google.com/file/d/1lZKFrWIU_Vt-NJKalOAEqy8POVLb-NM0/view?usp=drivesdk)
+[Clique para acessar meu currículo (pt-BR)!](https://drive.google.com/file/d/1sdw63s7P7mZFiPu11MJR898elMheCUIt/view?usp=drivesdk) <br>
 
 <br>
 
