@@ -1,10 +1,10 @@
 # 👩‍💻 Sofia Botechia  
 
 ### 🌼 About me:  
-  My name is Sofia Botechia Hernandes. I’m a Computer Science student, passionate about technology, with solid theoretical and practical knowledge in full-stack development- focused on front-end.💡
+  I'm a Full-Stack Developer with a focus on Front-end, passionate about creating impactful digital experiences. I've been working as a part-time freelancer since 2022, combining practice and learning through authorial projects, courses and constant studies. I work primarily with JavaScript (React.js, React Native, Next.js) and Python; along with tools such as Tailwind CSS, Bootstrap, Figma, Canva, API integration and the Microsoft Office suite. I also value deeply socio-emotional skills such as teamwork, communication and project management, which I apply in my daily professional and personal life.💡
 
 ### 🌼 Sobre mim:  
-  Meu nome é Sofia Botechia Hernandes. Sou uma estudante de Ciência da Computação proativa e apaixonada por tecnologia, com sólidos conhecimentos tanto teóricos quanto práticos em desenvolvimento full-stack- com foco no front-end.💡
+  Sou Desenvolvedora Full-Stack com ênfase em Front-end, apaixonada por criar experiências digitais impactantes. Atuo como freelancer part-time desde 2022, combinando prática e aprendizado por meio de projetos autorais, cursos e estudos constantes. Trabalho com JavaScript (React.js, React Native, Next.js), Python; junto a ferramentas como Tailwind CSS, Bootstrap, Figma, Canva, integração de APIs e o Pacote  Microsoft Office. Também valorizo fortemente habilidades socioemocionais como trabalho em equipe, comunicação e gestão de projetos, as quais aplico no meu dia a dia profissional e pessoal.💡
 <br>
 <br>
 
