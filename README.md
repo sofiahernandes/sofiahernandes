@@ -1,16 +1,15 @@
 # 👩‍💻 Sofia Botechia  
 
 ### 🌼 About me:  
-  I'm a Full-Stack Developer with a focus on Front-end, passionate about creating impactful digital experiences. I've been working as a part-time freelancer since 2022, combining practice and learning through authorial projects, courses and constant studies. I work primarily with JavaScript (React.js, React Native, Next.js) and Python; along with tools such as Tailwind CSS, Bootstrap, Figma, Canva, API integration and the Microsoft Office suite. I also value deeply socio-emotional skills such as teamwork, communication and project management, which I apply in my daily professional and personal life.💡
+  I'm a Full-Stack Developer with a focus on Front-end, passionate about learning and creating. I've been working as a part-time freelancer since 2022, combining practice and learning through authorial projects, courses and constant studies. I work primarily with JavaScript (React.js, React Native, Next.js), Python and SQL; along with tools such as the Microsoft Office suite, API integration, Tailwind CSS, Bootstrap, Figma, and Canva. I also value deeply socio-emotional skills such as teamwork, communication and project management, which I apply in my daily professional and personal life.💡
 
 ### 🌼 Sobre mim:  
-  Sou Desenvolvedora Full-Stack com ênfase em Front-end, apaixonada por criar experiências digitais impactantes. Atuo como freelancer part-time desde 2022, combinando prática e aprendizado por meio de projetos autorais, cursos e estudos constantes. Trabalho com JavaScript (React.js, React Native, Next.js), Python; junto a ferramentas como Tailwind CSS, Bootstrap, Figma, Canva, integração de APIs e o Pacote  Microsoft Office. Também valorizo fortemente habilidades socioemocionais como trabalho em equipe, comunicação e gestão de projetos, as quais aplico no meu dia a dia profissional e pessoal.💡
+  Sou Desenvolvedora Full-Stack com ênfase em Front-end, apaixonada por aprender e por criar. Atuo como freelancer part-time desde 2022, combinando prática e aprendizado por meio de projetos autorais, cursos e estudos constantes. Trabalho primordialmente com JavaScript (React.js, React Native, Next.js), Python e SQL; junto a ferramentas como o Pacote  Microsoft Office, integração de APIs, Tailwind CSS, Bootstrap, Figma e Canva. Também valorizo fortemente habilidades socioemocionais como trabalho em equipe, comunicação e gestão de projetos, as quais aplico no meu dia a dia profissional e pessoal.💡
 <br>
 <br>
 
 ### 💼 CV / Currículo
-[Click to acces my Curriculum Vitae (en-US)!](https://drive.google.com/file/d/1lZKFrWIU_Vt-NJKalOAEqy8POVLb-NM0/view?usp=drivesdk)  
-[Clique para acessar meu currículo (pt-BR)!](https://drive.google.com/file/d/18RmFzxMZWp1UVJnfxrkUcdK9tS2-9Twp/view?usp=drivesdk) <br>
+[Clique para acessar meu currículo (pt-BR)](https://drive.google.com/file/d/1uf5nn_Df_m1FVEzdwQvSZPRfVwTFIm8U/view?usp=sharing) <br>
 
 <br>
 
@@ -36,7 +35,7 @@
 	<code><img width="30" src="https://raw.githubusercontent.com/marwin1991/profile-technology-icons/refs/heads/main/icons/material_ui.png" alt="MaterialUI" title="MaterialUI"/></code>
 </div>
 
-### Tools
+### Other Tools
 <div align="center">
 	<code><img width="30" src="https://raw.githubusercontent.com/marwin1991/profile-technology-icons/refs/heads/main/icons/git.png" alt="Git" title="Git"/></code>
   <code><img width="30" src="https://raw.githubusercontent.com/marwin1991/profile-technology-icons/refs/heads/main/icons/github.png" alt="GitHub" title="GitHub"/></code>
@@ -52,8 +51,6 @@
 <br>
 
 ## 📩 CONNECT WITH ME!
-Linkedin: [Sofia B. Hernandes](https://www.linkedin.com/in/sofia-botechia-hernandes-4a5379349?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app)    
-Email: [sofiahernandes.dev@gmail.com](mailto:sofiahernandes.dev@gmail.com)   
-Pinterest: [sofiabfit](https://pin.it/5gRW2R2bW)  
-Instagram: [@sofiabfit](https://www.instagram.com/sofiabfit/)  
-Github: [sofiahernandes](https://github.com/sofiahernandes)
+Linkedin: [Sofia B. Hernandes](https://www.linkedin.com/in/sofiahernandes)    
+Email: [sofiahernandes.dev@gmail.com](mailto:sofiahernandes.dev@gmail.com)  
+Github: [sofiahernandes](https://github.com/sofiahernandes)  
