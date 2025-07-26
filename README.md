@@ -2,7 +2,8 @@
 
 I’m a Front-end focused developer currently studying Computer Science.  
 Passionate about clean, user-centered web development.
-<details> <summary><strong>More about me (en & pt-br)</strong></summary>
+
+<details> <summary><strong>More about me</strong></summary>
 
 👩‍💻 Full-Stack Developer with a focus on Front-end  
 🎓 Constant learner, passionate about technology and creativity  
@@ -10,24 +11,13 @@ Passionate about clean, user-centered web development.
 🔧 Main stack: JavaScript (React.js, React Native, Next.js), and Python  
 🛠️ Tools: Tailwind CSS, Bootstrap, Figma, Canva, API integration, Microsoft Office  
 🤝 Strong soft skills: communication, teamwork, and project management  
-💡 Combines personal projects, courses, and real-world experience  
+💡 Combines personal projects, courses, and real-world experience  </details>
 
-[pt-br]  
-👩‍💻 Desenvolvedora Full-Stack com ênfase em Front-end  
-🎓 Apaixonada por tecnologia, criatividade e aprendizado contínuo  
-💼 Freelancer part-time desde 2022  
-🔧 Stack principal: JavaScript (React.js, React Native, Next.js) e Python  
-🛠️ Ferramentas: Tailwind CSS, Bootstrap, Figma, Canva, integração de APIs e Pacote Office  
-🤝 Soft skills fortes: comunicação, trabalho em equipe e gestão de projetos  
-💡 Une projetos autorais, cursos e experiência prática no dia a dia  
-</details>
+<br/>
 
----
+[Currículo em português](https://drive.google.com/file/d/1uf5nn_Df_m1FVEzdwQvSZPRfVwTFIm8U/view?usp=sharing) <br>
 
-### 💼 CV / Currículo
-[Clique para acessar meu currículo (pt-BR)](https://drive.google.com/file/d/1uf5nn_Df_m1FVEzdwQvSZPRfVwTFIm8U/view?usp=sharing) <br>
-
----
+<br/>
 
 ### Languages, Libraries & Frameworks
 <div align="left">
@@ -59,10 +49,12 @@ Passionate about clean, user-centered web development.
 	<code><img width="30" src="https://raw.githubusercontent.com/marwin1991/profile-technology-icons/refs/heads/main/icons/visual_studio_code.png" alt="Visual Studio Code" title="Visual Studio Code"/></code>
 </div>
 
----
+<br/>
 
+### Github Stats
 ![GitHub Stats](https://github-readme-stats.vercel.app/api?username=sofiahernandes&theme=github_dark&show_icons=true)
 
+<br/>
 ---
 
 ## 📩 CONNECT WITH ME!
