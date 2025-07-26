@@ -15,7 +15,10 @@ Passionate about clean, user-centered web development.
 
 <br/>
 
-[Currículo em português](https://drive.google.com/file/d/1uf5nn_Df_m1FVEzdwQvSZPRfVwTFIm8U/view?usp=sharing) <br>
+<div align="left">
+	<img href="" src="https://github.com/sofiahernandes/sofiahernandes/blob/main/assets/curriculo-button.png" width="110px" alt="Botão com link para o Currículo em Português"/>
+	<img href="" src="https://github.com/sofiahernandes/sofiahernandes/blob/main/assets/cv-button.png" width="110px" alt="Button with a link to the CV in English"/>
+</div>
 
 <br/>
 
@@ -55,7 +58,6 @@ Passionate about clean, user-centered web development.
 ![GitHub Stats](https://github-readme-stats.vercel.app/api?username=sofiahernandes&theme=github_dark&show_icons=true)
 
 <br/>
----
 
 ## 📩 CONNECT WITH ME!
 Linkedin: [Sofia B. Hernandes](https://www.linkedin.com/in/sofiahernandes)    
