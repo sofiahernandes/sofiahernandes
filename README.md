@@ -5,7 +5,7 @@ Passionate about clean, user-centered web development.
 
 <details> <summary><strong>More about me</strong></summary>
 
-👩‍💻 Full-Stack Developer with a focus on Front-end  
+👩‍💻 Front-end Developer under construction  
 🎓 Constant learner, passionate about technology and creativity  
 💼 Freelancing part-time since 2022  
 🔧 Main stack: JavaScript (React.js, React Native, Next.js), and Python  
