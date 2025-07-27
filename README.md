@@ -1,6 +1,6 @@
 # 👩‍💻 Sofia Botechia  
 
-I’m a Front-end focused developer currently studying Computer Science.  
+I’m a Front-end focused developer studying Computer Science.  
 Passionate about clean, user-centered web development.
 
 <details> <summary><strong>More about me</strong></summary>
@@ -15,6 +15,7 @@ Passionate about clean, user-centered web development.
 
 <br/>
 
+### My Curriculum Vitae
 <div align="left">
 	<img href="" src="https://github.com/sofiahernandes/sofiahernandes/blob/main/assets/curriculo-button.png" width="110px" alt="Botão com link para o Currículo em Português"/>
 	<img href="" src="https://github.com/sofiahernandes/sofiahernandes/blob/main/assets/cv-button.png" width="110px" alt="Button with a link to the CV in English"/>
@@ -35,7 +36,7 @@ Passionate about clean, user-centered web development.
   <code><img width="30" src="https://raw.githubusercontent.com/marwin1991/profile-technology-icons/refs/heads/main/icons/typescript.png" alt="TypeScript" title="TypeScript"/></code>
 </div>
 
-### UI/UX Design e Prototipação
+### UI/UX Design e Prototyping
 <div align="left">
 	<code><img width="30" src="https://raw.githubusercontent.com/marwin1991/profile-technology-icons/refs/heads/main/icons/figma.png" alt="Figma" title="Figma"/></code>
 	<code><img width="30" src="https://raw.githubusercontent.com/marwin1991/profile-technology-icons/refs/heads/main/icons/bootstrap.png" alt="Bootstrap" title="Bootstrap"/></code>
