@@ -1,17 +1,19 @@
 # 👩‍💻 Sofia Botechia  
 
-I’m a Front-end focused developer studying Computer Science.  
+I’m a Front-end focused developer, currently studying Computer Science.  
 Passionate about clean, user-centered web development.
 
-<details> <summary><strong>More about me</strong></summary>
+<details>
+<summary><strong>More about me</strong></summary>
 
-👩‍💻 Front-end Developer under construction  
-🎓 Constant learner, passionate about technology and creativity  
-💼 Freelancing part-time since 2022  
-🔧 Main stack: JavaScript (React.js, React Native, Next.js), and Python  
-🛠️ Tools: Tailwind CSS, Bootstrap, Figma, Canva, API integration, Microsoft Office  
-🤝 Strong soft skills: communication, teamwork, and project management  
-💡 Combines personal projects, courses, and real-world experience  </details>
+👩‍💻 Front-end Developer under construction;  
+🎓 Constant learner, passionate about technology and creativity;  
+💼 Freelancing part-time since 2022;  
+🔧 Main stack: TypeScript, JavaScript (React.js, React Native, Next.js), and Python  
+🛠️ Tools: Tailwind, Bootstrap, Figma, Canva, API integration, Microsoft Office;  
+🤝 Strong soft skills: communication, teamwork, and project management;  
+💡 Combining personal projects, courses, and real-world experience;  
+</details>
 
 <br/>
 
