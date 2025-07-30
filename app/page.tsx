@@ -9,7 +9,7 @@ import { ThemeToggle } from "./components/theme-toggle"
 
 export default function Page() {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background items-center flex flex-col">
       <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 h-14 px-6 pt-2 flex justify-between">
         <div className="container">
           <p className="pt-2 inline-block font-bold">Sofia Botechia</p>
@@ -18,9 +18,8 @@ export default function Page() {
       </header>
 
       <main className="container">
-        <section id="about" className="py-12 md:py-24 lg:py-32 glitter-effect">
-          <div className="container px-4 md:px-6">
-            <div className="flex flex-col items-center justify-center space-y-4 text-center">
+        <section id="hero" className="py-12 md:py-24 lg:py-32 glitter-effect">
+            <div className="m-0 flex flex-col items-center justify-center container px-4 md:px-6 space-y-4 text-center">
               <div className="space-y-2">
                 <h1 className="text-3xl font-bold tracking-tighter text-primary sm:text-4xl md:text-5xl lg:text-6xl/none">
                   Front-end Dev & UX Designer
@@ -57,10 +56,9 @@ export default function Page() {
                 </Link>
               </div>
             </div>
-          </div>
         </section>
 
-        <section id="projects" className="border-t py-6 md:py-10 lg:py-14 items-center">
+        <section id="projects" className="border-t py-12 items-center">
           <div className="container px-4 md:px-6">
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-12 text-center">Projects</h2>
             <div className="flex flex-col items-center justify-center">
@@ -97,7 +95,7 @@ export default function Page() {
           </div>
         </section>
 
-        <section className="border-t py-6 md:py-10 lg:py-14">
+        <section className="border-t py-12">
           <div className="container px-4 md:px-6">
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-12 text-center">
               Main Skills
@@ -106,16 +104,16 @@ export default function Page() {
           </div>
         </section>
 
-        <section id="about" className="border-t p-10 md:py-10 lg:py-14">
+        <section id="about" className="border-t p-10">
           <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-12 text-center">
             A Little About Me
           </h2>
           <AboutMe />
         </section>
 
-        <section id="contact" className="border-t py-6 md:py-10 lg:py-14">
+        <section id="contact" className="border-t py-12">
           <div className="container px-4 md:px-6">
-            <div className="mx-auto max-w-2xl">
+            <div className="mx-auto max-w-[700px]">
               <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-12 text-center">
                 Get in Touch
               </h2>
