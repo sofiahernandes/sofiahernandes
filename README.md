@@ -1,7 +1,7 @@
 <div align="center">
   <h1>👩‍💻 Sofia Botechia</h1>
   <p align="center">
-    I’m a Front-end focused developer & UX designer. Passionate about clean, user-centered web development.
+    Front-end focused developer & UX designer. Passionate about clean, user-centered web development.
     <br/>
     <div>
       <a href="https://github.com/sofiahernandes"><img height="30px" src="https://skillicons.dev/icons?i=github"/></a><span> ∙ </span>
@@ -63,4 +63,10 @@
 <br/>
 
 <h3>Github Stats</h3>
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/sofiahernandes/sofiahernandes/output/pacman-contribution-graph-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/sofiahernandes/sofiahernandes/output/pacman-contribution-graph.svg">
+  <img alt="pacman contribution graph" src="https://raw.githubusercontent.com/sofiahernandes/sofiahernandes/output/pacman-contribution-graph.svg">
+</picture>
+
 ![Sofia's GitHub Stats](https://github-readme-stats.vercel.app/api?username=sofiahernandes&show_icons=true&theme=github_dark)
