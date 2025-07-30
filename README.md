@@ -1,7 +1,7 @@
 <div align="center">
   <h1>👩‍💻 Sofia Botechia</h1>
   <p align="center">
-    I’m a Front-end focused developer & UX designer.<br/>Passionate about clean, user-centered web development.
+    I’m a Front-end focused developer & UX designer. Passionate about clean, user-centered web development.
     <br/>
     <div>
       <a href="https://github.com/sofiahernandes"><img height="30px" src="https://skillicons.dev/icons?i=github"/></a><span> ∙ </span>
