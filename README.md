@@ -1,11 +1,19 @@
-# 👩‍💻 Sofia Botechia  
-
-I’m a Front-end focused developer, currently studying Computer Science.  
-Passionate about clean, user-centered web development.
-
+<div align="center">
+  <h1>👩‍💻 Sofia Botechia</h1>
+  <p align="center">
+    I’m a Front-end focused developer & UX designer.<br/>Passionate about clean, user-centered web development.
+    <br/>
+    <div>
+      <a href="https://github.com/sofiahernandes"><img height="30px" src="https://skillicons.dev/icons?i=github"/></a><span> ∙ </span>
+      <a href="https://www.linkedin.com/in/sofiahernandes"><img height="30px" src="https://skillicons.dev/icons?i=linkedin"/></a><span> ∙ </span>
+      <a href="mailto:sofiahernandes.dev@gmail.com"><img height="30px" src="https://skillicons.dev/icons?i=gmail"/></a><span> ∙ </span>
+      <a href="https://www.instagram.com/sofiabotechiaa/"><img height="30px" src="https://skillicons.dev/icons?i=instagram"/></a>
+    </div>
+  </p>
+</div>
 <br/>
 
-````
+```
 {
   "name": "Sofia Botechia Hernandes",
   "location": "São Paulo, Brazil",
@@ -28,47 +36,31 @@ Passionate about clean, user-centered web development.
   "openTo": ["freelance gigs", "creative collabs", "fun side projects", "good talks"],
 }
 ```
-
 <br/>
 
-### Languages, Libraries & Frameworks
-<div align="left">
-	<code><img width="30" src="https://raw.githubusercontent.com/marwin1991/profile-technology-icons/refs/heads/main/icons/html.png" alt="HTML" title="HTML"/></code>
-	<code><img width="30" src="https://raw.githubusercontent.com/marwin1991/profile-technology-icons/refs/heads/main/icons/css.png" alt="CSS" title="CSS"/></code>
-	<code><img width="30" src="https://raw.githubusercontent.com/marwin1991/profile-technology-icons/refs/heads/main/icons/javascript.png" alt="JavaScript" title="JavaScript"/></code>
-	<code><img width="30" src="https://raw.githubusercontent.com/marwin1991/profile-technology-icons/refs/heads/main/icons/react.png" alt="React" title="React"/></code>
-  <br>
-	<code><img width="30" src="https://raw.githubusercontent.com/marwin1991/profile-technology-icons/refs/heads/main/icons/node_js.png" alt="Node.js" title="Node.js"/></code>
-	<code><img width="30" src="https://raw.githubusercontent.com/marwin1991/profile-technology-icons/refs/heads/main/icons/next_js.png" alt="Next.js" title="Next.js"/></code>
-	<code><img width="30" src="https://raw.githubusercontent.com/marwin1991/profile-technology-icons/refs/heads/main/icons/python.png" alt="Python" title="Python"/></code>
-  <code><img width="30" src="https://raw.githubusercontent.com/marwin1991/profile-technology-icons/refs/heads/main/icons/typescript.png" alt="TypeScript" title="TypeScript"/></code>
+<div align="center">
+	<h3>Languages, Libraries & Frameworks</h3>
+	<p align="center">
+	  <a href="https://skillicons.dev">
+	    <img src="https://skillicons.dev/icons?i=ts,js,html,css,react,next,nodejs,py&perline=4" />
+	  </a>
+	</p>
+	<br/>
+	<h3>UI/UX Design e Prototyping</h3>
+	<p align="center">
+	  <a href="https://skillicons.dev">
+	    <img src="https://skillicons.dev/icons?i=figma,bootstrap,tailwind,materialui" />
+	  </a>
+	</p>
+	</br>
+	<h3>Other Tools</h3>
+	<p align="center">
+	  <a href="https://skillicons.dev">
+	    <img src="https://skillicons.dev/icons?i=git,github,vscode,pycharm" />
+	  </a>
+	</p>
 </div>
-
-### UI/UX Design e Prototyping
-<div align="left">
-	<code><img width="30" src="https://raw.githubusercontent.com/marwin1991/profile-technology-icons/refs/heads/main/icons/figma.png" alt="Figma" title="Figma"/></code>
-	<code><img width="30" src="https://raw.githubusercontent.com/marwin1991/profile-technology-icons/refs/heads/main/icons/bootstrap.png" alt="Bootstrap" title="Bootstrap"/></code>
-	<code><img width="30" src="https://raw.githubusercontent.com/marwin1991/profile-technology-icons/refs/heads/main/icons/tailwind_css.png" alt="Tailwind CSS" title="Tailwind CSS"/></code>
-	<code><img width="30" src="https://raw.githubusercontent.com/marwin1991/profile-technology-icons/refs/heads/main/icons/shadcn_ui.png" alt="ShadCn UI" title="ShadCn UI"/></code>
-	<code><img width="30" src="https://raw.githubusercontent.com/marwin1991/profile-technology-icons/refs/heads/main/icons/material_ui.png" alt="MaterialUI" title="MaterialUI"/></code>
-</div>
-
-### Other Tools
-<div align="left">
-	<code><img width="30" src="https://raw.githubusercontent.com/marwin1991/profile-technology-icons/refs/heads/main/icons/git.png" alt="Git" title="Git"/></code>
-  <code><img width="30" src="https://raw.githubusercontent.com/marwin1991/profile-technology-icons/refs/heads/main/icons/github.png" alt="GitHub" title="GitHub"/></code>
-	<code><img width="30" src="https://raw.githubusercontent.com/marwin1991/profile-technology-icons/refs/heads/main/icons/pycharm.png" alt="PyCharm" title="PyCharm"/></code>
-	<code><img width="30" src="https://raw.githubusercontent.com/marwin1991/profile-technology-icons/refs/heads/main/icons/visual_studio_code.png" alt="Visual Studio Code" title="Visual Studio Code"/></code>
-</div>
-
 <br/>
 
-### Github Stats
-![GitHub Stats](https://github-readme-stats.vercel.app/api?username=sofiahernandes&theme=github_dark&show_icons=true)
-
-<br/>
-
-## 📩 CONNECT WITH ME!
-Linkedin: [Sofia B. Hernandes](https://www.linkedin.com/in/sofiahernandes)    
-Email: [sofiahernandes.dev@gmail.com](mailto:sofiahernandes.dev@gmail.com)  
-Github: [sofiahernandes](https://github.com/sofiahernandes)  
+<h3>Github Stats</h3>
+![Sofia's GitHub Stats](https://github-readme-stats.vercel.app/api?username=sofiahernandes&show_icons=true&theme=github_dark)
