@@ -3,25 +3,31 @@
 I’m a Front-end focused developer, currently studying Computer Science.  
 Passionate about clean, user-centered web development.
 
-<details>
-<summary><strong>More about me</strong></summary>
-
-👩‍💻 Front-end Developer under construction;  
-🎓 Constant learner, passionate about technology and creativity;  
-💼 Freelancing part-time since 2022;  
-🔧 Main stack: TypeScript, JavaScript (React.js, React Native, Next.js), and Python  
-🛠️ Tools: Tailwind, Bootstrap, Figma, Canva, API integration, Microsoft Office;  
-🤝 Strong soft skills: communication, teamwork, and project management;  
-💡 Combining personal projects, courses, and real-world experience;  
-</details>
-
 <br/>
 
-### My Curriculum Vitae
-<div align="left">
-	<img href="" src="https://github.com/sofiahernandes/sofiahernandes/blob/main/assets/curriculo-button.png" width="110px" alt="Botão com link para o Currículo em Português"/>
-	<img href="" src="https://github.com/sofiahernandes/sofiahernandes/blob/main/assets/cv-button.png" width="110px" alt="Button with a link to the CV in English"/>
-</div>
+````
+{
+  "name": "Sofia Botechia Hernandes",
+  "location": "São Paulo, Brazil",
+  "role": "Front-end Developer & Designer | CS Student",
+  "status": "(Always) under construction!",
+  "freelanceWork": {
+	startDate: 2022,
+	activities: "Mainly landing pages and websites for small business and creators",
+	openToWork: true,
+  },
+  "stack": {
+    "languages": ["TypeScript", "JavaScript", "Python"],
+    "frameworks": ["React.js", "Next.js", "React Native"],
+    "styling": ["Tailwind CSS", "Bootstrap"],
+    "tools": ["Figma", "Canva", "Microsoft Office Suit", "Git/Github"],
+    "misc": ["API integration", "responsive development", "UI/UX design"]
+  },
+  "softSkills": ["communication", "teamwork", "project management"],
+  "otherInterests": ["wellness", "reading", "philosophy", "travel"],
+  "openTo": ["freelance gigs", "creative collabs", "fun side projects", "good talks"],
+}
+```
 
 <br/>
 
