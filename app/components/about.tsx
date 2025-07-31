@@ -3,14 +3,14 @@ import Image from "next/image"
 export default function AboutMe() {
   return (
     <div className="max-w-[700px] m-auto">
-      <p className="mx-auto pt-5 text-gray-500 md:text-lg dark:text-gray-400 text-justify pb-4">Hey! I’m Sofia — <span className="underline underline-offset-4">a Brazilian Computer Science student and front-end developer based in São Paulo</span>. Since starting my freelance journey in 2022, I’ve been building responsive, accessible, and visually engaging web experiences for small businesses, content creators, and personal projects.</p>
+      <p className="mx-auto pt-5 text-gray-500 md:text-lg dark:text-gray-400 text-justify pb-4">&nbsp;&nbsp;&nbsp;&nbsp;Hey! I’m Sofia — <span className="underline underline-offset-4">a Brazilian Computer Science student and front-end developer based in São Paulo</span>. Since starting my freelance journey in 2022, I’ve been building responsive, accessible, and visually engaging web experiences for small businesses, content creators, and personal projects.</p>
 
-      <div className="grid grid-cols-2 gap-x-2 my-4">
-        <Image src="/images/personal-image-2.png" className="rounded-lg border-double" width={400} height={400} alt="Personal Image 2" />
-        <Image src="/images/personal-image-3.png" className="rounded-lg border-double" width={400} height={400} alt="Personal Image 3" />
+      <div className="grid grid-cols-2 gap-x-3 my-4">
+        <Image src="/images/personal-image-2.png" className="rounded-lg border-double shadow-xl shadow-primary/30 ring-1 ring-primary/30 transition-transform hover:scale-105" width={400} height={400} alt="Personal Image 2" />
+        <Image src="/images/personal-image-3.png" className="rounded-lg border-double shadow-xl shadow-primary/30 ring-1 ring-primary/30 transition-transform hover:scale-105" width={400} height={400} alt="Personal Image 3" />
       </div>
 
-      <p className="mx-auto pt-5 text-gray-500 md:text-lg dark:text-gray-400 text-justify pb-4">I’m passionate about clean code, thoughtful UI/UX, and the magic that happens when design and development work together. Whether it’s turning a Figma design into a pixel-perfect interface or integrating APIs to bring a product to life, <span className="underline underline-offset-4">I love crafting digital experiences that are both functional and beautiful.</span></p>
+      <p className="mx-auto pt-5 text-gray-500 md:text-lg dark:text-gray-400 text-justify pb-4">&nbsp;&nbsp;&nbsp;&nbsp;I’m passionate about clean code, thoughtful UI/UX, and the magic that happens when design and development work together. Whether it’s turning a Figma design into a pixel-perfect interface or integrating APIs to bring a product to life, <span className="underline underline-offset-4">I love crafting digital experiences that are both functional and beautiful.</span></p>
 
       <ul className="mx-auto pt-5 text-gray-500 md:text-lg dark:text-gray-400 text-justify pb-4">
       <li>💻 <span className="underline underline-offset-4">Main stack:</span> React, Next.js, TypeScript, React Native, Python;</li>
@@ -20,13 +20,13 @@ export default function AboutMe() {
       <li>🏋️‍♀️ <span className="underline underline-offset-4">Outside tech</span>, my passions are reading, balenced fitness, traveling, singing (badly), and a having good philosophical discussions.</li>
       </ul>
 
-      <div className="grid grid-cols-3 gap-x-2 my-4">
-        <Image src="/images/personal-image-1.png" className="rounded-lg border-double" width={400} height={400} alt="Personal Image 3" />
-        <Image src="/images/personal-image-5.png" className="rounded-lg border-double" width={400} height={400} alt="Personal Image 2" />
-        <Image src="/images/personal-image-4.png" className="rounded-lg border-double" width={400} height={400} alt="Personal Image 3" />
+      <div className="grid grid-cols-3 gap-x-3 my-4">
+        <Image src="/images/personal-image-1.png" className="rounded-lg border-double shadow-xl shadow-primary/30 ring-1 ring-primary/30 transition-transform hover:scale-105" width={400} height={400} alt="Personal Image 3" />
+        <Image src="/images/personal-image-5.png" className="rounded-lg border-double shadow-xl shadow-primary/30 ring-1 ring-primary/30 transition-transform hover:scale-105" width={400} height={400} alt="Personal Image 2" />
+        <Image src="/images/personal-image-4.png" className="rounded-lg border-double shadow-xl shadow-primary/30 ring-1 ring-primary/30 transition-transform hover:scale-105" width={400} height={400} alt="Personal Image 3" />
       </div>
 
-      <p className="mx-auto pt-5 text-gray-500 md:text-lg dark:text-gray-400 text-justify pb-4">I'm currently open to freelance opportunities and creative collaborations. If you're looking for someone who understands both design and code — let’s talk!</p>
+      <p className="mx-auto pt-5 text-gray-500 md:text-lg dark:text-gray-400 text-justify pb-4">&nbsp;&nbsp;&nbsp;&nbsp;I'm currently open to freelance opportunities and creative collaborations. If you're looking for someone who understands both design and code — let’s talk!</p>
     </div>
   )
 }

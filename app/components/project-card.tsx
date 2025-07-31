@@ -13,7 +13,7 @@ interface ProjectCardProps {
 
 export default function ProjectCard({ title, description, image, link, tags }: ProjectCardProps) {
   return (
-    <Card className="overflow-hidden">
+    <Card className="overflow-hidden shadow-lg">
       <div className="relative aspect-video">
         <Image
           src={image || "/placeholder.svg"}

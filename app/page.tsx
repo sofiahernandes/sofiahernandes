@@ -7,6 +7,8 @@ import ProjectCard from "./components/project-card"
 import TechStack from "./components/tech-stack"
 import { ThemeToggle } from "./components/theme-toggle"
 
+import { projects } from "@/lib/projects"
+
 export default function Page() {
   return (
     <div className="min-h-screen bg-background items-center flex flex-col">
@@ -63,27 +65,18 @@ export default function Page() {
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-12 text-center">Projects</h2>
             <div className="flex flex-col items-center justify-center">
               <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-                <ProjectCard
-                  title="E-commerce Storefront"
-                  description="Next.js Ecommerce Storefront of planners and tools designed to help you heal, grow, and thrive!"
-                  image="/images/glow-screenshot.png"
-                  link="https://github.com/sofiahernandes/glow-global"
-                  tags={["Next", "TypeScript", "Tailwind", "Integration"]}
-                />
-                <ProjectCard
-                  title="Notion Clone"
-                  description="A full-featured Next.js clone of Notion built with Blocknote rich-text editor."
-                  image="/images/notion-screenshot.png"
-                  link="https://github.com/sofiahernandes/notion-clone"
-                  tags={["Next", "React", "TypeScript", "Tailwind", "Clerk", "Blocknote"]}
-                />
-                <ProjectCard
-                  title="Tech Jobs App"
-                  description="A job search app built with React Native, powered by JSearch API and Google Auth."
-                  image="/images/tech-screenshot.png"
-                  link="https://github.com/sofiahernandes/tech-jobz-app"
-                  tags={["React Native", "Expo", "Axios", "Material UI", "Google Authentication"]}
-                />
+                {projects.map((project) => {
+                  return (
+                    <ProjectCard
+                      key={project.title}
+                      title={project.title}
+                      description={project.description}
+                      image={project.image}
+                      link={project.link}
+                      tags={project.tags}
+                    />
+                  )
+                })}
               </div>
               <div>
                 <Link href="https://github.com/sofiahernandes" target="_blank" className="pt-4 flex items-center gap-2 text-sm hover:underline">
