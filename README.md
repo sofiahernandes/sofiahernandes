@@ -1,12 +1,15 @@
 <div align="center">
 	<h1>👩‍💻 Sofia Botechia</h1>
 	<p align="center">
-    		Front-end focused developer & UX designer. Passionate about clean, user-centered web dev.<br/>
+    		Front-end Developer & UX Designer. Passionate about clean, user-centered dev.<br/>
 	    	<div>
-			<a href="https://github.com/sofiahernandes"><img height="30px" src="https://skillicons.dev/icons?i=github"/></a><span> ∙ </span>
-		      	<a href="https://www.linkedin.com/in/sofiahernandes"><img height="30px" src="https://skillicons.dev/icons?i=linkedin"/></a><span> ∙ </span>
-		      	<a href="mailto:sofiahernandes.dev@gmail.com"><img height="30px" src="https://skillicons.dev/icons?i=gmail"/></a><span> ∙ </span>
-		      	<a href="https://www.instagram.com/sofiabotechiaa/"><img height="30px" src="https://skillicons.dev/icons?i=instagram"/></a>
+			<a href="https://github.com/sofiahernandes"><img height="30px" src="https://skillicons.dev/icons?i=github"/></a>
+		      	&nbsp;
+			<a href="https://www.linkedin.com/in/sofiahernandes"><img height="30px" src="https://skillicons.dev/icons?i=linkedin"/></a>
+			&nbsp;
+		      	<a href="mailto:sofiahernandes.dev@gmail.com"><img height="30px" src="https://skillicons.dev/icons?i=gmail"/></a>
+			&nbsp;
+		      	<a href="https://www.instagram.com/sofiabotechia/"><img height="30px" src="https://skillicons.dev/icons?i=instagram"/></a>
 	    	</div>
   	</p>
 </div>
