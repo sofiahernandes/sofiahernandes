@@ -13,13 +13,13 @@ interface ProjectCardProps {
 
 export default function ProjectCard({ title, description, image, link, tags }: ProjectCardProps) {
   return (
-    <Card className="overflow-hidden shadow-lg">
+    <Card className="overflow-hidden shadow-lg transition-transform hover:scale-105">
       <div className="relative aspect-video">
         <Image
           src={image || "/placeholder.svg"}
           alt={title}
           fill
-          className="object-top object-cover top-0 transition-transform hover:scale-105"
+          className="object-top object-cover top-0"
         />
       </div>
       <CardContent className="p-4">
@@ -29,7 +29,7 @@ export default function ProjectCard({ title, description, image, link, tags }: P
           {tags.map((tag) => (
             <span
               key={tag}
-              className="inline-flex items-center rounded-md bg-muted px-2 py-1 text-xs font-medium ring-1 ring-inset ring-gray-500/10"
+              className="inline-flex items-center rounded-md bg-primary/15 px-2 py-1 text-xs font-medium ring-1 ring-inset ring-gray-500/10"
             >
               {tag}
             </span>
