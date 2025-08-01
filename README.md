@@ -1,7 +1,8 @@
 <div align="center">
 	<h1>👩‍💻 Sofia Botechia</h1>
 	<p align="center">
-    		Front-end Developer & UX Designer. Passionate about clean, user-centered dev.<br/>
+    		Front-end Developer & UX Designer. Constantly learning & exploring!<br/>
+		<a href="https://sofiab-portfolio.vercel.app/">(access my authorial Portfolio Website)</a>
 	    	<div>
 			<a href="https://github.com/sofiahernandes"><img height="30px" src="https://skillicons.dev/icons?i=github"/></a>
 		      	&nbsp;
