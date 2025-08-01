@@ -30,7 +30,7 @@ const technologies = [
     id: 5,
     category: "(Human) Languages",
     skills: [{name: "🇺🇸 English", link: "noLink"}, {name: "🇧🇷 Portuguese", link: "noLink"}, {name: "🇪🇸 Spanish", link: "noLink"}],
-    highlight: true,
+    highlight: false,
   },
   {
     id: 6,

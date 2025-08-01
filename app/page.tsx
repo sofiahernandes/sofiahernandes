@@ -27,12 +27,12 @@ export default function Page() {
                   Front-end Dev & UX Designer
                 </h1>
                 <p className="mx-auto max-w-[700px] pt-5 text-gray-500 md:text-lg dark:text-gray-400">
-                  🌱 Constantly learning & exploring better— and cuter— ways to build for the web 💬 Let’s chat if you
+                  🌱 Constantly learning & exploring better— and cuter— ways to build for the web. Let’s chat if you
                   need a dev who gets design — or a designer who can code!
                 </p>
               </div>
               <div className="space-x-4">
-                <Link href="https://github.com/sofiahernandes" target="_blank">
+                <Link href="https://github.com/sofiahernandes/" target="_blank">
                   <Button variant="outline" size="icon">
                     <Github className="h-4 w-4" />
                     <span className="sr-only">GitHub</span>
@@ -44,7 +44,7 @@ export default function Page() {
                     <span className="sr-only">LinkedIn</span>
                   </Button>
                 </Link>
-                <Link href="https://www.instagram.com/sofiabotechiaa/">
+                <Link href="https://www.instagram.com/sofiabotechia/">
                   <Button variant="outline" size="icon">
                     <Instagram className="h-4 w-4" />
                     <span className="sr-only">Instagram</span>
