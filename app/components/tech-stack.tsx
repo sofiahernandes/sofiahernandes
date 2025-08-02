@@ -42,21 +42,27 @@ const technologies = [
 
 export default function TechStack() {
   return (
-    <div className="grid gap-6 md:grid-cols-2">
-      {technologies.map((tech) => (
-        <Card key={tech.id} className={tech.highlight ? "bg-primary/60 p-6" : "p-6"}>
-          <h3 className={tech.highlight ? "text-background text-lg font-semibold mb-4" : "text-lg font-semibold mb-4"}>{tech.category}</h3>
-          <div className="flex flex-wrap gap-2">
-            {tech.skills.map((skill) => (
-              <Link href={skill.link} target="_blank" key={skill.name} className="no-underline">
-                <span className={tech.highlight ? "transition-transform hover:scale-105 text-background inline-flex items-center rounded-md px-2 py-1 text-sm font-medium ring-1 ring-inset ring-background" : "transition-transform hover:scale-105 inline-flex items-center rounded-md bg-primary/15 px-2 py-1 text-sm font-medium ring-1 ring-inset ring-primary/20"}>
-                {skill.name}
-              </span>
-              </Link>
-            ))}
-          </div>
-        </Card>
-      ))}
+    <div className="container px-4 md:px-6">
+      <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-12 text-center">
+        Main Skills
+      </h2>
+
+      <div className="grid gap-6 md:grid-cols-2">
+        {technologies.map((tech) => (
+          <Card key={tech.id} className={tech.highlight ? "bg-primary/60 p-6" : "p-6"}>
+            <h3 className={tech.highlight ? "text-background text-lg font-semibold mb-4" : "text-lg font-semibold mb-4"}>{tech.category}</h3>
+            <div className="flex flex-wrap gap-2">
+              {tech.skills.map((skill) => (
+                <Link href={skill.link} target="_blank" key={skill.name} className="no-underline">
+                  <span className={tech.highlight ? "transition-transform hover:scale-105 text-background inline-flex items-center rounded-md px-2 py-1 text-sm font-medium ring-1 ring-inset ring-background" : "transition-transform hover:scale-105 inline-flex items-center rounded-md bg-primary/15 px-2 py-1 text-sm font-medium ring-1 ring-inset ring-primary/20"}>
+                  {skill.name}
+                </span>
+                </Link>
+              ))}
+            </div>
+          </Card>
+        ))}
+      </div>
     </div>
   )
 }
