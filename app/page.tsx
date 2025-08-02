@@ -1,6 +1,6 @@
 import AboutMe from "./components/about"
 import ContactForm from "./components/contact-form"
-
+import Projects from "./components/projects"
 import TechStack from "./components/tech-stack"
 import Hero from "./components/hero"
 import { ThemeToggle } from "./components/theme-toggle"
