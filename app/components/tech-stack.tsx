@@ -35,7 +35,7 @@ const technologies = [
   {
     id: 6,
     category: "Resume",
-    skills: [{name: "Resume (en-US)", link: "https://github.com/sofiahernandes"}, {name: "Currículo (pt-BR)", link: "https://github.com/sofiahernandes"}],
+    skills: [{name: "Resume (en-US)", link: "https://github.com/sofiahernandes"}, {name: "Currículo (pt-BR)", link: "https://drive.google.com/file/d/1xgkxkF62138lskOmXopL-vZT0mjAabfZ/view?usp=sharing"}],
     highlight: true,
   }
 ]
