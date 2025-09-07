@@ -7,7 +7,7 @@ export default function Hero() {
         <div className="m-0 flex flex-col items-center justify-center container px-4 md:px-6 space-y-4 text-center">
               <div className="space-y-2">
                 <h1 className="text-3xl font-bold tracking-tighter text-primary sm:text-4xl md:text-5xl lg:text-6xl/none">
-                  Front-end Dev & UX Designer
+                  Software Dev & UX Design
                 </h1>
                 <p className="mx-auto max-w-[700px] pt-5 text-gray-500 md:text-lg dark:text-gray-400">
                   🌱 Constantly learning & exploring better— and cuter— ways to build for the web. Let’s chat if you
