@@ -41,7 +41,7 @@ export default function SlideScale() {
           {Array.from({ length: 5 }).map((_, index) => (
             <CarouselItem key={index} className={cn("basis-[33%]", {})}>
               <Card
-                className={cn("transition-transform duration-500", {
+                className={cn("transition-transform border border-primary/50 duration-500", {
                   "scale-[0.6]": index !== current - 1,
                 })}
               >
