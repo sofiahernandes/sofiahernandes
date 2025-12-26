@@ -4,14 +4,19 @@ import { Github, Linkedin, Mail, Instagram } from "lucide-react";
 
 export default function Hero() {
   return (
-    <section id="hero" className="grid grid-cols-2 lg:grid-cols-12 px-6 gap-6 py-24 bg-primary/10">
-      <div className="col-span-full lg:col-span-8 lg:col-start-3 m-0 flex flex-col items-center justify-center px-4 lg:px-6 space-y-4 text-center">
+    <section
+      id="hero"
+      className="grid grid-cols-2 lg:grid-cols-12 px-6 gap-6 py-36 bg-primary/5"
+    >
+      <div className="col-span-full lg:col-span-8 lg:col-start-3 m-0 flex flex-col items-center justify-center px-4 lg:px-6 space-y-4 text-center lg:text-left">
         <div className="space-y-2">
-          <h1 className="text-2xl font-bold tracking-tighter text-primary lg:text-4xl">
+          <h1 className="text-3xl lg:text-5xl font-bold tracking-tighter text-primary">
             Software Dev & UX Design
           </h1>
-          <p className="mx-auto max-w-[550px] pt-5 text-sm text-gray-500 dark:text-gray-400">
-            🌱 Constantly learning & exploring better— and cuter— ways to build for the web. Let’s chat if you need a dev who gets design — or a designer who can code!
+          <p className="mx-auto max-w-[550px] pt-2 pb-4 text-sm text-gray-500 dark:text-gray-400">
+            Constantly learning & exploring better— and cuter— ways to build
+            for the web. Let’s chat if you need a dev who gets design — or a
+            designer who can code!
           </p>
         </div>
         <div className="space-x-4">

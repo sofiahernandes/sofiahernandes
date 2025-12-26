@@ -23,7 +23,7 @@ export default function Page() {
         <ContactForm />
       </main>
 
-      <footer className="border-t">
+      <footer>
         <Footer />
       </footer>
     </div>

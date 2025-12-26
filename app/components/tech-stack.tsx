@@ -96,9 +96,9 @@ const technologies = [
 
 export default function TechStack() {
   return (
-    <section className="grid grid-cols-2 lg:grid-cols-12 border-t px-6 gap-6 py-12">
+    <section className="grid grid-cols-2 lg:grid-cols-12 border-t px-6 gap-6 py-24">
       <div className="col-span-full lg:col-span-10 lg:col-start-2">
-        <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl lg:text-5xl mb-12 text-center">
+        <h2 className="text-2xl lg:text-4xl font-bold tracking-tighter mb-6 text-center lg:text-left">
           Main Skills
         </h2>
 
@@ -128,8 +128,8 @@ export default function TechStack() {
                     <span
                       className={
                         tech.highlight
-                          ? "transition-transform hover:scale-105 text-background inline-flex items-center rounded-md px-2 py-1 text-sm font-medium ring-1 ring-inset ring-background"
-                          : "transition-transform hover:scale-105 inline-flex items-center rounded-md bg-primary/15 px-2 py-1 text-sm font-medium ring-1 ring-inset ring-primary/20"
+                          ? "transition-opacity hover:opacity-60 text-background inline-flex items-center rounded-md px-2 py-1 text-sm font-medium ring-1 ring-inset ring-background"
+                          : "transition-opacity hover:opacity-60 inline-flex items-center rounded-md bg-primary/15 px-2 py-1 text-sm font-medium ring-1 ring-inset ring-primary/20"
                       }
                     >
                       {skill.name}

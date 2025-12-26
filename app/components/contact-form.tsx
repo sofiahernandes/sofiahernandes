@@ -26,10 +26,10 @@ export default function ContactForm() {
   return (
     <section
       id="contact"
-      className="grid grid-cols-2 lg:grid-cols-12 border-t px-6 gap-6 py-12"
+      className="grid grid-cols-2 lg:grid-cols-12 border-t px-6 gap-6 py-24"
     >
       <div className="col-span-full lg:col-span-10 lg:col-start-2">
-        <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl lg:text-5xl mb-12 text-center">
+        <h2 className="text-2xl lg:text-4xl font-bold tracking-tighter mb-6 text-center lg:text-left">
           Get in Touch
         </h2>
 
