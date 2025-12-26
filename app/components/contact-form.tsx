@@ -1,32 +1,35 @@
-"use client"
+"use client";
 
-import { Button } from "@/components/ui/button"
-import { Card } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { useState } from "react"
-import { submitContactForm } from "../actions"
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { useState } from "react";
+import { submitContactForm } from "../actions";
 
 export default function ContactForm() {
-  const [pending, setPending] = useState(false)
-  const [message, setMessage] = useState("")
+  const [pending, setPending] = useState(false);
+  const [message, setMessage] = useState("");
 
   async function handleSubmit(formData: FormData) {
-    setPending(true)
+    setPending(true);
     try {
-      const response = await submitContactForm(formData)
-      setMessage(response.message)
+      const response = await submitContactForm(formData);
+      setMessage(response.message);
     } catch (error) {
-      setMessage("Something went wrong. Please try again.")
+      setMessage("Something went wrong. Please try again.");
     } finally {
-      setPending(false)
+      setPending(false);
     }
   }
 
   return (
-    <div className="container px-4 md:px-6">
-      <div className="mx-auto max-w-[700px]">
-        <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-12 text-center">
+    <section
+      id="contact"
+      className="grid grid-cols-2 lg:grid-cols-12 border-t px-6 gap-6 py-12"
+    >
+      <div className="col-span-full lg:col-span-10 lg:col-start-2">
+        <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl lg:text-5xl mb-12 text-center">
           Get in Touch
         </h2>
 
@@ -45,7 +48,10 @@ export default function ContactForm() {
               <Input id="email" name="email" type="email" required />
             </div>
             <div>
-              <label htmlFor="message" className="block text-sm font-medium mb-2">
+              <label
+                htmlFor="message"
+                className="block text-sm font-medium mb-2"
+              >
                 Message
               </label>
               <Textarea id="message" name="message" required />
@@ -53,10 +59,14 @@ export default function ContactForm() {
             <Button type="submit" className="w-full" disabled={pending}>
               {pending ? "Sending..." : "Send Message"}
             </Button>
-            {message && <p className="text-sm text-center mt-4 text-muted-foreground">{message}</p>}
+            {message && (
+              <p className="text-sm text-center mt-4 text-muted-foreground">
+                {message}
+              </p>
+            )}
           </form>
         </Card>
       </div>
-    </div>
-  )
+    </section>
+  );
 }

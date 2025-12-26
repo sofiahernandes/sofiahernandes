@@ -59,7 +59,10 @@ const technologies = [
         name: "Bootcamp Desenvolvimento Front-end - Santander",
         link: "https://www.dio.me/certificate/6PGRXS6K/share?utm_source=engagement&utm_medium=email&utm_campaign=santander-2025-front-end&utm_term=bootcamp-users&utm_content=graduation-certificate-link",
       },
-      { name: "Machine Learning Training - BairesDev", link: "https://www.dio.me/certificate/YKU8V7HA/share?utm_source=engagement&utm_medium=email&utm_campaign=bairesdev-machine-learning-training&utm_term=bootcamp-users&utm_content=graduation-certificate-link" },
+      {
+        name: "Machine Learning Training - BairesDev",
+        link: "https://www.dio.me/certificate/YKU8V7HA/share?utm_source=engagement&utm_medium=email&utm_campaign=bairesdev-machine-learning-training&utm_term=bootcamp-users&utm_content=graduation-certificate-link",
+      },
       {
         name: "Business Technology (tech applied to business) – FECAP",
         link: "noLink",
@@ -93,49 +96,51 @@ const technologies = [
 
 export default function TechStack() {
   return (
-    <div className="container px-4 md:px-6">
-      <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-12 text-center">
-        Main Skills
-      </h2>
+    <section className="grid grid-cols-2 lg:grid-cols-12 border-t px-6 gap-6 py-12">
+      <div className="col-span-full lg:col-span-10 lg:col-start-2">
+        <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl lg:text-5xl mb-12 text-center">
+          Main Skills
+        </h2>
 
-      <div className="grid gap-6 md:grid-cols-2">
-        {technologies.map((tech) => (
-          <Card
-            key={tech.id}
-            className={tech.highlight ? "bg-primary p-6" : "p-6"}
-          >
-            <h3
-              className={
-                tech.highlight
-                  ? "text-background text-lg font-semibold mb-4"
-                  : "text-lg font-semibold mb-4"
-              }
+        <div className="grid gap-6 lg:grid-cols-2">
+          {technologies.map((tech) => (
+            <Card
+              key={tech.id}
+              className={tech.highlight ? "bg-primary p-6" : "p-6"}
             >
-              {tech.category}
-            </h3>
-            <div className="flex flex-wrap gap-2">
-              {tech.skills.map((skill) => (
-                <Link
-                  href={skill.link}
-                  target="_blank"
-                  key={skill.name}
-                  className="no-underline"
-                >
-                  <span
-                    className={
-                      tech.highlight
-                        ? "transition-transform hover:scale-105 text-background inline-flex items-center rounded-md px-2 py-1 text-sm font-medium ring-1 ring-inset ring-background"
-                        : "transition-transform hover:scale-105 inline-flex items-center rounded-md bg-primary/15 px-2 py-1 text-sm font-medium ring-1 ring-inset ring-primary/20"
-                    }
+              <h3
+                className={
+                  tech.highlight
+                    ? "text-background text-lg font-semibold mb-4"
+                    : "text-lg font-semibold mb-4"
+                }
+              >
+                {tech.category}
+              </h3>
+              <div className="flex flex-wrap gap-2">
+                {tech.skills.map((skill) => (
+                  <Link
+                    href={skill.link}
+                    target="_blank"
+                    key={skill.name}
+                    className="no-underline"
                   >
-                    {skill.name}
-                  </span>
-                </Link>
-              ))}
-            </div>
-          </Card>
-        ))}
+                    <span
+                      className={
+                        tech.highlight
+                          ? "transition-transform hover:scale-105 text-background inline-flex items-center rounded-md px-2 py-1 text-sm font-medium ring-1 ring-inset ring-background"
+                          : "transition-transform hover:scale-105 inline-flex items-center rounded-md bg-primary/15 px-2 py-1 text-sm font-medium ring-1 ring-inset ring-primary/20"
+                      }
+                    >
+                      {skill.name}
+                    </span>
+                  </Link>
+                ))}
+              </div>
+            </Card>
+          ))}
+        </div>
       </div>
-    </div>
+    </section>
   );
 }

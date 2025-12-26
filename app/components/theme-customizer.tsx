@@ -313,7 +313,7 @@ export function ThemeCustomizer({ children }: ThemeCustomizerProps) {
                 {colorCategories.map((category) => (
                   <div key={category.name}>
                     <h3 className="font-semibold text-lg mb-3">{category.name}</h3>
-                    <div className="grid gap-4 md:grid-cols-2">
+                    <div className="grid gap-4 lg:grid-cols-2">
                       {category.colors.map((color) => (
                         <ColorPicker
                           key={color.key}
