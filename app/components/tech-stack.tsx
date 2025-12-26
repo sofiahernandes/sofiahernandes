@@ -13,7 +13,7 @@ const technologies = [
         name: "CSS",
         link: "https://www.google.com/url?client=internal-element-cse&cx=000598195112356817769:pk7nr2xiumu&q=https://web.dev/css&sa=U&ved=2ahUKEwi1tZLpueiOAxVbsJUCHdw3LQ8QFnoECAoQAQ&usg=AOvVaw0yC_iNk6UymDgVFl5O0w6g&arm=e&fexp=73019458,72986053,72986052,73019460",
       },
-      { name: "Tailwind", link: "https://tailwindcss.com/" },
+      { name: "Tailwind CSS", link: "https://tailwindcss.com/" },
       {
         name: "React",
         link: "https://www.google.com/url?client=internal-element-cse&cx=000598195112356817769:pk7nr2xiumu&q=https://web.dev/explore/react&sa=U&ved=2ahUKEwjNnfKGuuiOAxUGq5UCHeSkHbwQFnoECAMQAQ&usg=AOvVaw32JY1UcNc2JA-VIZVN1Z3H&arm=e&fexp=73019458,72986053,72986052,73019460",

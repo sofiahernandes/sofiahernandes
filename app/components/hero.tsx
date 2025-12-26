@@ -8,7 +8,7 @@ export default function Hero() {
       id="hero"
       className="grid grid-cols-2 lg:grid-cols-12 px-6 gap-6 py-36 bg-primary/5"
     >
-      <div className="col-span-full lg:col-span-8 lg:col-start-3 m-0 flex flex-col items-center justify-center px-4 lg:px-6 space-y-4 text-center lg:text-left">
+      <div className="col-span-full lg:col-span-8 lg:col-start-3 m-0 flex flex-col items-center justify-center px-4 lg:px-6 space-y-4 text-center">
         <div className="space-y-2">
           <h1 className="text-3xl lg:text-5xl font-bold tracking-tighter text-primary">
             Software Dev & UX Design
