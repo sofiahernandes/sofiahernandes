@@ -1,6 +1,6 @@
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
-import ProjectCard from "./project-card";
+import ProjectCard from "@/components/project-card";
 
 import { projects } from "@/lib/projects";
 
@@ -12,22 +12,18 @@ export default function Projects() {
     >
       <div className="col-span-full lg:col-span-10 lg:col-start-2 px-4 lg:px-6">
         <h2 className="text-2xl lg:text-4xl font-bold tracking-tighter mb-6 text-center lg:text-left">
-          Projects
+          Personal Projects
         </h2>
         <div className="flex flex-col items-center justify-center">
           <div className="grid gap-6 lg:grid-cols-3">
-            {projects.map((project) => {
-              return (
-                <ProjectCard
-                  key={project.title}
-                  title={project.title}
-                  description={project.description}
-                  image={project.image}
-                  link={project.link}
-                  tags={project.tags}
-                />
-              );
-            })}
+            {projects.map((project) => (
+              <ProjectCard
+                key={project.title}
+                title={project.title}
+                description={project.description}
+                images={project.images}
+              />
+            ))}
           </div>
           <div>
             <Link
