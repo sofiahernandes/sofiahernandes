@@ -13,7 +13,7 @@ export default function Hero() {
           <h1 className="text-3xl lg:text-5xl font-bold tracking-tighter text-primary">
             Software Dev & UX Design
           </h1>
-          <p className="mx-auto max-w-[550px] pt-2 pb-4 text-sm text-gray-500 dark:text-gray-400">
+          <p className="mx-auto max-w-[550px] pt-2 pb-4 text-sm text-gray-600 dark:text-gray-300">
             Constantly learning & exploring better— and cuter— ways to build
             for the web. Let’s chat if you need a dev who gets design — or a
             designer who can code!

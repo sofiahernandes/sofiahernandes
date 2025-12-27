@@ -8,14 +8,14 @@ import Footer from "./components/footer";
 
 export default function Page() {
   return (
-    <div className="min-h-screen bg-background items-center flex flex-col">
+    <div className="min-h-screen bg-white/50 dark:bg-background items-center flex flex-col">
       <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 h-14 px-6 pt-2 flex justify-between">
         <p className="pt-2 inline-block font-bold">Sofia Botechia</p>
 
         <ThemeToggle />
       </header>
 
-      <main className="">
+      <main>
         <Hero />
         <Projects />
         <TechStack />

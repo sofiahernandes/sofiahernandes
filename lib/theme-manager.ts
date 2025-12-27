@@ -46,7 +46,7 @@ export const defaultCustomTheme: Omit<CustomTheme, "id" | "createdAt" | "updated
     destructive: "#ef4444",
     destructiveForeground: "#f8fafc",
     border: "#e2e8f0",
-    input: "#e2e8f0",
+    input: "#ffffff",
     ring: "#0f172a",
   },
 }

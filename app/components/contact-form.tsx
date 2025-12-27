@@ -39,13 +39,13 @@ export default function ContactForm() {
               <label htmlFor="name" className="block text-sm font-medium mb-2">
                 Name
               </label>
-              <Input id="name" name="name" required />
+              <Input id="name" name="name" className="bg-white/50 dark:bg-white/10 dark:border-neutral-600" required />
             </div>
             <div>
               <label htmlFor="email" className="block text-sm font-medium mb-2">
                 Email
               </label>
-              <Input id="email" name="email" type="email" required />
+              <Input id="email" name="email" type="email" className="bg-white/50 dark:bg-white/10 dark:border-neutral-600" required />
             </div>
             <div>
               <label
@@ -54,7 +54,7 @@ export default function ContactForm() {
               >
                 Message
               </label>
-              <Textarea id="message" name="message" required />
+              <Textarea id="message" name="message" className="bg-white/50 dark:bg-white/10 dark:border-neutral-600" required />
             </div>
             <Button type="submit" className="w-full" disabled={pending}>
               {pending ? "Sending..." : "Send Message"}
