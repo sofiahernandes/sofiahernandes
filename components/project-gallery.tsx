@@ -6,6 +6,8 @@ import { EffectCards, Keyboard } from "swiper/modules";
 
 import "swiper/css";
 import "swiper/css/effect-cards";
+import { useEffect } from "react";
+import { useState } from "react";
 
 type ProjectGalleryProps = {
   images: string[];
@@ -19,6 +21,15 @@ export default function ProjectGallery({ images, title }: ProjectGalleryProps) {
       grabCursor
       modules={[EffectCards, Keyboard]}
       keyboard={{ enabled: true, onlyInViewport: false }}
+      onInit={(swiper) => {
+        const wrapper = swiper.wrapperEl as HTMLElement | null;
+        if (!wrapper) return;
+        const previousDuration = wrapper.style.transitionDuration;
+        wrapper.style.transitionDuration = "0ms";
+        requestAnimationFrame(() => {
+          wrapper.style.transitionDuration = previousDuration;
+        });
+      }}
       className="w-3/4 max-w-sm"
     >
       {images.map((src, index) => (

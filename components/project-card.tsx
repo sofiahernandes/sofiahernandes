@@ -13,7 +13,7 @@ function getFocusableElements(container: HTMLElement | null) {
   return Array.from(container.querySelectorAll<HTMLElement>(focusableSelector));
 }
 
-const modalTransitionMs = 220;
+const modalTransitionMs = 240;
 
 export default function ProjectCard({ title, description, images }: Project) {
   const [isOpen, setIsOpen] = useState(false);
@@ -25,14 +25,14 @@ export default function ProjectCard({ title, description, images }: Project) {
     scaleY: 1,
   });
   const titleId = useId();
-  const cardRef = useRef<HTMLButtonElement>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
   const cardRectRef = useRef<DOMRect | null>(null);
-  const modalRef = useRef<HTMLDivElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const previouslyFocusedRef = useRef<HTMLElement | null>(null);
 
   const openModal = () => {
-    cardRectRef.current = cardRef.current?.getBoundingClientRect() ?? null;
+    cardRectRef.current = panelRef.current?.getBoundingClientRect() ?? null;
+    setIsVisible(false);
     setIsOpen(true);
   };
 
@@ -45,7 +45,7 @@ export default function ProjectCard({ title, description, images }: Project) {
     if (!isOpen) return;
 
     const cardRect = cardRectRef.current;
-    const modalRect = modalRef.current?.getBoundingClientRect();
+    const modalRect = panelRef.current?.getBoundingClientRect();
     if (!modalRect || !cardRect) {
       setIsVisible(true);
       return;
@@ -70,8 +70,24 @@ export default function ProjectCard({ title, description, images }: Project) {
     if (!isOpen) return;
 
     previouslyFocusedRef.current = document.activeElement as HTMLElement | null;
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
+    const preventScroll = (event: Event) => {
+      if (panelRef.current?.contains(event.target as Node)) return;
+      event.preventDefault();
+    };
+    const preventKeys = (event: KeyboardEvent) => {
+      const keys = [
+        "ArrowUp",
+        "ArrowDown",
+        "PageUp",
+        "PageDown",
+        "Home",
+        "End",
+        " ",
+      ];
+      if (!keys.includes(event.key)) return;
+      if (panelRef.current?.contains(event.target as Node)) return;
+      event.preventDefault();
+    };
 
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
@@ -82,7 +98,7 @@ export default function ProjectCard({ title, description, images }: Project) {
 
       if (event.key !== "Tab") return;
 
-      const focusable = getFocusableElements(modalRef.current);
+      const focusable = getFocusableElements(panelRef.current);
       if (focusable.length === 0) {
         event.preventDefault();
         return;
@@ -101,119 +117,165 @@ export default function ProjectCard({ title, description, images }: Project) {
     };
 
     document.addEventListener("keydown", handleKeyDown);
+    document.addEventListener("wheel", preventScroll, { passive: false });
+    document.addEventListener("touchmove", preventScroll, { passive: false });
+    document.addEventListener("keydown", preventKeys);
 
-    const focusable = getFocusableElements(modalRef.current);
+    const focusable = getFocusableElements(panelRef.current);
     (closeButtonRef.current || focusable[0])?.focus();
 
     return () => {
-      document.body.style.overflow = previousOverflow;
+      document.removeEventListener("wheel", preventScroll);
+      document.removeEventListener("touchmove", preventScroll);
+      document.removeEventListener("keydown", preventKeys);
       document.removeEventListener("keydown", handleKeyDown);
-      previouslyFocusedRef.current?.focus();
+      const previous = previouslyFocusedRef.current;
+      if (previous) {
+        try {
+          previous.focus({ preventScroll: true });
+        } catch {
+          previous.focus();
+        }
+      }
     };
   }, [isOpen]);
 
   return (
     <>
-      <button
-        ref={cardRef}
-        type="button"
-        onClick={openModal}
-        className="group relative isolate w-full text-left mt-8 mb-4 transition duration-300 hover:-translate-y-1 hover:border-neutral-300"
-        aria-haspopup="dialog"
-        aria-expanded={isOpen}
-      >
-        <div className="absolute left-6 top-2 z-10 h-10 w-[calc(100%-3rem)] -translate-y-full overflow-hidden">
-          <div className="flex items-end">
-            {images.slice(0, 5).map((src, index) => (
-              <div
-                key={`${src}-${index}`}
-                className={cn("relative h-16 w-20 overflow-hidden rounded-sm text-card-foreground bg-primary",
-                  index === 0 ? "" : "-ml-4",
-                )}
-                style={{ zIndex: images.length - index }}
+      <div className="relative">
+        {isOpen && cardRectRef.current ? (
+          <div
+            aria-hidden="true"
+            style={{ height: `${cardRectRef.current.height}px` }}
+          />
+        ) : null}
+        <div
+          ref={panelRef}
+          role={isOpen ? "dialog" : "button"}
+          tabIndex={0}
+          onClick={() => {
+            if (!isOpen) openModal();
+          }}
+          onKeyDown={(event) => {
+            if (isOpen) return;
+            if (event.key === "Enter" || event.key === " ") {
+              event.preventDefault();
+              openModal();
+            }
+          }}
+          aria-haspopup={isOpen ? undefined : "dialog"}
+          aria-expanded={isOpen || undefined}
+          aria-modal={isOpen || undefined}
+          aria-labelledby={titleId}
+          className={cn(
+            "group isolate w-full text-left transition-[transform,opacity] duration-300 ease-out",
+            isOpen
+              ? "fixed left-1/2 top-1/2 z-50 w-[min(90vw,56rem)] rounded-3xl bg-white p-6 shadow-2xl md:p-8"
+              : "relative mt-8 mb-4",
+            isOpen && !isVisible ? "opacity-0" : "opacity-100"
+          )}
+          style={{
+            transform: isOpen
+              ? isVisible
+                ? "translate(-50%, -50%) scale(1, 1)"
+                : `translate(calc(-50% + ${transformFrom.x}px), calc(-50% + ${transformFrom.y}px)) scale(${transformFrom.scaleX}, ${transformFrom.scaleY})`
+              : undefined,
+            transformOrigin: "center",
+          }}
+        >
+          {isOpen ? (
+            <>
+              <button
+                ref={closeButtonRef}
+                type="button"
+                onClick={closeModal}
+                className="absolute right-4 top-4 inline-flex h-10 w-10 items-center justify-center rounded-full border border-neutral-200 text-neutral-600 transition hover:border-neutral-300 hover:text-neutral-900"
+                aria-label="Close project gallery"
               >
-                <img
-                  src={src}
-                  alt=""
-                  className="h-full w-full object-cover"
-                />
-                <span
-                  className="absolute inset-0"
-                  style={{ backgroundColor: `rgba(0, 0, 0, ${index * 0.12})` }}
-                  aria-hidden="true"
-                />
+                ✕
+              </button>
+              <div className="grid gap-6 lg:grid-cols-12">
+                <div className="col-span-8 flex items-center justify-center">
+                  <ProjectGallery images={images} title={title} />
+                </div>
+                <div className="space-y-4 lg:col-span-4 lg:col-start-9">
+                  <h3
+                    id={titleId}
+                    className="text-2xl font-semibold text-neutral-900"
+                  >
+                    {title}
+                  </h3>
+                  <p className="text-sm leading-relaxed text-neutral-600">
+                    {description}
+                  </p>
+                  <p className="text-xs uppercase text-neutral-400">
+                    Use arrow keys or swipe to navigate
+                  </p>
+                </div>
               </div>
-            ))}
-          </div>
-        </div>
-        <div className="absolute inset-0 -top-4 z-0 h-full rounded-3xl border border-neutral-200 dark:text-card-foreground text-black dark:bg-primary bg-card shadow-sm" />
-        <div className="relative z-20 flex h-full flex-col justify-between rounded-3xl border dark:text-card-foreground text-black dark:bg-primary bg-card border-neutral-200 p-6 pt-10 shadow-sm">
-          <div className="space-y-3">
-            <h3 className="text-xl font-semibold tracking-tight text-primary dark:text-black">
-              {title}
-            </h3>
-            <p className="text-sm leading-relaxed text-neutral-600">
-              {description}
-            </p>
-          </div>
+            </>
+          ) : (
+            <>
+              <div className="absolute left-6 top-2 z-10 h-10 w-[calc(100%-3rem)] -translate-y-full overflow-hidden">
+                <div className="flex items-end">
+                  {images.slice(0, 5).map((src, index) => (
+                    <div
+                      key={`${src}-${index}`}
+                      className={cn(
+                        "relative h-16 w-20 overflow-hidden rounded-sm text-card-foreground bg-primary",
+                        index === 0 ? "" : "-ml-4"
+                      )}
+                      style={{ zIndex: images.length - index }}
+                    >
+                      <img
+                        src={src}
+                        alt=""
+                        className="h-full w-full object-cover"
+                      />
+                      <span
+                        className="absolute inset-0"
+                        style={{
+                          backgroundColor: `rgba(0, 0, 0, ${index * 0.12})`,
+                        }}
+                        aria-hidden="true"
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="absolute inset-0 -top-4 z-0 h-full rounded-3xl border border-neutral-200 dark:text-card-foreground text-black dark:bg-primary bg-card shadow-sm" />
+              <div className="relative z-20 flex h-full flex-col justify-between rounded-3xl border dark:text-card-foreground text-black dark:bg-primary bg-card border-neutral-200 p-6 pt-10 shadow-sm">
+                <div className="space-y-3">
+                  <h3
+                    id={titleId}
+                    className="text-xl font-semibold tracking-tight text-primary dark:text-black"
+                  >
+                    {title}
+                  </h3>
+                  <p className="text-sm leading-relaxed text-neutral-600">
+                    {description}
+                  </p>
+                </div>
 
-          <div className="mt-6 flex items-center justify-end text-xs font-medium uppercase tracking-[0.2em] text-neutral-400">
-            <span className="inline-flex h-6 w-6 items-center justify-center rounded-full border border-primary/15 dark:border-black/10 text-xs text-primary dark:text-black transition group-hover:border-primary/30 dark:group-hover:border-black/30">
-              →
-            </span>
-          </div>
+                <div className="mt-6 flex items-center justify-end text-xs font-medium uppercase tracking-[0.2em] text-neutral-400">
+                  <span className="inline-flex h-6 w-6 items-center justify-center rounded-full border border-primary/15 dark:border-black/10 text-xs text-primary dark:text-black transition group-hover:border-primary/30 dark:group-hover:border-black/30">
+                    →
+                  </span>
+                </div>
+              </div>
+            </>
+          )}
         </div>
-      </button>
+      </div>
 
       {isOpen ? (
         <div
-          className={`fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4 transition-opacity duration-200 ${
+          className={`fixed inset-0 z-40 bg-black/70 transition-opacity duration-200 ${
             isVisible ? "opacity-100" : "opacity-0"
           }`}
-        >
-          <div
-            ref={modalRef}
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby={titleId}
-            className="relative w-full max-w-4xl rounded-3xl bg-white p-6 shadow-2xl transition-[transform] duration-200 md:p-8"
-            style={{
-              transform: isVisible
-                ? "translate(0px, 0px) scale(1, 1)"
-                : `translate(${transformFrom.x}px, ${transformFrom.y}px) scale(${transformFrom.scaleX}, ${transformFrom.scaleY})`,
-            }}
-          >
-            <button
-              ref={closeButtonRef}
-              type="button"
-              onClick={closeModal}
-              className="absolute right-4 top-4 inline-flex h-10 w-10 items-center justify-center rounded-full border border-neutral-200 text-neutral-600 transition hover:border-neutral-300 hover:text-neutral-900"
-              aria-label="Close project gallery"
-            >
-              ✕
-            </button>
-
-            <div className="grid gap-6 lg:grid-cols-12">
-              <div className="col-span-8 flex items-center justify-center">
-                <ProjectGallery images={images} title={title} />
-              </div>
-              <div className="space-y-4 lg:col-span-4 lg:col-start-9">
-                <h3
-                  id={titleId}
-                  className="text-2xl font-semibold text-neutral-900"
-                >
-                  {title}
-                </h3>
-                <p className="text-sm leading-relaxed text-neutral-600">
-                  {description}
-                </p>
-                <p className="text-xs uppercase text-neutral-400">
-                  Use arrow keys or swipe to navigate
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
+          onClick={closeModal}
+          aria-hidden="true"
+        />
       ) : null}
     </>
   );
