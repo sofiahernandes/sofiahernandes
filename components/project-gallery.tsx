@@ -43,11 +43,11 @@ export default function ProjectGallery({
 
   return (
     <div className="relative w-full">
-      <div className="columns-2 gap-3 [column-fill:_balance] md:gap-4">
+      <div className="columns-2 gap-3 md:gap-4 bg-card [column-fill:_balance]">
         {images.map((src, index) => (
           <div
             key={`${src}-${index}`}
-            className="mb-3 break-inside-avoid rounded-lg bg-neutral-100 md:mb-4"
+            className="break-inside-avoid rounded-lg bg-card"
           >
             <button
               type="button"
