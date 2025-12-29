@@ -23,7 +23,10 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </head>
-      <body className={cn("min-h-screen overflow-x-clip overflow-y-auto bg-background font-sans antialiased", inter.className, rethink.className)}>
+      <body className={cn("min-h-screen overflow-x-clip overflow-y-auto p-0! m-0! bg-background font-sans antialiased", inter.className, rethink.className)} style={{
+        padding: 0,
+        margin: 0,
+      }}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           {children}
         </ThemeProvider>

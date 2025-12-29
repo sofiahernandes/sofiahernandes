@@ -10,7 +10,7 @@ export const projects: Project[] = [
   {
     title: "E-commerce Storefront",
     description:
-      "Next.js Ecommerce Storefront of planners and tools designed to help you heal, grow, and thrive!",
+      "Glow Global is an ecommerce storefront for digital planners and templates for productivity, wellness, and growth. Find tools for study, finance, and self-care.",
     images: [
       placeholder.src,
       placeholder.src,
@@ -22,7 +22,7 @@ export const projects: Project[] = [
   {
     title: "Notion Clone",
     description:
-      "A full-featured Next.js clone of Notion built with Blocknote rich-text editor.",
+      "A full-featured Notion clone with real-time sync, rich text editing, infinite nesting, file uploads, custom covers/icons, auth via Clerk, and a responsive UI—built with Next, Convex, and Tailwind.",
     images: [
       placeholder.src,
       placeholder.src,
@@ -34,7 +34,7 @@ export const projects: Project[] = [
   {
     title: "Bookie Chatbot",
     description:
-      "A Gemini API powered chatbot that helps you find books based on your preferences.",
+      "AI-powered book recommendation chatbot using Gemini API. Sign in with Google, chat naturally, and discover books tailored to your interests. Built with Next.js, Tailwind, and NextAuth.",
     images: [
       placeholder.src,
       placeholder.src,

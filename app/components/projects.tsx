@@ -15,7 +15,7 @@ export default function Projects() {
           Personal Projects
         </h2>
         <div className="flex flex-col items-center justify-center">
-          <div className="grid gap-6 lg:grid-cols-3">
+          <div className="grid gap-x-6 gap-y-16 lg:grid-cols-3">
             {projects.map((project) => (
               <ProjectCard
                 key={project.title}
@@ -29,7 +29,7 @@ export default function Projects() {
             <Link
               href="https://github.com/sofiahernandes"
               target="_blank"
-              className="pt-4 flex items-center gap-2 text-sm hover:underline"
+              className="pt-10 md:pt-4 flex items-center gap-2 text-sm hover:underline hover:underline-offset-2"
             >
               <ArrowUpRight className="h-4 w-4" />
               See all projects

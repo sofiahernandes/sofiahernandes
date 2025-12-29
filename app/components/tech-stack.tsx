@@ -106,7 +106,7 @@ export default function TechStack() {
           {technologies.map((tech) => (
             <Card
               key={tech.id}
-              className={tech.highlight ? "bg-primary p-6" : "p-6"}
+              className={tech.highlight ? "bg-primary p-6" : "bg-card p-6"}
             >
               <h3
                 className={
@@ -129,7 +129,7 @@ export default function TechStack() {
                       className={
                         tech.highlight
                           ? "transition-opacity hover:opacity-60 text-background inline-flex items-center rounded-md px-2 py-1 text-sm font-medium ring-1 ring-inset ring-background"
-                          : "transition-opacity hover:opacity-60 inline-flex items-center rounded-md bg-primary/15 px-2 py-1 text-sm font-medium ring-1 ring-inset ring-primary/20"
+                          : "transition-opacity hover:opacity-60 inline-flex items-center rounded-md bg-primary/10 px-2 py-1 text-sm font-medium ring-1 ring-inset ring-primary/10"
                       }
                     >
                       {skill.name}

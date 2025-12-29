@@ -4,14 +4,16 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { useState } from "react";
+import { useState, type FormEvent } from "react";
 import { submitContactForm } from "../actions";
 
 export default function ContactForm() {
   const [pending, setPending] = useState(false);
   const [message, setMessage] = useState("");
 
-  async function handleSubmit(formData: FormData) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const formData = new FormData(event.currentTarget);
     setPending(true);
     try {
       const response = await submitContactForm(formData);
@@ -34,7 +36,7 @@ export default function ContactForm() {
         </h2>
 
         <Card className="p-6">
-          <form action={handleSubmit} className="space-y-4">
+          <form onSubmit={handleSubmit} className="space-y-4">
             <div>
               <label htmlFor="name" className="block text-sm font-medium mb-2">
                 Name

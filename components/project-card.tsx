@@ -18,6 +18,7 @@ const modalTransitionMs = 240;
 export default function ProjectCard({ title, description, images }: Project) {
   const [isOpen, setIsOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
+  const [hasScrolledGallery, setHasScrolledGallery] = useState(false);
   const [transformFrom, setTransformFrom] = useState({
     x: 0,
     y: 0,
@@ -33,6 +34,7 @@ export default function ProjectCard({ title, description, images }: Project) {
   const openModal = () => {
     cardRectRef.current = panelRef.current?.getBoundingClientRect() ?? null;
     setIsVisible(false);
+    setHasScrolledGallery(false);
     setIsOpen(true);
   };
 
@@ -68,6 +70,9 @@ export default function ProjectCard({ title, description, images }: Project) {
 
   useEffect(() => {
     if (!isOpen) return;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
 
     previouslyFocusedRef.current = document.activeElement as HTMLElement | null;
     const preventScroll = (event: Event) => {
@@ -129,6 +134,7 @@ export default function ProjectCard({ title, description, images }: Project) {
       document.removeEventListener("touchmove", preventScroll);
       document.removeEventListener("keydown", preventKeys);
       document.removeEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = previousOverflow;
       const previous = previouslyFocusedRef.current;
       if (previous) {
         try {
@@ -170,15 +176,15 @@ export default function ProjectCard({ title, description, images }: Project) {
           className={cn(
             "group isolate w-full text-left transition-[transform,opacity] duration-300 ease-out",
             isOpen
-              ? "fixed left-1/2 top-1/2 z-50 w-[min(90vw,56rem)] rounded-3xl bg-white p-6 shadow-2xl md:p-8"
-              : "relative mt-8 mb-4",
+              ? "fixed left-1/2 bottom-0 z-50 h-[min(85vh,55rem)] w-[min(92vw,64rem)] rounded-t-[2.5rem] rounded-b-none border border-neutral-200 dark:border-neutral-600 bg-card p-6 shadow-2xl md:p-10"
+              : "relative mt-8 mb-4 h-[90%] w-full overflow-visible group-hover:-translate-y-2",
             isOpen && !isVisible ? "opacity-0" : "opacity-100"
           )}
           style={{
             transform: isOpen
               ? isVisible
-                ? "translate(-50%, -50%) scale(1, 1)"
-                : `translate(calc(-50% + ${transformFrom.x}px), calc(-50% + ${transformFrom.y}px)) scale(${transformFrom.scaleX}, ${transformFrom.scaleY})`
+                ? "translate(-50%, 0) scale(1, 1)"
+                : `translate(calc(-50% + ${transformFrom.x}px), ${transformFrom.y}px) scale(${transformFrom.scaleX}, ${transformFrom.scaleY})`
               : undefined,
             transformOrigin: "center",
           }}
@@ -189,23 +195,34 @@ export default function ProjectCard({ title, description, images }: Project) {
                 ref={closeButtonRef}
                 type="button"
                 onClick={closeModal}
-                className="absolute right-4 top-4 inline-flex h-10 w-10 items-center justify-center rounded-full border border-neutral-200 text-neutral-600 transition hover:border-neutral-300 hover:text-neutral-900"
+                className="absolute right-4 top-4 inline-flex h-10 w-10 items-center justify-center rounded-full border border-neutral-200 text-neutral-600 dark:text-neutral-200 transition hover:border-neutral-400 dark:hover:text-neutral-400 hover:text-neutral-900"
                 aria-label="Close project gallery"
               >
                 ✕
               </button>
-              <div className="grid gap-6 lg:grid-cols-12">
-                <div className="col-span-8 flex items-center justify-center">
-                  <ProjectGallery images={images} title={title} />
+              <div className="grid h-full min-h-0 gap-6 lg:grid-cols-12">
+                <div className="col-span-8 flex h-full min-h-0 items-start justify-center">
+                  <div
+                    className="h-full min-h-0 w-full max-w-2xl overflow-y-auto pr-2 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+                    onScroll={() => {
+                      if (!hasScrolledGallery) setHasScrolledGallery(true);
+                    }}
+                  >
+                    <ProjectGallery
+                      images={images}
+                      title={title}
+                      showScrollHint={!hasScrolledGallery}
+                    />
+                  </div>
                 </div>
                 <div className="space-y-4 lg:col-span-4 lg:col-start-9">
                   <h3
                     id={titleId}
-                    className="text-2xl font-semibold text-neutral-900"
+                    className="text-2xl font-semibold text-neutral-900 dark:text-white"
                   >
                     {title}
                   </h3>
-                  <p className="text-sm leading-relaxed text-neutral-600">
+                  <p className="text-sm leading-relaxed text-neutral-600 dark:text-gray-300">
                     {description}
                   </p>
                   <p className="text-xs uppercase text-neutral-400">
@@ -216,16 +233,20 @@ export default function ProjectCard({ title, description, images }: Project) {
             </>
           ) : (
             <>
-              <div className="absolute left-6 top-2 z-10 h-10 w-[calc(100%-3rem)] -translate-y-full overflow-hidden">
+              <div className="absolute left-6 top-[70px] z-10 h-24 w-[calc(100%-3rem)] -translate-y-full overflow-visible">
                 <div className="flex items-end">
                   {images.slice(0, 5).map((src, index) => (
                     <div
                       key={`${src}-${index}`}
                       className={cn(
-                        "relative h-16 w-20 overflow-hidden rounded-sm text-card-foreground bg-primary",
+                        "relative h-20 w-25 overflow-hidden rounded-sm text-card-foreground bg-primary transition-transform duration-300 ease-out group-hover:[transform:translateY(var(--lift))_rotate(var(--rot))]",
                         index === 0 ? "" : "-ml-4"
                       )}
-                      style={{ zIndex: images.length - index }}
+                      style={{
+                        zIndex: images.length - index,
+                        ["--lift" as string]: `-${10 + index * 6}px`,
+                        ["--rot" as string]: `${index * 8 - 16}deg`,
+                      }}
                     >
                       <img
                         src={src}
@@ -243,22 +264,22 @@ export default function ProjectCard({ title, description, images }: Project) {
                   ))}
                 </div>
               </div>
-              <div className="absolute inset-0 -top-4 z-0 h-full rounded-3xl border border-neutral-200 dark:text-card-foreground text-black dark:bg-primary bg-card shadow-sm" />
-              <div className="relative z-20 flex h-full flex-col justify-between rounded-3xl border dark:text-card-foreground text-black dark:bg-primary bg-card border-neutral-200 p-6 pt-10 shadow-sm">
+              <div className="absolute inset-0 -top-4 z-0 h-full rounded-3xl bg-neutral-100 dark:bg-slate-900 border border-neutral-200 dark:border-neutral-800 text-black shadow-sm" />
+              <div className="relative z-20 flex h-full flex-col justify-between rounded-3xl border text-black bg-card border-neutral-200 dark:border-neutral-800 p-6 pt-10 shadow-sm hover:translate-y-2 transition-transform duration-300 ease-in-out">
                 <div className="space-y-3">
                   <h3
                     id={titleId}
-                    className="text-xl font-semibold tracking-tight text-primary dark:text-black"
+                    className="text-xl font-semibold tracking-tight text-primary dark:text-white"
                   >
                     {title}
                   </h3>
-                  <p className="text-sm leading-relaxed text-neutral-600">
+                  <p className="text-sm text-neutral-600 dark:text-gray-300">
                     {description}
                   </p>
                 </div>
 
-                <div className="mt-6 flex items-center justify-end text-xs font-medium uppercase tracking-[0.2em] text-neutral-400">
-                  <span className="inline-flex h-6 w-6 items-center justify-center rounded-full border border-primary/15 dark:border-black/10 text-xs text-primary dark:text-black transition group-hover:border-primary/30 dark:group-hover:border-black/30">
+                <div className="mt-6 flex items-center justify-end text-xs font-medium uppercase tracking-[0.2em] text-neutral-400 dark:text-gray-300">
+                  <span className="inline-flex h-6 w-6 items-center justify-center rounded-full border border-primary/15 dark:border-white/30 dark:text-white/70 text-xs text-primary dark:text-black transition group-hover:border-primary/30 dark:group-hover:border-white/50">
                     →
                   </span>
                 </div>
