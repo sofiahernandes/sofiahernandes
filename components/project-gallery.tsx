@@ -81,8 +81,8 @@ export default function ProjectGallery({
           ↓
         </div>
       </div>
-      {activeImage ? (
-        mounted
+      {activeImage
+        ? mounted
           ? createPortal(
               <div
                 role="dialog"
@@ -118,7 +118,7 @@ export default function ProjectGallery({
               document.body
             )
           : null
-      ) : null}
+        : null}
     </div>
   );
 }

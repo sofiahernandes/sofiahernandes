@@ -42,13 +42,24 @@ export default function ContactForm() {
               <label htmlFor="name" className="block text-sm font-medium mb-2">
                 {contactContent.fields.name}
               </label>
-              <Input id="name" name="name" className="bg-white/50 dark:bg-white/10 dark:border-neutral-600" required />
+              <Input
+                id="name"
+                name="name"
+                className="bg-white/50 dark:bg-white/10 dark:border-neutral-600"
+                required
+              />
             </div>
             <div>
               <label htmlFor="email" className="block text-sm font-medium mb-2">
                 {contactContent.fields.email}
               </label>
-              <Input id="email" name="email" type="email" className="bg-white/50 dark:bg-white/10 dark:border-neutral-600" required />
+              <Input
+                id="email"
+                name="email"
+                type="email"
+                className="bg-white/50 dark:bg-white/10 dark:border-neutral-600"
+                required
+              />
             </div>
             <div>
               <label
@@ -57,10 +68,17 @@ export default function ContactForm() {
               >
                 {contactContent.fields.message}
               </label>
-              <Textarea id="message" name="message" className="bg-white/50 dark:bg-white/10 dark:border-neutral-600" required />
+              <Textarea
+                id="message"
+                name="message"
+                className="bg-white/50 dark:bg-white/10 dark:border-neutral-600"
+                required
+              />
             </div>
             <Button type="submit" className="w-full" disabled={pending}>
-              {pending ? contactContent.submit.pending : contactContent.submit.idle}
+              {pending
+                ? contactContent.submit.pending
+                : contactContent.submit.idle}
             </Button>
             {message && (
               <p className="text-sm text-center mt-4 text-muted-foreground">

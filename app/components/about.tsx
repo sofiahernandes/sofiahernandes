@@ -21,7 +21,10 @@ export default function AboutMe() {
           {aboutContent.intro.trailing}
         </p>
         {aboutContent.paragraphs.map((paragraph) => (
-          <p key={paragraph.text} className="mx-auto pt-3 text-sm text-justify pb-4">
+          <p
+            key={paragraph.text}
+            className="mx-auto pt-3 text-sm text-justify pb-4"
+          >
             {paragraph.indent ? paragraphIndent : null}
             {paragraph.text}
           </p>

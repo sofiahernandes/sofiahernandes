@@ -20,13 +20,7 @@ export const projects: Project[] = [
     title: "E-commerce Storefront",
     description:
       "Glow Global is an ecommerce storefront for digital planners and templates for productivity, wellness, and growth. Find tools for study, finance, and self-care.",
-    images: [
-      glow1.src,
-      glow2.src,
-      glow3.src,
-      glow4.src,
-      glow5.src,
-    ],
+    images: [glow1.src, glow2.src, glow3.src, glow4.src, glow5.src],
     githubUrl: "https://github.com/sofiahernandes/glow-global",
   },
   {
