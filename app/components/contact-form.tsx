@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useState, type FormEvent } from "react";
 import { submitContactForm } from "../actions";
+import { contactContent } from "@/lib/content/contact";
 
 export default function ContactForm() {
   const [pending, setPending] = useState(false);
@@ -19,7 +20,7 @@ export default function ContactForm() {
       const response = await submitContactForm(formData);
       setMessage(response.message);
     } catch (error) {
-      setMessage("Something went wrong. Please try again.");
+      setMessage(contactContent.responses.error);
     } finally {
       setPending(false);
     }
@@ -32,20 +33,20 @@ export default function ContactForm() {
     >
       <div className="col-span-full lg:col-span-10 lg:col-start-2">
         <h2 className="text-2xl lg:text-4xl font-bold tracking-tighter mb-6 text-center lg:text-left">
-          Get in Touch
+          {contactContent.title}
         </h2>
 
         <Card className="p-6">
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
               <label htmlFor="name" className="block text-sm font-medium mb-2">
-                Name
+                {contactContent.fields.name}
               </label>
               <Input id="name" name="name" className="bg-white/50 dark:bg-white/10 dark:border-neutral-600" required />
             </div>
             <div>
               <label htmlFor="email" className="block text-sm font-medium mb-2">
-                Email
+                {contactContent.fields.email}
               </label>
               <Input id="email" name="email" type="email" className="bg-white/50 dark:bg-white/10 dark:border-neutral-600" required />
             </div>
@@ -54,12 +55,12 @@ export default function ContactForm() {
                 htmlFor="message"
                 className="block text-sm font-medium mb-2"
               >
-                Message
+                {contactContent.fields.message}
               </label>
               <Textarea id="message" name="message" className="bg-white/50 dark:bg-white/10 dark:border-neutral-600" required />
             </div>
             <Button type="submit" className="w-full" disabled={pending}>
-              {pending ? "Sending..." : "Send Message"}
+              {pending ? contactContent.submit.pending : contactContent.submit.idle}
             </Button>
             {message && (
               <p className="text-sm text-center mt-4 text-muted-foreground">

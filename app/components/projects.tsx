@@ -2,7 +2,7 @@ import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import ProjectCard from "@/components/project-card";
 
-import { projects } from "@/lib/projects";
+import { projects, projectsSection } from "@/lib/projects";
 
 export default function Projects() {
   return (
@@ -12,7 +12,7 @@ export default function Projects() {
     >
       <div className="col-span-full lg:col-span-10 lg:col-start-2 px-4 lg:px-6">
         <h2 className="text-2xl lg:text-4xl font-bold tracking-tighter mb-6 text-center lg:text-left">
-          Personal Projects
+          {projectsSection.title}
         </h2>
         <div className="flex flex-col items-center justify-center">
           <div className="grid gap-x-6 gap-y-16 lg:grid-cols-3">
@@ -27,12 +27,12 @@ export default function Projects() {
           </div>
           <div>
             <Link
-              href="https://github.com/sofiahernandes"
+              href={projectsSection.cta.href}
               target="_blank"
               className="pt-10 md:pt-4 flex items-center gap-2 text-sm hover:underline hover:underline-offset-2"
             >
               <ArrowUpRight className="h-4 w-4" />
-              See all projects
+              {projectsSection.cta.label}
             </Link>
           </div>
         </div>

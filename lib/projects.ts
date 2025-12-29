@@ -6,6 +6,14 @@ export type Project = {
 
 import placeholder from "../public/images/bookie-screenshot.jpg";  
 
+export const projectsSection = {
+  title: "Personal Projects",
+  cta: {
+    label: "See all projects",
+    href: "https://github.com/sofiahernandes",
+  },
+} as const;
+
 export const projects: Project[] = [
   {
     title: "E-commerce Storefront",
