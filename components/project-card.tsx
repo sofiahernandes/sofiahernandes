@@ -208,7 +208,7 @@ export default function ProjectCard({
                 ✕
               </button>
               <div className="grid h-full min-h-0 gap-6 lg:grid-cols-12">
-                <div className="col-span-8 flex h-full min-h-0 items-start justify-center rounded-lg">
+                <div className="col-span-full lg:col-span-8 flex h-full min-h-0 items-start justify-center rounded-lg">
                   <div
                     className="h-full min-h-0 w-full max-w-2xl overflow-y-auto rounded-lg [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
                     onScroll={() => {
@@ -222,7 +222,7 @@ export default function ProjectCard({
                     />
                   </div>
                 </div>
-                <div className="space-y-4 lg:col-span-4 lg:col-start-9">
+                <div className="space-y-4 col-span-full lg:col-span-4 lg:col-start-9">
                   <h3
                     id={titleId}
                     className="text-2xl font-semibold text-neutral-900 dark:text-white"
