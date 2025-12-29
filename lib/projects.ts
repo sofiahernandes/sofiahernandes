@@ -1,10 +1,11 @@
+import { placeholder, glow1, glow2, glow3, glow4, glow5 } from "@/lib/images";
+
 export type Project = {
   title: string;
   description: string;
   images: string[];
+  githubUrl?: string;
 };
-
-import placeholder from "../public/images/bookie-screenshot.jpg";  
 
 export const projectsSection = {
   title: "Personal Projects",
@@ -20,12 +21,13 @@ export const projects: Project[] = [
     description:
       "Glow Global is an ecommerce storefront for digital planners and templates for productivity, wellness, and growth. Find tools for study, finance, and self-care.",
     images: [
-      placeholder.src,
-      placeholder.src,
-      placeholder.src,
-      placeholder.src,
-      placeholder.src,
+      glow1.src,
+      glow2.src,
+      glow3.src,
+      glow4.src,
+      glow5.src,
     ],
+    githubUrl: "https://github.com/sofiahernandes/glow-global",
   },
   {
     title: "Notion Clone",
@@ -38,6 +40,7 @@ export const projects: Project[] = [
       placeholder.src,
       placeholder.src,
     ],
+    githubUrl: "https://github.com/sofiahernandes/notion-clone",
   },
   {
     title: "Bookie Chatbot",
@@ -50,5 +53,6 @@ export const projects: Project[] = [
       placeholder.src,
       placeholder.src,
     ],
+    githubUrl: "https://github.com/sofiahernandes/gemini-book-chatbot",
   },
 ];

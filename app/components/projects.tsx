@@ -22,6 +22,7 @@ export default function Projects() {
                 title={project.title}
                 description={project.description}
                 images={project.images}
+                githubUrl={project.githubUrl}
               />
             ))}
           </div>

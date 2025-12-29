@@ -4,6 +4,8 @@ import { useEffect, useId, useLayoutEffect, useRef, useState } from "react";
 import ProjectGallery from "@/components/project-gallery";
 import type { Project } from "@/lib/projects";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
+import { Github } from "lucide-react";
 
 const focusableSelector =
   "a[href], button:not([disabled]), textarea:not([disabled]), input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex='-1'])";
@@ -15,7 +17,12 @@ function getFocusableElements(container: HTMLElement | null) {
 
 const modalTransitionMs = 240;
 
-export default function ProjectCard({ title, description, images }: Project) {
+export default function ProjectCard({
+  title,
+  description,
+  images,
+  githubUrl,
+}: Project) {
   const [isOpen, setIsOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const [hasScrolledGallery, setHasScrolledGallery] = useState(false);
@@ -201,9 +208,9 @@ export default function ProjectCard({ title, description, images }: Project) {
                 ✕
               </button>
               <div className="grid h-full min-h-0 gap-6 lg:grid-cols-12">
-                <div className="col-span-8 flex h-full min-h-0 items-start justify-center">
+                <div className="col-span-8 flex h-full min-h-0 items-start justify-center rounded-lg">
                   <div
-                    className="h-full min-h-0 w-full max-w-2xl overflow-y-auto pr-2 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+                    className="h-full min-h-0 w-full max-w-2xl overflow-y-auto rounded-lg [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
                     onScroll={() => {
                       if (!hasScrolledGallery) setHasScrolledGallery(true);
                     }}
@@ -225,9 +232,16 @@ export default function ProjectCard({ title, description, images }: Project) {
                   <p className="text-sm leading-relaxed text-neutral-600 dark:text-gray-300">
                     {description}
                   </p>
-                  <p className="text-xs uppercase text-neutral-400">
-                    Use arrow keys or swipe to navigate
-                  </p>
+                  {githubUrl ? (
+                    <Link
+                      href={githubUrl}
+                      target="_blank"
+                      className="inline-flex items-center gap-2 text-sm hover:underline hover:underline-offset-2"
+                    >
+                      <Github className="h-4 w-4" />
+                      View on GitHub
+                    </Link>
+                  ) : null}
                 </div>
               </div>
             </>
