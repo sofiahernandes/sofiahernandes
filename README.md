@@ -68,11 +68,10 @@
 <div align="center">
 	<h3>Github Stats & Contribution Graph</h3>
 
-![sofiahernandes's Stats](https://github-readme-stats.vercel.app/api?username=sofiahernandes&theme=prussian&show_icons=true&hide_border=true&count_private=true)
-
 <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/sofiahernandes/sofiahernandes/output/pacman-contribution-graph-dark.svg">
-    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/sofiahernandes/sofiahernandes/output/pacman-contribution-graph.svg">
-    <img alt="pacman contribution graph" src="https://raw.githubusercontent.com/sofiahernandes/sofiahernandes/output/pacman-contribution-graph.svg">
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/[USERNAME]/[USERNAME]/output/pacman-contribution-graph-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/[USERNAME]/[USERNAME]/output/pacman-contribution-graph.svg">
+  <img alt="pacman contribution graph" src="https://raw.githubusercontent.com/[USERNAME]/[USERNAME]/output/pacman-contribution-graph.svg">
 </picture>
+
 </div>
