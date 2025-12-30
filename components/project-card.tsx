@@ -232,6 +232,11 @@ export default function ProjectCard({
                   <p className="text-sm leading-relaxed text-neutral-600 dark:text-gray-300">
                     {description}
                   </p>
+                  <p
+                      className="items-center py-2 text-sm text-primary"
+                    >
+                      Try clicking on the images to view them in full!
+                    </p>
                   {githubUrl ? (
                     <Link
                       href={githubUrl}

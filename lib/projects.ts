@@ -1,4 +1,22 @@
-import { placeholder, glow1, glow2, glow3, glow4, glow5 } from "@/lib/images";
+import {
+  placeholder,
+  glow1,
+  glow2,
+  glow3,
+  glow4,
+  glow5,
+  notion1,
+  notion2,
+  notion3,
+  notion4,
+  notion5,
+  notion6,
+  notion7,
+  notion8,
+  notion9,
+  notion10,
+  notion11,
+} from "@/lib/images";
 
 export type Project = {
   title: string;
@@ -28,11 +46,17 @@ export const projects: Project[] = [
     description:
       "A full-featured Notion clone with real-time sync, rich text editing, infinite nesting, file uploads, custom covers/icons, auth via Clerk, and a responsive UI—built with Next, Convex, and Tailwind.",
     images: [
-      placeholder.src,
-      placeholder.src,
-      placeholder.src,
-      placeholder.src,
-      placeholder.src,
+      notion1.src,
+      notion2.src,
+      notion3.src,
+      notion4.src,
+      notion5.src,
+      notion6.src,
+      notion7.src,
+      notion8.src,
+      notion9.src,
+      notion10.src,
+      notion11.src,
     ],
     githubUrl: "https://github.com/sofiahernandes/notion-clone",
   },
