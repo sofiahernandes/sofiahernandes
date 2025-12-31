@@ -254,9 +254,9 @@ export default function ProjectCard({
             <>
               <div className="absolute left-6 top-[70px] z-10 h-24 w-[calc(100%-3rem)] -translate-y-full overflow-visible">
                 <div className="flex items-end">
-                  {images.slice(0, 5).map((src, index) => (
+                  {images.slice(0, 5).map((image, index) => (
                     <div
-                      key={`${src}-${index}`}
+                      key={`${image.src}-${index}`}
                       className={cn(
                         "relative h-20 w-25 overflow-hidden rounded-sm text-card-foreground bg-primary transition-transform duration-300 ease-out group-hover:[transform:translateY(var(--lift))_rotate(var(--rot))]",
                         index === 0 ? "" : "-ml-4"
@@ -268,8 +268,8 @@ export default function ProjectCard({
                       }}
                     >
                       <img
-                        src={src}
-                        alt=""
+                        src={image.src}
+                        alt={`${title} - ${index + 1}`}
                         className="h-full w-full object-cover"
                       />
                       <span

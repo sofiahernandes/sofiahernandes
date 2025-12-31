@@ -2,10 +2,10 @@
 
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
-import Image from "next/image";
+import Image, { type StaticImageData } from "next/image";
 
 type ProjectGalleryProps = {
-  images: string[];
+  images: StaticImageData[];
   title: string;
   showScrollHint?: boolean;
 };
@@ -17,13 +17,6 @@ export default function ProjectGallery({
 }: ProjectGalleryProps) {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const [mounted, setMounted] = useState(false);
-  const aspectClasses = [
-    "aspect-[3/4]",
-    "aspect-[4/3]",
-    "aspect-square",
-    "aspect-[2/3]",
-    "aspect-[5/7]",
-  ];
   const activeImage = activeIndex !== null ? images[activeIndex] : null;
 
   useEffect(() => {
@@ -44,21 +37,22 @@ export default function ProjectGallery({
   return (
     <div className="relative w-full">
       <div className="columns-2 gap-3 md:gap-4 bg-card [column-fill:_balance]">
-        {images.map((src, index) => (
+        {images.map((image, index) => (
           <div
-            key={`${src}-${index}`}
+            key={`${image.src}-${index}`}
             className="break-inside-avoid rounded-lg bg-card"
           >
             <button
               type="button"
               onClick={() => setActiveIndex(index)}
-              className={`relative w-full overflow-hidden rounded-lg ${
-                aspectClasses[index % aspectClasses.length]
-              }`}
+              className="relative w-full overflow-hidden rounded-lg"
+              style={{
+                aspectRatio: `${image.width} / ${image.height}`,
+              }}
               aria-label={`Open ${title} image ${index + 1}`}
             >
               <Image
-                src={src}
+                src={image}
                 alt={`${title} image ${index + 1}`}
                 fill
                 sizes="(max-width: 768px) 80vw, 520px"
@@ -103,7 +97,7 @@ export default function ProjectGallery({
                   >
                     ✕
                   </button>
-                  <div className="relative h-[90vh] w-full">
+                  <div className="relative flex items-center justify-center h-[90vh] w-full">
                     <Image
                       src={activeImage}
                       alt={`${title} image ${activeIndex! + 1}`}
