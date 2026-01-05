@@ -56,7 +56,7 @@ export default function ProjectGallery({
                 alt={`${title} image ${index + 1}`}
                 fill
                 sizes="(max-width: 768px) 80vw, 520px"
-                className="object-cover border border-primary/30 rounded-lg"
+                className="object-cover rounded-lg"
                 priority={index === 0}
               />
             </button>
