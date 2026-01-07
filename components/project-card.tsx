@@ -21,7 +21,6 @@ const modalTransitionMs = 240;
 type ProjectCardLayout = "grid" | "square";
 
 type ProjectCardProps = Project & {
-  layout?: ProjectCardLayout;
   interactive?: boolean;
 };
 
@@ -30,7 +29,6 @@ export default function ProjectCard({
   description,
   images,
   githubUrl,
-  layout = "grid",
   interactive = true,
 }: ProjectCardProps) {
   const [isOpen, setIsOpen] = useState(false);
@@ -185,13 +183,13 @@ export default function ProjectCard({
           )}
         >
           <>
-            <div className="absolute left-6 top-[70px] z-10 h-24 w-[calc(100%-3rem)] -translate-y-full overflow-visible">
+            <div className="absolute left-6 top-[76px] z-10 h-24 w-[calc(100%-3rem)] -translate-y-full overflow-visible">
               <div className="flex items-end overflow-visible">
                 {images.slice(0, 5).map((image, index) => (
                   <div
                     key={`${image.src}-${index}`}
                     className={cn(
-                      "relative overflow-visible h-20 w-25 overflow-hidden rounded-sm text-card-foreground bg-primary transition-transform duration-300 ease-out group-hover:[transform:translateY(var(--lift))_rotate(var(--rot))]",
+                      "relative h-20 w-25 overflow-hidden rounded-sm text-card-foreground bg-primary transition-transform duration-300 ease-out group-hover:[transform:translateY(var(--lift))_rotate(var(--rot))]",
                       index === 0 ? "" : "-ml-4"
                     )}
                     style={{
@@ -301,7 +299,7 @@ export default function ProjectCard({
                       <Link
                         href={githubUrl}
                         target="_blank"
-                        className="inline-flex items-center gap-2 text-sm hover:underline hover:underline-offset-2"
+                        className="inline-flex items-center gap-2 text-sm underline-animate"
                       >
                         <Github className="h-4 w-4" />
                         View on GitHub

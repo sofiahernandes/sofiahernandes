@@ -147,7 +147,6 @@ export default function ProjectsCurvedSlider({
                 description={project.description}
                 images={project.images}
                 githubUrl={project.githubUrl}
-                layout="square"
                 interactive={isActive}
               />
             </CarouselItem>
