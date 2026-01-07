@@ -43,6 +43,6 @@ export const aboutContent = {
   ],
   closing: {
     indent: true,
-    text: "I'm currently open to freelance opportunities and creative collaborations. If you're looking for someone who understands both design and code, let’s talk!",
+    text: "I'm always open to freelance opportunities and creative collaborations. If you're looking for someone who understands both design and code, let’s talk!",
   },
 } as const;

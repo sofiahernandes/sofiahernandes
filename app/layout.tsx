@@ -1,12 +1,9 @@
 import { ThemeProvider } from "@/components/theme-provider";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 import type React from "react";
-import { rethink } from "@/app/fonts";
-
-const inter = Inter({ subsets: ["latin"] });
+import { inter, rethink } from "@/app/fonts";
 
 export const metadata: Metadata = {
   title: "Sofia Botechia - Dev & Design",

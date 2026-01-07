@@ -24,25 +24,21 @@ const themes = [
     name: "light",
     label: "Light",
     icon: Sun,
-    description: "Clean and bright",
   },
   {
     name: "dark",
     label: "Dark",
     icon: Moon,
-    description: "Easy on the eyes",
   },
   {
     name: "pink",
     label: "Pink",
     icon: Palette,
-    description: "Soft and elegant",
   },
   {
     name: "blue",
     label: "Blue",
     icon: Palette,
-    description: "Cool and professional",
   },
 ];
 
@@ -119,9 +115,6 @@ export function ThemeToggle() {
                 <div className="flex flex-col">
                   <span className="text-sm font-medium">
                     {themeOption.label}
-                  </span>
-                  <span className="text-xs text-muted-foreground">
-                    {themeOption.description}
                   </span>
                 </div>
               </div>

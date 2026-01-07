@@ -2,7 +2,7 @@ import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 
 import { projects, projectsSection } from "@/lib/projects";
-import ProjectsCurvedSlider from "@/app/components/projects-curved-slider";
+import ProjectsCurvedSlider from "@/components/projects-curved-slider";
 
 export default function Projects() {
   return (
@@ -21,7 +21,7 @@ export default function Projects() {
           <Link
             href={projectsSection.cta.href}
             target="_blank"
-            className="flex items-center gap-2 text-sm hover:underline hover:underline-offset-2"
+            className="flex items-center gap-2 text-sm underline-animate"
           >
             <ArrowUpRight className="h-4 w-4" />
             {projectsSection.cta.label}

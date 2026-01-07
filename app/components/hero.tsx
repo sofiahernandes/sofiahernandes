@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Github, Linkedin, Mail, Instagram } from "lucide-react";
 import { heroContent, type HeroSocialIcon } from "@/lib/content/hero";
+import { inter } from "@/app/fonts";
 
 const iconMap: Record<HeroSocialIcon, JSX.Element> = {
   github: <Github className="h-4 w-4" />,
@@ -10,7 +11,28 @@ const iconMap: Record<HeroSocialIcon, JSX.Element> = {
   mail: <Mail className="h-4 w-4" />,
 };
 
+const emphasizedWords = ["Developer", "Designer"];
+const emphasizedWordSet = new Set(emphasizedWords);
+const emphasisRegex = new RegExp(`(${emphasizedWords.join("|")})`, "g");
+
+function renderTitle(text: string) {
+  return text.split(emphasisRegex).map((part, index) =>
+    emphasizedWordSet.has(part) ? (
+      <span
+        key={`${part}-${index}`}
+        className={`${inter.className} italic font-light`}
+      >
+        {part}
+      </span>
+    ) : (
+      part
+    )
+  );
+}
+
 export default function Hero() {
+  const title = heroContent.title;
+
   return (
     <section
       id="hero"
@@ -18,10 +40,10 @@ export default function Hero() {
     >
       <div className="col-span-full lg:col-span-8 lg:col-start-3 m-0 flex flex-col items-center justify-center px-4 lg:px-6 space-y-4 text-center">
         <div className="space-y-2">
-          <h1 className="text-3xl lg:text-5xl font-bold tracking-tighter text-primary">
-            {heroContent.title}
+          <h1 className="text-4xl lg:text-6xl font-bold tracking-tighter text-primary leading-11">
+            {renderTitle(title)}
           </h1>
-          <p className="mx-auto max-w-[550px] pt-2 pb-4 text-sm text-gray-600 dark:text-gray-300">
+          <p className="mx-auto max-w-[550px] pt-2 pb-4 text-sm text-primary dark:text-gray-300">
             {heroContent.description}
           </p>
         </div>

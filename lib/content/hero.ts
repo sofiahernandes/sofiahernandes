@@ -1,5 +1,5 @@
 export const heroContent = {
-  title: "Software Dev & UX Design",
+  title: "A Developer who can Design. A Designer who can Code.",
   description:
     "Constantly learning & exploring better— and cuter— ways to build for the web. Let’s chat if you need a dev who gets design — or a designer who can code!",
   socialLinks: [
