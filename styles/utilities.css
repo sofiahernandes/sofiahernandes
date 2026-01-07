@@ -11,7 +11,7 @@
     position: absolute;
     left: 0;
     right: 0;
-    bottom: -0.3em;
+    bottom: 0em;
     height: 1px;
     background-color: currentColor;
     transform: scaleX(0);
@@ -21,5 +21,21 @@
 
   .underline-animate:is(:hover, :focus-visible)::after {
     transform: scaleX(1);
+  }
+
+  .theme-swatch {
+    @apply flex h-6 w-6 cursor-pointer items-center justify-center rounded-full border border-border p-0 shadow-sm transition-transform duration-200;
+  }
+
+  .theme-swatch:hover {
+    transform: scale(1.05);
+  }
+
+  .theme-swatch:focus-visible {
+    @apply ring-1 ring-primary ring-offset-2 ring-offset-background;
+  }
+
+  .theme-swatch[data-selected="true"] {
+    @apply ring-1 ring-primary ring-offset-2 ring-offset-background;
   }
 }

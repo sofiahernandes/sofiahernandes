@@ -5,10 +5,9 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Check, Monitor, Moon, Palette, Sun } from "lucide-react";
+import { Monitor, Moon, Palette, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { type CustomTheme, ThemeManager } from "@/lib/theme-manager";
@@ -19,26 +18,32 @@ const themes = [
     label: "System",
     icon: Monitor,
     description: "Follow system preference",
+    swatch:
+      "linear-gradient(135deg, hsl(0 0% 100%) 0 50%, hsl(222.2 84% 4.9%) 50% 100%)",
   },
   {
     name: "light",
     label: "Light",
     icon: Sun,
+    swatch: "hsl(0 0% 100%)",
   },
   {
     name: "dark",
     label: "Dark",
     icon: Moon,
+    swatch: "hsl(222.2 84% 4.9%)",
   },
   {
     name: "pink",
     label: "Pink",
     icon: Palette,
+    swatch: "hsl(346 77% 49%)",
   },
   {
     name: "blue",
     label: "Blue",
     icon: Palette,
+    swatch: "hsl(221 83% 53%)",
   },
 ];
 
@@ -98,30 +103,29 @@ export function ThemeToggle() {
           <span className="sr-only">Toggle theme</span>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" className="w-56">
-        {themes.map((themeOption) => {
-          const Icon = themeOption.icon;
-          const isSelected = theme === themeOption.name;
+      <DropdownMenuContent
+        side="left"
+        align="center"
+        className="min-w-0 w-auto p-2"
+      >
+        <div className="flex items-center gap-2">
+          {themes.map((themeOption) => {
+            const isSelected = theme === themeOption.name;
 
-          return (
-            <DropdownMenuItem
-              key={themeOption.name}
-              onClick={() => handleThemeChange(themeOption.name)}
-              className="flex items-center justify-between cursor-pointer"
-              aria-label={`Switch to ${themeOption.label} theme`}
-            >
-              <div className="flex items-center gap-2">
-                <Icon className="h-4 w-4" />
-                <div className="flex flex-col">
-                  <span className="text-sm font-medium">
-                    {themeOption.label}
-                  </span>
-                </div>
-              </div>
-              {isSelected && <Check className="h-4 w-4" />}
-            </DropdownMenuItem>
-          );
-        })}
+            return (
+              <DropdownMenuItem
+                key={themeOption.name}
+                onClick={() => handleThemeChange(themeOption.name)}
+                className="theme-swatch"
+                style={{ background: themeOption.swatch }}
+                data-selected={isSelected}
+                aria-label={`Switch to ${themeOption.label} theme`}
+              >
+                <span className="sr-only">{themeOption.label}</span>
+              </DropdownMenuItem>
+            );
+          })}
+        </div>
       </DropdownMenuContent>
     </DropdownMenu>
   );

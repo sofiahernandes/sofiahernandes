@@ -20,7 +20,7 @@ function renderTitle(text: string) {
     emphasizedWordSet.has(part) ? (
       <span
         key={`${part}-${index}`}
-        className={`${inter.className} italic font-light`}
+        className={`${inter.className} italic font-bold px-1`}
       >
         {part}
       </span>
