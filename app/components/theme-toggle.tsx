@@ -7,20 +7,11 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Monitor, Moon, Palette, Sun } from "lucide-react";
+import { Moon, Palette, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
-import { type CustomTheme, ThemeManager } from "@/lib/theme-manager";
 
 const themes = [
-  {
-    name: "system",
-    label: "System",
-    icon: Monitor,
-    description: "Follow system preference",
-    swatch:
-      "linear-gradient(135deg, hsl(0 0% 100%) 0 50%, hsl(222.2 84% 4.9%) 50% 100%)",
-  },
   {
     name: "light",
     label: "Light",
@@ -50,32 +41,13 @@ const themes = [
 export function ThemeToggle() {
   const { setTheme, theme } = useTheme();
   const [mounted, setMounted] = useState(false);
-  const [customThemes, setCustomThemes] = useState<CustomTheme[]>([]);
 
   useEffect(() => {
     setMounted(true);
   }, [theme]);
 
-  useEffect(() => {
-    // Listen for custom theme changes
-    const handleStorageChange = () => {
-      setCustomThemes(ThemeManager.getCustomThemes());
-    };
-
-    window.addEventListener("storage", handleStorageChange);
-
-    return () => {
-      window.removeEventListener("storage", handleStorageChange);
-    };
-  }, []);
-
   const handleThemeChange = (themeName: string) => {
-    ThemeManager.removeCustomTheme();
     setTheme(themeName);
-    // Ensure the theme is properly restored
-    setTimeout(() => {
-      ThemeManager.restoreTheme(themeName);
-    }, 50);
   };
 
   if (!mounted) {
