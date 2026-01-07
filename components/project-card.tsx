@@ -214,16 +214,16 @@ export default function ProjectCard({
                 ))}
               </div>
             </div>
-            <div className="absolute inset-0 -top-4 z-0 h-full rounded-3xl bg-primary opacity-10 dark:bg-slate-900 border border-neutral-200 dark:border-neutral-800 text-black shadow-sm" />
-            <div className="relative min-h-fit md:min-h-auto z-20 flex h-60 flex-col justify-between rounded-3xl border text-black bg-card border-neutral-200 dark:border-neutral-800 p-10 shadow-sm hover:translate-y-2 transition-transform duration-300 ease-in-out focus:outline-none focus:ring-none">
+            <div className="absolute inset-0 -top-4 z-0 h-full rounded-3xl bg-primary opacity-10 dark:bg-slate-900 border border-neutral-200 text-black shadow-sm" />
+            <div className="relative min-h-fit md:min-h-auto z-20 flex h-60 flex-col justify-between rounded-3xl border text-black bg-card border-neutral-200 dark:border-neutral-700 p-10 shadow-sm hover:translate-y-2 transition-transform duration-300 ease-in-out focus:outline-none focus:ring-none">
               <div className="space-y-6">
                 <h3
                   id={titleId}
-                  className="text-2xl font-semibold tracking-tight text-primary dark:text-white"
+                  className="select-none text-2xl font-semibold tracking-tight text-primary dark:text-white"
                 >
                   {title}
                 </h3>
-                <p className="text-sm text-neutral-600 dark:text-gray-300 max-w-[60%]">
+                <p className="select-none text-sm text-neutral-600 dark:text-gray-300 max-w-[60%]">
                   {description}
                 </p>
               </div>
@@ -267,7 +267,7 @@ export default function ProjectCard({
                 >
                   ✕
                 </button>
-                <div className="grid h-full min-h-0 gap-6 lg:grid-cols-12 items-start h-fit lg:h-full">
+                <div className="grid h-full min-h-0 gap-6 lg:grid-cols-12 items-start lg:h-full">
                   <div className="order-2 col-span-full lg:order-1 lg:col-span-8 flex h-full min-h-0 items-start justify-center rounded-lg">
                     <div
                       className="h-full min-h-0 w-full max-w-4xl overflow-y-auto rounded-lg [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"

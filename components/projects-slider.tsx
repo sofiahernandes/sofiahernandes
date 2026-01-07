@@ -11,7 +11,7 @@ import {
 import type { Project } from "@/lib/projects";
 import { cn } from "@/lib/utils";
 
-type ProjectsCurvedSliderProps = {
+type ProjectsSliderProps = {
   projects: Project[];
 };
 
@@ -34,9 +34,9 @@ function getSlideStyle(distance: number) {
   } as const;
 }
 
-export default function ProjectsCurvedSlider({
+export default function ProjectsSlider({
   projects,
-}: ProjectsCurvedSliderProps) {
+}: ProjectsSliderProps) {
   const [api, setApi] = React.useState<CarouselApi>();
   const [current, setCurrent] = React.useState(0);
   const [isInView, setIsInView] = React.useState(false);

@@ -2,7 +2,7 @@ import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 
 import { projects, projectsSection } from "@/lib/projects";
-import ProjectsCurvedSlider from "@/components/projects-curved-slider";
+import ProjectsSlider from "@/components/projects-slider";
 
 export default function Projects() {
   return (
@@ -15,7 +15,7 @@ export default function Projects() {
       </h2>
       <div className="col-span-full flex flex-col items-center justify-center overflow-visible!">
         <div className="w-full overflow-visible!">
-          <ProjectsCurvedSlider projects={projects} />
+          <ProjectsSlider projects={projects} />
         </div>
         <div>
           <Link
