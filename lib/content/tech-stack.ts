@@ -5,33 +5,34 @@ export const techStackContent = {
       id: 1,
       category: "Frontend",
       skills: [
+        { name: "Next.js" },
+        { name: "React.js" },
         { name: "TypeScript" },
         { name: "JavaScript" },
-        { name: "HTML" },
-        { name: "CSS" },
         { name: "Tailwind CSS" },
-        { name: "React" },
-        { name: "Next.js" },
       ],
       highlight: false,
     },
     {
       id: 2,
       category: "Backend",
-      skills: [{ name: "Node.js" }, { name: "Python" }],
+      skills: [
+        { name: "Node.js" }, 
+        { name: "MySQL" },
+        { name: "Strapi" }, 
+        { name: "Python" }
+      ],
       highlight: false,
     },
     {
       id: 3,
       category: "Tools",
       skills: [
-        { name: "Visual Studio Code" },
+        { name: "VS Code" },
         { name: "Figma" },
         { name: "Git" },
         { name: "GitHub" },
-        { name: "Vercel" },
-        { name: "Microsoft Office Suite" },
-        { name: "Google Drive Tools" },
+        { name: "Google Analytics" },
       ],
       highlight: false,
     },
@@ -68,12 +69,12 @@ export const techStackContent = {
       category: "Resume",
       skills: [
         { 
-          name: "Resume (en-US)", 
-          link: "https://github.com/sofiahernandes" 
+          name: "Resume (en)", 
+          link: "https://drive.google.com/file/d/1gaU5j2vrfSd65MN9MgF2o3hAxJrxHye_/view?usp=drive_link" 
         },
         {
-          name: "Currículo (pt-BR)",
-          link: "https://drive.google.com/file/d/1hKsENlQwNAZJfSUybn-4BhqDNfa0bHeU/view?usp=sharing",
+          name: "Currículo (pt)",
+          link: "https://drive.google.com/file/d/1sRSP2Kg0jNk2gdHZJSQwM2-Jl9NSFlMx/view?usp=drive_link",
         },
       ],
       highlight: true,
