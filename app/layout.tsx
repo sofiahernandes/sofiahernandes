@@ -1,7 +1,7 @@
 import { ThemeProvider } from "@/components/theme-provider";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
-import "./globals.css";
+import "@/styles/globals.css";
 import type React from "react";
 import { inter, rethink } from "@/app/fonts";
 

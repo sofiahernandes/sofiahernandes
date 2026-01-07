@@ -1,6 +1,4 @@
 @tailwind base;
-@tailwind components;
-@tailwind utilities;
 
 @layer base {
   :root {
@@ -106,82 +104,14 @@
 
   /* Theme transition animations */
   * {
+    @apply border-border;
     transition:
       background-color 0.3s ease,
       border-color 0.3s ease,
       color 0.3s ease;
   }
-}
 
-@layer base {
-  * {
-    @apply border-border;
-  }
   body {
     @apply bg-background text-foreground;
   }
-}
-
-/* Custom scrollbar for different themes */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  @apply bg-secondary;
-}
-
-::-webkit-scrollbar-thumb {
-  @apply bg-primary/50 rounded-full;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  @apply bg-primary/70;
-}
-
-/* Focus styles for accessibility */
-.focus-visible:focus-visible {
-  @apply outline-2 outline-offset-2 outline-primary;
-}
-
-/* Reduced motion support */
-@media (prefers-reduced-motion: reduce) {
-  * {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
-}
-
-@layer utilities {
-  .underline-animate {
-    position: relative;
-    text-decoration: none;
-  }
-
-  .underline-animate::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: -0.3em;
-    height: 1px;
-    background-color: currentColor;
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.2s ease;
-  }
-
-  .underline-animate:is(:hover, :focus-visible)::after {
-    transform: scaleX(1);
-  }
-}
-
-.projects-carousel {
-  perspective: 1400px;
-  transform-style: preserve-3d;
-}
-
-.projects-carousel [data-carousel-viewport] {
-  overflow: visible;
 }

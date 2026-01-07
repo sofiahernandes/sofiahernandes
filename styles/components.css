@@ -1,0 +1,12 @@
+@tailwind components;
+
+@layer components {
+  .projects-carousel {
+    perspective: 1400px;
+    transform-style: preserve-3d;
+  }
+
+  .projects-carousel [data-carousel-viewport] {
+    overflow: visible;
+  }
+}
