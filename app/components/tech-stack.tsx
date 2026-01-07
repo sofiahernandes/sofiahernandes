@@ -26,23 +26,36 @@ export default function TechStack() {
                 {tech.category}
               </h3>
               <div className="flex flex-wrap gap-2">
-                {tech.skills.map((skill) => (
-                  <Link
-                    href={skill.link}
-                    target="_blank"
-                    key={skill.name}
-                    className="no-underline"
-                  >
-                    <span
-                      className={
-                        tech.highlight
-                          ? "transition-opacity hover:opacity-60 text-background inline-flex items-center rounded-md px-2 py-1 text-sm font-medium ring-1 ring-inset ring-background"
-                          : "transition-opacity hover:opacity-60 inline-flex items-center rounded-md bg-primary/10 px-2 py-1 text-sm font-medium ring-1 ring-inset ring-primary/10"
-                      }
-                    >
-                      {skill.name}
-                    </span>
-                  </Link>
+                {tech.skills.map((skill: {name: string, link?: string}) => (
+                  <span key={skill.name}>
+                    {skill.link ? (
+                      <Link
+                        href={skill.link}
+                        target="_blank"
+                        className="no-underline"
+                      >
+                        <span
+                          className={
+                            tech.highlight
+                              ? "transition-opacity hover:opacity-60 text-background inline-flex items-center rounded-md px-2 py-1 text-sm font-medium ring-1 ring-inset ring-background"
+                              : "transition-opacity hover:opacity-60 inline-flex items-center rounded-md bg-primary/10 px-2 py-1 text-sm font-medium ring-1 ring-inset ring-primary/10"
+                          }
+                        >
+                          {skill.name}
+                        </span>
+                      </Link>
+                    ) : (
+                      <span
+                        className={
+                          tech.highlight
+                            ? "text-background inline-flex items-center rounded-md px-2 py-1 text-sm font-medium ring-1 ring-inset ring-background"
+                            : "inline-flex items-center rounded-md bg-primary/10 px-2 py-1 text-sm font-medium ring-1 ring-inset ring-primary/10"
+                        }
+                      >
+                        {skill.name}
+                      </span>
+                    )}
+                  </span>
                 ))}
               </div>
             </Card>
