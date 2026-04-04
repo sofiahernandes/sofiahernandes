@@ -1,38 +1,36 @@
 export const techStackContent = {
-  title: "Main Skills",
+  title: "Specialized Skillset",
   technologies: [
     {
       id: 1,
-      category: "Frontend",
+      category: "Development",
       skills: [
-        { name: "Next.js" },
-        { name: "React.js" },
-        { name: "TypeScript" },
-        { name: "JavaScript" },
-        { name: "Tailwind CSS" },
+        { name: "Next.js & React.js" },
+        { name: "TypeScript & JavaScript" },
+        { name: "Strapi & Payload (Headless CMS)" },
+        { name: "Python" },
+        { name: "SQL (MySQL & PostgreSQL)" },
       ],
       highlight: false,
     },
     {
       id: 2,
-      category: "Backend",
+      category: "AI & Automations",
       skills: [
-        { name: "Node.js" }, 
-        { name: "MySQL" },
-        { name: "Strapi" }, 
-        { name: "Python" }
+        { name: "Workflows Automation (n8n & OpenAI Agent Builder)" },
+        { name: "Autonomous Agents" },
+        { name: "Prompt Engineering" },
       ],
       highlight: false,
     },
     {
       id: 3,
-      category: "Tools",
+      category: "UX/UI Design",
       skills: [
-        { name: "VS Code" },
         { name: "Figma" },
-        { name: "Git" },
-        { name: "GitHub" },
-        { name: "Google Analytics" },
+        { name: "Design Systems" },
+        { name: "User Research" },
+        { name: "Prototyping" },
       ],
       highlight: false,
     },
@@ -42,14 +40,14 @@ export const techStackContent = {
       skills: [
         {
           name: "Bootcamp Desenvolvimento Front-end - Santander",
-          link: "https://www.dio.me/certificate/6PGRXS6K/share?utm_source=engagement&utm_medium=email&utm_campaign=santander-2025-front-end&utm_term=bootcamp-users&utm_content=graduation-certificate-link",
+          link: "https://www.dio.me/certificate/6PGRXS6K/share",
         },
         {
           name: "Machine Learning Training - BairesDev",
-          link: "https://www.dio.me/certificate/YKU8V7HA/share?utm_source=engagement&utm_medium=email&utm_campaign=bairesdev-machine-learning-training&utm_term=bootcamp-users&utm_content=graduation-certificate-link",
+          link: "https://www.dio.me/certificate/YKU8V7HA/share",
         },
         {
-          name: "Business Technology (tech applied to business) – FECAP",
+          name: "Business Technology (Tech Applied to Business) – FECAP",
         },
       ],
       highlight: false,
@@ -58,9 +56,9 @@ export const techStackContent = {
       id: 5,
       category: "(Human) Languages",
       skills: [
-        { name: "🇺🇸 English" },
-        { name: "🇧🇷 Portuguese" },
-        { name: "🇪🇸 Spanish" },
+        { name: "English - Fluent" },
+        { name: "Spanish - Fluent" },
+        { name: "Portuguese - Native" },
       ],
       highlight: false,
     },
@@ -68,12 +66,12 @@ export const techStackContent = {
       id: 6,
       category: "Resume",
       skills: [
-        { 
-          name: "Resume (en)", 
-          link: "https://drive.google.com/file/d/1gaU5j2vrfSd65MN9MgF2o3hAxJrxHye_/view?usp=drive_link" 
+        {
+          name: "Download Resume (EN)",
+          link: "https://drive.google.com/file/d/1gaU5j2vrfSd65MN9MgF2o3hAxJrxHye_/view?usp=drive_link",
         },
         {
-          name: "Currículo (pt)",
+          name: "Baixar Currículo (PT)",
           link: "https://drive.google.com/file/d/1sRSP2Kg0jNk2gdHZJSQwM2-Jl9NSFlMx/view?usp=drive_link",
         },
       ],

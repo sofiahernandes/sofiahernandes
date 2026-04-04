@@ -1,7 +1,7 @@
 export const heroContent = {
-  title: "A Developer who can Design. A Designer who can Code.",
+  title: "Software Engineering + AI Automations",
   description:
-    "Constantly learning & exploring better— and cuter— ways to build for the web. Let’s chat if you need a dev who gets design — or a designer who can code!",
+    "Whether you need a scalable application, a user-first interface, or automated systems to scale your impact, let’s build something smarter.",
   socialLinks: [
     {
       label: "GitHub",

@@ -1,48 +1,24 @@
 export const aboutContent = {
-  title: "A Little About Me",
+  title: 'A Little About Me',
   intro: {
     indent: true,
-    leading: "I’m Sofia — ",
-    emphasized:
-      "a Brazilian Computer Science student and Software Engineer based in São Paulo",
+    leading: 'I’m Sofia — ',
+    emphasized: 'a Software Engineer passionate about AI Automations',
     trailing:
-      ". Since starting my freelance journey in 2022, I’ve been building responsive, accessible, and user-friendly applications and digital products for small businesses, content creators, and people's personal projects.",
+      ' based in São Paulo. Since 2022, I’ve evolved from building simple applications to high-performance digital products and autonomous systems.',
   },
   paragraphs: [
     {
       indent: true,
-      text: "I’m also very passionate about UI/UX Design and the magic that happens when design and development work together, crafting digital experiences that are both functional and beautiful.",
-    },
-  ],
-  listItems: [
-    {
-      label: "Main stack:",
-      separator: " ",
-      text: "React, Next.js, TypeScript, JavaScript;",
+      text: "Whether I'm developing full-stack applications or multi-agent workflows, my focus is always on scalability, experience/usability, and a result-focused approach.",
     },
     {
-      label: "Design/Styling tools:",
-      separator: " ",
-      text: "Figma, Canva, Tailwind;",
-    },
-    {
-      label: "Other skills:",
-      separator: " ",
-      text: "project management, SCRUM, communication, teamwork;",
-    },
-    {
-      label: "Always learning",
-      separator: " ",
-      text: "and looking for innovative, smarter, and prettier ways to craft digital solutions;",
-    },
-    {
-      label: "Outside tech",
-      separator: ", ",
-      text: "my passions include reading, fitness, traveling, singing (not very well), learning new languages, and a engaging in good discussions.",
+      indent: true,
+      text: 'Beyond tech, I believe strongly in the importance of clear communication, public speaking skills, focus on organization and strategic planning.',
     },
   ],
   closing: {
     indent: true,
-    text: "I'm always open to freelance opportunities and creative collaborations. If you're looking for someone who understands both design and code, let’s talk!",
+    text: "I'm always open to collaboration opportunities and creative partnerships. If you have a project in mind, let’s talk!",
   },
 } as const;
