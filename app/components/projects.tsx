@@ -1,8 +1,8 @@
-import { ArrowUpRight } from "lucide-react";
-import Link from "next/link";
+import { ArrowUpRight } from 'lucide-react';
+import Link from 'next/link';
 
-import { projects, projectsSection } from "@/lib/projects";
-import ProjectsSlider from "@/components/projects-slider";
+import { projects, projectsSection } from '@/lib/projects';
+import ProjectsSlider from '@/components/projects-slider';
 
 export default function Projects() {
   return (
@@ -10,7 +10,7 @@ export default function Projects() {
       id="projects"
       className="grid grid-cols-2 lg:grid-cols-12 border-t px-6 gap-6 py-24 items-center overflow-x-visible!"
     >
-      <h2 className="col-span-full lg:col-span-10 lg:col-start-2 px-4 lg:px-6 text-2xl lg:text-4xl font-bold tracking-tighter mb-6 text-center lg:text-left">
+      <h2 className="col-span-full lg:col-span-10 lg:col-start-2 px-4 lg:px-6 text-2xl lg:text-4xl font-bold tracking-tighter mb-6 text-center">
         {projectsSection.title}
       </h2>
       <div className="col-span-full flex flex-col items-center justify-center overflow-visible!">

@@ -1,6 +1,6 @@
-import { aboutContent } from "@/lib/content/about";
+import { aboutContent } from '@/lib/content/about';
 
-const paragraphIndent = "\u00a0\u00a0\u00a0\u00a0";
+const paragraphIndent = '\u00a0\u00a0\u00a0\u00a0';
 
 export default function AboutMe() {
   return (
@@ -29,16 +29,6 @@ export default function AboutMe() {
             {paragraph.text}
           </p>
         ))}
-
-        <ul className="mx-auto pt-3 text-sm text-justify pb-4">
-          {aboutContent.listItems.map((item) => (
-            <li key={item.label}>
-              <span className="underline underline-offset-4">{item.label}</span>
-              {item.separator}
-              {item.text}
-            </li>
-          ))}
-        </ul>
 
         <p className="mx-auto pt-3 text-sm text-justify pb-4">
           {aboutContent.closing.indent ? paragraphIndent : null}

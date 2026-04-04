@@ -75,7 +75,7 @@ export default function ContactForm() {
                 required
               />
             </div>
-            <Button type="submit" className="w-full" disabled={pending}>
+            <Button type="submit" className="w-full rounded-lg" disabled={pending}>
               {pending
                 ? contactContent.submit.pending
                 : contactContent.submit.idle}

@@ -14,7 +14,7 @@ export default function TechStack() {
           {techStackContent.technologies.map((tech) => (
             <Card
               key={tech.id}
-              className={tech.highlight ? "bg-primary p-6" : "bg-card p-6"}
+              className={tech.highlight ? "bg-primary/70 p-6" : "bg-card p-6"}
             >
               <h3
                 className={
