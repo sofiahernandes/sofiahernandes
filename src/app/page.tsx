@@ -1,32 +1,5 @@
-import AboutMe from './(pages)/about/page';
-import ContactForm from '@/app/(pages)/contact/page';
-import Projects from './(pages)/projects/page';
-import TechStack from '../components/tech-stack';
-import Hero from '../components/hero';
-import { ThemeToggle } from '../components/theme-toggle';
-import Footer from '../components/footer';
-import { siteContent } from '@/lib/content/site';
+import Desktop from '@/components/desktop';
 
 export default function Page() {
-  return (
-    <div className="min-h-screen bg-white/50 dark:bg-background items-center flex flex-col overflow-clip">
-      <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur h-14 px-6 pt-2 flex justify-between">
-        <p className="pt-2 inline-block font-bold">{siteContent.headerTitle}</p>
-
-        <ThemeToggle />
-      </header>
-
-      <main>
-        <Hero />
-        <Projects />
-        <TechStack />
-        <AboutMe />
-        <ContactForm />
-      </main>
-
-      <footer>
-        <Footer />
-      </footer>
-    </div>
-  );
+  return <Desktop />;
 }
