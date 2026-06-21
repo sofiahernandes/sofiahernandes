@@ -5,7 +5,7 @@ import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useState, type FormEvent } from "react";
-import { submitContactForm } from "../actions";
+import { submitContactForm } from "@/app/actions";
 import { contactContent } from "@/lib/content/contact";
 
 export default function ContactForm() {

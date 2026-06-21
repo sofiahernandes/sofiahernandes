@@ -1,11 +1,11 @@
-import AboutMe from "./components/about";
-import ContactForm from "./components/contact-form";
-import Projects from "./components/projects";
-import TechStack from "./components/tech-stack";
-import Hero from "./components/hero";
-import { ThemeToggle } from "./components/theme-toggle";
-import Footer from "./components/footer";
-import { siteContent } from "@/lib/content/site";
+import AboutMe from './(pages)/about/page';
+import ContactForm from '@/app/(pages)/contact/page';
+import Projects from './(pages)/projects/page';
+import TechStack from '../components/tech-stack';
+import Hero from '../components/hero';
+import { ThemeToggle } from '../components/theme-toggle';
+import Footer from '../components/footer';
+import { siteContent } from '@/lib/content/site';
 
 export default function Page() {
   return (
