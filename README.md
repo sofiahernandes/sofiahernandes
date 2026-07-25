@@ -1,7 +1,7 @@
 <div align="center">
-	<h1>👩‍💻 Sofia Botechia</h1>
+	<h1>Sofia Botechia</h1>
 	<p align="center">
-    		Front-end Developer & UX Designer. Constantly learning & exploring!<br/>
+    		Software Developer & AI Engineer | CS Student <br/>
 		<a href="https://sofiab-portfolio.vercel.app/">(access my authorial Portfolio Website)</a>
 	    	<div>
 			<a href="https://github.com/sofiahernandes"><img height="30px" src="https://skillicons.dev/icons?i=github"/></a>
@@ -16,53 +16,106 @@
 </div>
 <br/>
 
-```
+```json
 {
   "name": "Sofia Botechia Hernandes",
   "location": "São Paulo, Brazil",
-  "role": "Front-end Developer & Designer | CS Student",
-  "status": "(Always) under construction!",
-  "freelanceWork": {
-	startDate: 2022,
-	activities: "Mainly landing pages and websites for small business and creators",
-	openToWork: true,
+  "role": "Software Developer & AI Engineer",
+  
+  "education": {
+    "degree": "Bachelor's Degree in Computer Science (2026 – 2028)",
+    "honors": "Academic Merit Award (2× Best Student)",
+    "relevantCoursework": [
+      "Algorithms and Programming Logic",
+      "Software Engineering and Systems Architecture",
+      "Business Management and Organizational Dynamics",
+      "Full-Stack Web Development",
+      "Object-Oriented Programming and Data Structures",
+      "Database Projects",
+      "AWS Cloud Practitioner Fundamentals"
+    ]
   },
+
+  "experience": [
+    {
+      "company": "FutureBrand",
+      "role": "Software Engineer Intern",
+      "period": "Aug 2025 – Present",
+      "description": "Develop production-grade CMS platforms, internal productivity tools, and AI applications for enterprise clients.",
+      "highlights": [
+        "Contributed to 26 production repositories",
+        "1,700+ commits across one year",
+        "Built solutions used across 16+ enterprise websites",
+        "Developed three production AI systems",
+        "Designed reusable CMS architecture adopted across multiple client projects",
+        "Worked across frontend, backend, infrastructure, AI, authentication and developer tooling"
+      ]
+    },
+    {
+      "company": "Freelance",
+      "role": "Software Developer & UX/UI Designer",
+      "period": "Mar 2022 – Jul 2025",
+      "description": "Designed and developed custom web applications and digital products for local businesses and creators, from UX research to deployment."
+    }
+  ],
+
   "stack": {
-    "languages": ["TypeScript", "JavaScript", "Python"],
-    "frameworks": ["React.js", "Next.js", "React Native"],
-    "styling": ["Tailwind CSS", "Bootstrap"],
-    "tools": ["Figma", "Canva", "Microsoft Office Suit", "Git/Github"],
-    "misc": ["API integration", "responsive development", "UI/UX design"]
+    "frontend": [
+      "Next.js",
+      "React",
+      "React Native",
+      "Tailwind CSS",
+      "Framer Motion",
+      "GSAP"
+    ],
+    "backend": [
+      "Node.js",
+      "Express",
+      "Prisma",
+      "Strapi",
+      "Payload CMS",
+      "WordPress",
+      "REST APIs from scratch"
+    ],
+    "ai": [
+      "Model APIs",
+      "RAG systems",
+      "Prompt Engineering",
+      "Multi-Agent Applications",
+      "Agentic Workflows",
+      "AI-powered CMS Automation"
+    ],
+    "databases": ["PostgreSQL", "MySQL", "SQLite"],
+    "cloud": ["AWS", "Vercel", "Railway", "Cloudinary"],
+    "tools": ["Git", "GitHub", "Figma", "Agile", "Scrum"]
   },
-  "softSkills": ["communication", "teamwork", "project management"],
-  "otherInterests": ["wellness", "reading", "philosophy", "travel"],
-  "openTo": ["freelance gigs", "creative collabs", "fun side projects", "good talks"],
+
+  "softSkills": [
+    "Communication and public speaking",
+    "Organization and planning",
+    "Proactivity and efficiency",
+    "Problem-solving",
+    "Teamwork and leadership"
+  ],
+
+  "humanLanguages": {
+    "Portuguese": "Native",
+    "English": "C2",
+    "Spanish": "C1"
+  },
+
+  "currentlyLearning": [
+    "Advanced AI Agent Applications",
+    "Cloud Architecture",
+    "Distributed Systems",
+    "LLM Evaluation",
+    "MCP Ecosystem"
+  ],
+
+  "otherInterests": ["Wellness", "Reading", "Philosophy", "Travel"],
+  "openTo": ["Creative Collabs", "Fun Side-Projects", "Voluntary Work", "Good Talks"]
 }
 ```
-<br/>
-
-<div align="center">
-	<h3>Languages, Libraries & Frameworks</h3>
-	<p align="center">
-	  <a href="https://skillicons.dev">
-	    <img src="https://skillicons.dev/icons?i=ts,js,html,css,react,next,nodejs,py&perline=4" />
-	  </a>
-	</p>
-	<br/>
-	<h3>UI/UX Design e Prototyping</h3>
-	<p align="center">
-	  <a href="https://skillicons.dev">
-	    <img src="https://skillicons.dev/icons?i=figma,bootstrap,tailwind,materialui" />
-	  </a>
-	</p>
-	</br>
-	<h3>Other Tools</h3>
-	<p align="center">
-	  <a href="https://skillicons.dev">
-	    <img src="https://skillicons.dev/icons?i=git,github,vscode,pycharm" />
-	  </a>
-	</p>
-</div>
 <br/>
 
 <div align="center">
