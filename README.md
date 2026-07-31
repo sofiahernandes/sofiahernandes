@@ -1,18 +1,21 @@
 <div align="center">
-	<h1>Sofia Botechia</h1>
-	<p align="center">
-    		Software Developer & AI Engineer | CS Student <br/>
-		<a href="https://sofiab-portfolio.vercel.app/">(access my authorial Portfolio Website)</a>
-	    	<div>
-			<a href="https://github.com/sofiahernandes"><img height="30px" src="https://skillicons.dev/icons?i=github"/></a>
-		      	&nbsp;
-			<a href="https://www.linkedin.com/in/sofiahernandes"><img height="30px" src="https://skillicons.dev/icons?i=linkedin"/></a>
-			&nbsp;
-		      	<a href="mailto:sofiahernandes.dev@gmail.com"><img height="30px" src="https://skillicons.dev/icons?i=gmail"/></a>
-			&nbsp;
-		      	<a href="https://www.instagram.com/sofiabotechia/"><img height="30px" src="https://skillicons.dev/icons?i=instagram"/></a>
-	    	</div>
-  	</p>
+<h1>Sofia Botechia Hernandes</h1>
+
+<img height="240" alt="sofiahernandes" src="https://github.com/user-attachments/assets/297d151c-bc13-4fe8-9c61-8b7bb71eab18" />
+
+<p align="center">
+  <strong>Software Developer & AI Engineer | CS Student</strong> <br/>
+  Access my <a href="https://sofiab-portfolio.vercel.app/">personal Portfolio Website</a>
+  <div>
+    <a href="https://github.com/sofiahernandes"><img height="30px" src="https://skillicons.dev/icons?i=github"/></a>
+    &nbsp;
+    <a href="https://www.linkedin.com/in/sofiahernandes"><img height="30px" src="https://skillicons.dev/icons?i=linkedin"/></a>
+    &nbsp;
+    <a href="mailto:sofiahernandes.dev@gmail.com"><img height="30px" src="https://skillicons.dev/icons?i=gmail"/></a>
+    &nbsp;
+    <a href="https://www.instagram.com/sofiabotechia/"><img height="30px" src="https://skillicons.dev/icons?i=instagram"/></a>
+  </div>
+</p>
 </div>
 <br/>
 
