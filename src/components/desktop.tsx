@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import Image from 'next/image';
 import Window, { AppWindow } from '@/components/window';
 import Navbar from './navbar';
 import Dock, { AppConfig } from './dock';
@@ -51,13 +52,28 @@ const appsConfig: AppConfig[] = [
 ];
 
 const Desktop = () => {
+  const folderIcons = [
+    { id: 'folder-1', title: 'Projects', x: '1rem', y: '20%' },
+    { id: 'folder-2', title: 'About', x: '4rem', y: '35%' },
+    { id: 'folder-3', title: 'Work', x: '1rem', y: '50%' },
+    { id: 'folder-4', title: 'Contact', x: '4rem', y: '65%' },
+  ] as const;
+
   const [openWindows, setOpenWindows] = useState<AppWindow[]>([]);
   const [activeWindowId, setActiveWindowId] = useState<string | null>(null);
   const [showLaunchpad, setShowLaunchpad] = useState(false);
   const [showControlCenter, setShowControlCenter] = useState(false);
   const [showSpotlight, setShowSpotlight] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const desktopRef = useRef<HTMLDivElement>(null);
   const openedHomeRef = useRef(false);
+
+  useEffect(() => {
+    const updateIsMobile = () => setIsMobile(window.innerWidth < 768);
+    updateIsMobile();
+    window.addEventListener('resize', updateIsMobile);
+    return () => window.removeEventListener('resize', updateIsMobile);
+  }, []);
 
   const closeWindow = (id: string) => {
     setOpenWindows((prev) => prev.filter((window) => window.id !== id));
@@ -119,22 +135,51 @@ const Desktop = () => {
     if (showLaunchpad) setShowLaunchpad(false);
   };
 
+  const handleOpenFolder = (title: string, id: string) => {
+    const existingWindow = openWindows.find((w) => w.id === id);
+    if (existingWindow) {
+      setActiveWindowId(id);
+      return;
+    }
+
+    const winWidth = typeof window !== 'undefined' ? window.innerWidth : 1024;
+    const winHeight = typeof window !== 'undefined' ? window.innerHeight : 768;
+    const width = Math.min(520, Math.max(320, winWidth * 0.34));
+    const height = Math.min(360, Math.max(240, winHeight * 0.3));
+
+    openApp({
+      id,
+      title,
+      component: 'Folder',
+      position: {
+        x: Math.max(0, winWidth * 0.28),
+        y: Math.max(26, winHeight * 0.2),
+      },
+      size: { width, height },
+      innerWidth: winWidth,
+      innerHeight: winHeight,
+    });
+  };
+
   useEffect(() => {
     if (openedHomeRef.current) return;
     openedHomeRef.current = true;
 
     const winWidth = typeof window !== 'undefined' ? window.innerWidth : 1024;
     const winHeight = typeof window !== 'undefined' ? window.innerHeight : 768;
+    const mobile = winWidth < 768;
     const aspectRatio = 2700 / 1539;
     const chromeHeight = 28;
-    const maxWindowWidth = Math.max(320, winWidth - 200);
-    const maxWindowHeight = Math.max(260, winHeight - 200);
+    const maxWindowWidth = Math.max(320, winWidth - (mobile ? 16 : 200));
+    const maxWindowHeight = Math.max(260, winHeight - (mobile ? 120 : 200));
     const maxContentWidth = maxWindowWidth;
     const maxContentHeight = maxWindowHeight - chromeHeight;
     const width = Math.min(maxContentWidth, maxContentHeight * aspectRatio);
     const height = width / aspectRatio + chromeHeight;
-    const x = Math.max(16, winWidth - width - 24);
-    const y = Math.max(26, (winHeight - height) / 2.5);
+    const x = mobile
+      ? Math.max(8, (winWidth - width) / 2)
+      : Math.max(16, winWidth - width - 24);
+    const y = mobile ? 40 : Math.max(40, (winHeight - height) / 2.5);
 
     openApp({
       id: 'home',
@@ -156,6 +201,57 @@ const Desktop = () => {
           onClick={handleDesktopClick}
         >
           <Navbar />
+
+          {isMobile ? (
+            <div className="absolute inset-x-0 bottom-28 px-4">
+              <div className="grid grid-cols-2 gap-x-12 gap-y-5 w-fit mx-auto">
+                {folderIcons.map((folder) => (
+                  <button
+                    key={folder.id}
+                    className="pointer-events-auto flex flex-col items-center gap-1 text-xs text-black drop-shadow-sm"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleOpenFolder(folder.title, folder.id);
+                    }}
+                  >
+                    <Image
+                      src="/images/folder.png"
+                      alt={folder.title}
+                      width={62}
+                      height={62}
+                      className="select-none"
+                      priority
+                    />
+                    <span>{folder.title}</span>
+                  </button>
+                ))}
+              </div>
+            </div>
+          ) : (
+            <div className="absolute inset-0 pt-8 pb-20">
+              {folderIcons.map((folder) => (
+                <button
+                  key={folder.id}
+                  className="absolute pointer-events-auto flex flex-col items-center gap-1 text-xs text-black drop-shadow-sm transition-all duration-300 hover:scale-105"
+                  style={{ left: folder.x, top: folder.y }}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleOpenFolder(folder.title, folder.id);
+                  }}
+                >
+                  <Image
+                    src="/images/folder.png"
+                    alt={folder.title}
+                    width={70}
+                    height={70}
+                    className="select-none"
+                    priority
+                  />
+                  <span>{folder.title}</span>
+                </button>
+              ))}
+            </div>
+          )}
 
           <div className="absolute inset-0 pt-8 pb-20 pointer-events-none">
             {openWindows.map((window) => (

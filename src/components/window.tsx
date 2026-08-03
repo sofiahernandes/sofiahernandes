@@ -6,6 +6,7 @@ import { useState, useRef, useEffect } from 'react';
 import { X, Minus, ArrowRightIcon as ArrowsMaximize } from 'lucide-react';
 import Terminal from '@/components/terminal';
 import HomeImage from '@/components/home-image';
+import FolderWindow from '@/components/folder-window';
 
 export interface AppWindow {
   id: string;
@@ -19,10 +20,11 @@ export interface AppWindow {
 
 const componentMap: Record<
   string,
-  React.ComponentType<{ isDarkMode?: boolean }>
+  React.ComponentType<any>
 > = {
   Terminal,
   Home: HomeImage,
+  Folder: FolderWindow,
 };
 
 interface WindowProps {
@@ -235,7 +237,7 @@ export default function Window({
 
       <div className={`${contentBgClass} h-[calc(100%-1.75rem)] overflow-auto`}>
         {AppComponent ? (
-          <AppComponent />
+          <AppComponent title={window.title} />
         ) : (
           <div className="p-4">Content not available</div>
         )}

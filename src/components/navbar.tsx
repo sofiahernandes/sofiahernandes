@@ -48,8 +48,8 @@ export default function Navbar() {
             <Image
               alt="Apple Logo"
               src="/images/apple-logo.png"
-              width={14}
-              height={14}
+              width={12}
+              height={12}
             />
           </Link>
 
