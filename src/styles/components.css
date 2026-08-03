@@ -47,12 +47,6 @@
     box-shadow: 0px 0px 0.1rem rgba(0, 0, 0, 0.6);
   }
 
-  @media (max-width: 767px) {
-    .dock {
-      display: none;
-    }
-  }
-
   .dock .dock-inner {
     padding: 0.3rem;
     width: auto;

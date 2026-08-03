@@ -3,40 +3,20 @@
 import { MouseEvent, useState } from 'react';
 import DockItem from '@/components/dock-item';
 
-const buttons = [
-  {
-    name: 'Finder',
-    src: '/images/finder.png',
-    active: false,
-  },
-  {
-    name: 'Email',
-    src: '/images/email.png',
-    active: false,
-  },
-  {
-    name: 'LinkedIn',
-    src: '/images/linkedin.png',
-    active: false,
-  },
-  {
-    name: 'Instagram',
-    src: '/images/instagram.png',
-    active: false,
-  },
-  {
-    name: 'GitHub',
-    src: '/images/github.png',
-    active: false,
-  },
-  {
-    name: 'System Settings',
-    src: '/images/system_settings.png',
-    active: true,
-  },
-]
+export interface AppConfig {
+  id: string;
+  name: string;
+  src: string;
+  component: string;
+  active: boolean;
+}
 
-export default function Dock() {
+interface DockProps {
+  apps: AppConfig[];
+  onOpenApp: (app: AppConfig) => void;
+}
+
+export default function Dock({ apps, onOpenApp }: DockProps) {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   const handleMouseMove = (event: MouseEvent): void => {
@@ -53,13 +33,14 @@ export default function Dock() {
       onMouseLeave={() => setMousePosition({ x: 0, y: 0 })}
     >
       <ul className="dock-inner">
-        {buttons.map(({ active, name, src }) => (
+        {apps.map((app) => (
           <DockItem
-            active={active}
-            key={name}
+            active={app.active}
+            key={app.id}
             mousePosition={mousePosition}
-            name={name}
-            src={src}
+            name={app.name}
+            src={app.src}
+            onClick={() => onOpenApp(app)}
           />
         ))}
       </ul>

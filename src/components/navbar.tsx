@@ -1,5 +1,11 @@
 import Image from 'next/image';
+
+import { Inter } from 'next/font/google';
 import Link from 'next/link';
+const inter = Inter({
+  weight: ['400', '700'],
+  subsets: ['latin'],
+});
 
 export default function Navbar() {
   const getDatetime = (): string => {
@@ -35,7 +41,10 @@ export default function Navbar() {
     <header className="fixed top-0 left-0 right-0 z-50 h-8 bg-white backdrop-blur-md select-none">
       <div className="flex h-full items-center justify-between px-4 text-sm">
         <div className="flex items-center gap-5">
-          <Link href="/">
+          <Link
+            href="/"
+            className="transition-all duration-200 hover:opacity-60"
+          >
             <Image
               alt="Apple Logo"
               src="/images/apple-logo.png"
@@ -45,13 +54,27 @@ export default function Navbar() {
           </Link>
 
           <nav className="hidden md:flex gap-5">
-            <span>Finder</span>
-            <span>File</span>
-            <span>Edit</span>
-            <span>View</span>
-            <span>Go</span>
-            <span>Window</span>
-            <span>Help</span>
+            <span className="transition-all duration-200 hover:opacity-60">
+              Finder
+            </span>
+            <span className="transition-all duration-200 hover:opacity-60">
+              File
+            </span>
+            <span className="transition-all duration-200 hover:opacity-60">
+              Edit
+            </span>
+            <span className="transition-all duration-200 hover:opacity-60">
+              View
+            </span>
+            <span className="transition-all duration-200 hover:opacity-60">
+              Go
+            </span>
+            <span className="transition-all duration-200 hover:opacity-60">
+              Window
+            </span>
+            <span className="transition-all duration-200 hover:opacity-60">
+              Help
+            </span>
           </nav>
         </div>
 

@@ -9,6 +9,7 @@ export interface DockItemProps {
   name: string;
   src: string;
   active: boolean;
+  onClick: () => void;
 }
 
 const maxBtnSize = 65;
@@ -20,6 +21,7 @@ export default function DockItem({
   mousePosition,
   name,
   src,
+  onClick,
 }: DockItemProps) {
   const [isActive, setIsActive] = useState(active || false);
   const dockItemRef = useRef<HTMLLIElement>(null);
@@ -75,12 +77,26 @@ export default function DockItem({
   const [clicked, setClicked] = useState(false);
 
   const handleClick = () => {
-    if (isActive) {
-      return setIsActive(false);
-    } else {
-      setClicked(true);
-      setTimeout(() => setClicked(false), 1500);
-      setTimeout(() => setIsActive(true), 1000);
+    switch (name) {
+      case 'LinkedIn':
+        window.open('https://www.linkedin.com/in/sofiahernandes', '_blank');
+        break;
+      case 'GitHub':
+        window.open('https://github.com/sofiahernandes', '_blank');
+        break;
+      case 'Instagram':
+        window.open('https://www.instagram.com/sofiabotechia', '_blank');
+        break;
+      default:
+        onClick();
+
+        if (isActive) {
+          return setIsActive(false);
+        } else {
+          setClicked(true);
+          setTimeout(() => setClicked(false), 1500);
+          setTimeout(() => setIsActive(true), 1000);
+        }
     }
   };
 
