@@ -204,38 +204,38 @@ export default function Window({
       onClick={onFocus}
     >
       <div
-        className="h-7 flex items-center px-2"
+        className="flex items-center px-2 h-7"
         onMouseDown={handleTitleBarMouseDown}
       >
-        <div className="window-controls flex items-center space-x-2">
+        <div className="window-controls flex items-center space-x-1 mt-1.5">
           <button
-            className="w-3 h-3 rounded-full bg-rose-400 hover:bg-red-600 flex items-center justify-center"
+            className="flex h-5 w-5 items-center justify-center rounded-full bg-rose-400 hover:bg-red-600 md:h-3 md:w-3"
             onClick={onClose}
           >
-            <X className="w-2 h-2 text-red-900 opacity-0 hover:opacity-100" />
+            <X className="h-4 w-4 text-red-900 md:h-2 md:w-2 md:opacity-60 md:hover:opacity-100" />
           </button>
           <button
-            className="w-3 h-3 rounded-full bg-yellow-300 hover:bg-yellow-600 flex items-center justify-center"
+            className="hidden h-3 w-3 items-center justify-center rounded-full bg-yellow-300 hover:bg-yellow-600 md:flex"
             onClick={handleMinimize}
           >
-            <Minus className="w-2 h-2 text-yellow-900 opacity-0 hover:opacity-100" />
+            <Minus className="h-2 w-2 text-yellow-900 opacity-60 hover:opacity-100" />
           </button>
           <button
-            className="w-3 h-3 rounded-full bg-green-400 hover:bg-green-600 flex items-center justify-center"
+            className="hidden h-3 w-3 items-center justify-center rounded-full bg-green-400 hover:bg-green-600 md:flex"
             onClick={toggleMaximize}
           >
-            <ArrowsMaximize className="w-2 h-2 text-green-900 opacity-0 hover:opacity-100" />
+            <ArrowsMaximize className="h-2 w-2 text-green-900 opacity-60 hover:opacity-100" />
           </button>
         </div>
 
         <div
-          className={`flex-1 text-center text-sm select-none -ml-11 ${textClass}`}
+          className={`flex-1 select-none text-center text-sm -ml-11 md:ml-0 ${textClass}`}
         >
           {window.title}
         </div>
       </div>
 
-      <div className={`${contentBgClass} h-[calc(100%-1.75rem)] overflow-auto`}>
+      <div className={`${contentBgClass} h-[calc(100%-1rem)] overflow-auto`}>
         {AppComponent ? (
           <AppComponent title={window.title} />
         ) : (
@@ -246,24 +246,24 @@ export default function Window({
       {!isMaximized && (
         <>
           <div
-            className="absolute bottom-0 left-0 w-4 h-4 cursor-sw-resize z-20"
+            className="absolute bottom-0 left-0 z-20 h-4 w-4 cursor-sw-resize"
             onMouseDown={(e) => handleResizeMouseDown(e, 'sw')}
           />
           <div
-            className="absolute bottom-0 right-0 w-4 h-4 cursor-se-resize z-20"
+            className="absolute bottom-0 right-0 z-20 h-4 w-4 cursor-se-resize"
             onMouseDown={(e) => handleResizeMouseDown(e, 'se')}
           />
 
           <div
-            className="absolute bottom-0 left-4 right-4 h-2 cursor-s-resize z-20"
+            className="absolute bottom-0 left-4 right-4 z-20 h-2 cursor-s-resize"
             onMouseDown={(e) => handleResizeMouseDown(e, 's')}
           />
           <div
-            className="absolute left-0 top-4 bottom-4 w-2 cursor-w-resize z-20"
+            className="absolute left-0 top-4 bottom-4 z-20 w-2 cursor-w-resize"
             onMouseDown={(e) => handleResizeMouseDown(e, 'w')}
           />
           <div
-            className="absolute right-0 top-4 bottom-4 w-2 cursor-e-resize z-20"
+            className="absolute right-0 top-4 bottom-4 z-20 w-2 cursor-e-resize"
             onMouseDown={(e) => handleResizeMouseDown(e, 'e')}
           />
         </>

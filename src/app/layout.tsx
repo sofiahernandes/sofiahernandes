@@ -6,8 +6,8 @@ import type React from "react";
 import { rethink } from "@/app/fonts";
 
 export const metadata: Metadata = {
-  title: "Sofia Botechia - Dev & Design",
-  description: "Front-end developer & UX Designer",
+  title: "Sofia Botechia",
+  description: "Software Developer & AI Engineer",
 };
 
 export default function RootLayout({
