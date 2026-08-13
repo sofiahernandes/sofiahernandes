@@ -1,19 +1,20 @@
 import { Card } from "@/components/ui/card";
 import Link from "next/link";
-import { techStackContent } from "@/lib/content/tech-stack";
+import { getSiteContent } from "@/lib/payload-content";
 
-export default function TechStack() {
+export default async function TechStack() {
+  const siteContent = await getSiteContent();
   return (
     <section className="grid grid-cols-2 lg:grid-cols-12 border-t px-6 gap-6 py-24">
       <div className="col-span-full lg:col-span-10 lg:col-start-2">
         <h2 className="text-2xl lg:text-4xl font-bold tracking-tighter mb-6 text-center lg:text-left">
-          {techStackContent.title}
+          {siteContent.techStackTitle}
         </h2>
 
         <div className="grid gap-6 lg:grid-cols-2">
-          {techStackContent.technologies.map((tech) => (
+          {siteContent.techStack.map((tech, index) => (
             <Card
-              key={tech.id}
+              key={`${tech.category}-${index}`}
               className={tech.highlight ? "bg-primary/70 p-6" : "bg-card p-6"}
             >
               <h3

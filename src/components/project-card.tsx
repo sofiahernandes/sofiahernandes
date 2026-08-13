@@ -200,7 +200,7 @@ export default function ProjectCard({
                   >
                     <img
                       src={image.src}
-                      alt={`${title} - ${index + 1}`}
+                      alt={image.alt}
                       className="h-full w-full object-cover"
                     />
                     <span

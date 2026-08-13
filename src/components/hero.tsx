@@ -1,14 +1,13 @@
 'use client';
 
 import { useState } from 'react';
-import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Github, Linkedin, Mail, Instagram } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { heroContent, type HeroSocialIcon } from '@/lib/content/hero';
 
-const iconMap: Record<HeroSocialIcon, JSX.Element> = {
+const iconMap: Record<HeroSocialIcon, React.ReactElement> = {
   github: <Github className="h-4 w-4" />,
   linkedin: <Linkedin className="h-4 w-4" />,
   instagram: <Instagram className="h-4 w-4" />,

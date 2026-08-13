@@ -2,10 +2,10 @@
 
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
-import Image, { type StaticImageData } from "next/image";
+import Image from "next/image";
 
 type ProjectGalleryProps = {
-  images: StaticImageData[];
+  images: Array<{ src: string; alt: string }>;
   title: string;
   showScrollHint?: boolean;
 };
@@ -46,14 +46,11 @@ export default function ProjectGallery({
               type="button"
               onClick={() => setActiveIndex(index)}
               className="relative w-full overflow-hidden rounded-lg"
-              style={{
-                aspectRatio: `${image.width} / ${image.height}`,
-              }}
               aria-label={`Open ${title} image ${index + 1}`}
             >
               <Image
-                src={image}
-                alt={`${title} image ${index + 1}`}
+                src={image.src}
+                alt={image.alt}
                 fill
                 sizes="(max-width: 768px) 80vw, 520px"
                 className="object-cover rounded-lg"
@@ -99,8 +96,8 @@ export default function ProjectGallery({
                   </button>
                   <div className="relative flex items-center justify-center h-[90vh] w-full">
                     <Image
-                      src={activeImage}
-                      alt={`${title} image ${activeIndex! + 1}`}
+                      src={activeImage.src}
+                      alt={activeImage.alt}
                       fill
                       sizes="100vw"
                       className="object-contain"
