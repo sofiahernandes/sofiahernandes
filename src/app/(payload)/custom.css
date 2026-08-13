@@ -1,0 +1,45 @@
+/* Payload custom styles */
+
+html body {
+  overflow: auto !important;
+}
+
+input, textarea {
+  border: 1px solid #00000040;
+  border-radius: 8px;
+  padding: 4px 8px;
+}
+
+button {
+  border-radius: 12px;
+}
+
+aside {
+  background-color: var(--theme-elevation-50);
+}
+
+.table {
+  width: 100%;
+}
+
+.no-results__actions {
+  color: #ffffff;
+}
+
+.nav-group__label {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.search-bar svg {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.template-minimal__wrap a {
+  width: 100%;
+}
+
+.collapsible__toggle span {
+  visibility: hidden;
+}
