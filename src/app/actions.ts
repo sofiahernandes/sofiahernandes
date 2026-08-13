@@ -6,7 +6,7 @@ const resend = new Resend("re_LR125HCV_Cjbv4WD6vpkuDyakiQiWcbG4"); // process.en
 
 export async function submitContactForm(formData: FormData) {
   const name = formData.get("name") as string;
-  const email = formData.get("email").trim().toLowerCase() as string;
+  const email = String(formData.get("email") || "").trim().toLowerCase();
   const message = formData.get("message") as string;
 
   try {

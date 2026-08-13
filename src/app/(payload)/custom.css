@@ -1,0 +1,22 @@
+/* Payload custom styles */
+
+input {
+  border-radius: 12px;
+}
+
+button {
+  border-radius: 12px;
+}
+
+.table {
+  width: 100%;
+}
+
+.field-label {
+  color: var(--theme-input-bg);
+}
+
+.icon .icon--search {
+  visibility: hidden;
+  opacity: 0;
+}
