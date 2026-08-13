@@ -19,6 +19,10 @@ const payloadSecret =
 export default buildConfig({
   admin: {
     user: Users.slug,
+    theme: 'light',
+    components: {
+      beforeLogin: ['@/components/admin/GoogleSignInButton#default'],
+    },
     importMap: {
       baseDir: path.resolve(dirname),
     },

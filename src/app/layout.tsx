@@ -1,6 +1,7 @@
 import { ThemeProvider } from "@/components/theme-provider";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
+import { headers } from "next/headers";
 import "@/styles/globals.css";
 import type React from "react";
 import { rethink } from "@/app/fonts";
@@ -10,11 +11,22 @@ export const metadata: Metadata = {
   description: "Software Developer & AI Engineer",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const headerList = await headers();
+  const pathname =
+    headerList.get("next-url") ||
+    headerList.get("x-next-url") ||
+    headerList.get("x-matched-path") ||
+    "";
+
+  if (pathname.startsWith("/admin")) {
+    return <>{children}</>;
+  }
+
   return (
     <html
       lang="en"

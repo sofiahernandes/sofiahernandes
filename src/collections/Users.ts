@@ -1,26 +1,27 @@
 import type { CollectionConfig } from 'payload'
-import { isAllowedEmail } from '@/lib/allowlist'
+import { googleAuthStrategy } from '@/lib/google-auth'
 
 export const Users: CollectionConfig = {
   slug: 'users',
   admin: {
     useAsTitle: 'email',
   },
-  auth: true,
+  auth: {
+    disableLocalStrategy: {
+      enableFields: true,
+      optionalPassword: true,
+    },
+    strategies: [googleAuthStrategy],
+  },
   fields: [
     {
       name: 'name',
       type: 'text',
     },
   ],
-  hooks: {
-    beforeLogin: [
-      ({ user }) => {
-        if (!isAllowedEmail(user.email)) {
-          throw new Error('Acesso proibido')
-        }
-      },
-    ],
+  access: {
+    admin: ({ req: { user } }) =>
+      Boolean(user && user.email?.toLowerCase() === 'sofiahernandes.dev@gmail.com'),
   },
   versions: false,
 }
