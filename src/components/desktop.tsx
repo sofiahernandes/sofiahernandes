@@ -137,10 +137,44 @@ const Desktop = () => {
     const winWidth = typeof window !== 'undefined' ? window.innerWidth : 1024;
     const winHeight = typeof window !== 'undefined' ? window.innerHeight : 768;
     const mobile = winWidth < 768;
-    const width = mobile ? winWidth * 0.9 : Math.min(520, Math.max(320, winWidth * 0.34));
-    const height = mobile ? winHeight * 0.7 : Math.min(360, Math.max(240, winHeight * 0.3));
-    const x = mobile ? Math.max(0, (winWidth - width) / 2) : Math.max(0, winWidth * 0.28);
-    const y = mobile ? Math.max(26, (winHeight - height) / 2) : Math.max(26, winHeight * 0.2);
+    const isAbout = title === 'About';
+    const chromeHeight = 28;
+    const sideMargin = mobile ? 8 : 16;
+    const topMargin = 40;
+    const bottomMargin = mobile ? 40 : 56;
+    const width = isAbout
+      ? (() => {
+          const aspectRatio = 2700 / 1539;
+          const maxWindowWidth = Math.max(320, winWidth - sideMargin * 2);
+          const maxWindowHeight = Math.max(260, winHeight - topMargin - bottomMargin);
+          const maxContentHeight = maxWindowHeight - chromeHeight;
+
+          return Math.min(maxWindowWidth, maxContentHeight * aspectRatio);
+        })()
+      : mobile
+        ? winWidth * 0.9
+        : Math.min(520, Math.max(320, winWidth * 0.34));
+    const height = isAbout
+      ? width / (2700 / 1539) + chromeHeight
+      : mobile
+        ? winHeight * 0.7
+        : Math.min(360, Math.max(240, winHeight * 0.3));
+    const x = isAbout
+      ? Math.min(
+          Math.max(sideMargin, (winWidth - width) / 2),
+          winWidth - width - sideMargin
+        )
+      : mobile
+        ? Math.max(0, (winWidth - width) / 2)
+        : Math.max(0, winWidth * 0.28);
+    const y = isAbout
+      ? Math.min(
+          Math.max(topMargin, (winHeight - height) / 2),
+          winHeight - height - bottomMargin
+        )
+      : mobile
+        ? Math.max(26, (winHeight - height) / 2)
+        : Math.max(26, winHeight * 0.2);
 
     openApp({
       id,

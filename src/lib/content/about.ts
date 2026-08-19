@@ -1,24 +1,5 @@
 export const aboutContent = {
   title: 'A Little About Me',
-  intro: {
-    indent: true,
-    leading: 'I’m Sofia — ',
-    emphasized: 'a Software Engineer passionate about AI Automations',
-    trailing:
-      ' based in São Paulo. Since 2022, I’ve evolved from building simple applications to high-performance digital products and autonomous systems.',
-  },
-  paragraphs: [
-    {
-      indent: true,
-      text: "Whether I'm developing full-stack applications or multi-agent workflows, my focus is always on scalability, experience/usability, and a result-focused approach.",
-    },
-    {
-      indent: true,
-      text: 'Beyond tech, I believe strongly in the importance of clear communication, public speaking skills, focus on organization and strategic planning.',
-    },
-  ],
-  closing: {
-    indent: true,
-    text: "I'm always open to collaboration opportunities and creative partnerships. If you have a project in mind, let’s talk!",
-  },
+  content:
+    'As a Software Developer, I build operationally critical web applications that support large brands through major rebranding and restructuring initiatives. My work focuses on developing systems designed to handle complex architectures and support dynamic management by non-technical teams through panels and other visual interfaces. While engineering these platforms, I turn corporate requirements into maintainable, production-ready systems that teams use to manage and showcase information daily. \n As part of these efforts, I have worked on large projects for Amazônia, Ativos (Banco do Brasil), Banco da Amazônia, Crown, GCB Investimentos, Totvs Techfin, and others; building and managing the digital aspects of their rebranding initiatives.Alongside building public brand platforms, my work as a AI Engineer involves designing and deploying internal AI automations and workflows tools to accelerate everyday processes across different sectors of my organization. To achieve this, I build secure and optimized automations (including fully managed plugins for internal tools, custom AI agents, and optimized API integrations) meant to eliminate manual friction and simplify complex tasks for non-technical teams. These integrations translate advanced AI capabilities into straightforward product interfaces, directly improving operational speed, consistency, and efficiency for internal users.',
 } as const;
