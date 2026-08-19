@@ -7,7 +7,7 @@
   }
 
   .underline-animate::after {
-    content: "";
+    content: '';
     position: absolute;
     left: 0;
     right: 0;
@@ -23,6 +23,22 @@
     transform: scaleX(1);
   }
 
+  .glass {
+    background: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5.2px);
+    -webkit-backdrop-filter: blur(5.2px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+
+  .glass-highlight {
+    background: rgba(255, 255, 255, 0.6);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5.2px);
+    -webkit-backdrop-filter: blur(5.2px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+
   .theme-swatch {
     @apply flex h-6 w-6 cursor-pointer items-center justify-center rounded-full border border-border p-0 shadow-sm transition-transform duration-200;
   }
@@ -35,7 +51,7 @@
     @apply ring-1 ring-primary ring-offset-2 ring-offset-background;
   }
 
-  .theme-swatch[data-selected="true"] {
+  .theme-swatch[data-selected='true'] {
     @apply ring-1 ring-primary ring-offset-2 ring-offset-background;
   }
 }

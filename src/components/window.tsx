@@ -172,7 +172,7 @@ export default function Window({
     } else {
       setPreMaximizeState({ position, size });
 
-      const availableHeight = window.innerHeight - 26;
+      const availableHeight = window.innerHeight - 40;
 
       setPosition({ x: 0, y: 26 });
       setSize({
@@ -207,7 +207,7 @@ export default function Window({
         className="flex items-center px-2 h-7"
         onMouseDown={handleTitleBarMouseDown}
       >
-        <div className="window-controls flex items-center space-x-1 mt-1.5">
+        <div className="window-controls flex items-center space-x-1">
           <button
             className="flex h-5 w-5 items-center justify-center rounded-full bg-rose-400 hover:bg-red-600 md:h-3 md:w-3"
             onClick={onClose}
@@ -235,7 +235,7 @@ export default function Window({
         </div>
       </div>
 
-      <div className={`${contentBgClass} h-[calc(100%-1rem)] overflow-auto`}>
+      <div className={`${contentBgClass} h-[calc(100%-1.75rem)] overflow-auto`}>
         {AppComponent ? (
           <AppComponent title={window.title} />
         ) : (
@@ -245,10 +245,6 @@ export default function Window({
 
       {!isMaximized && (
         <>
-          <div
-            className="absolute bottom-0 left-0 z-20 h-4 w-4 cursor-sw-resize"
-            onMouseDown={(e) => handleResizeMouseDown(e, 'sw')}
-          />
           <div
             className="absolute bottom-0 right-0 z-20 h-4 w-4 cursor-se-resize"
             onMouseDown={(e) => handleResizeMouseDown(e, 'se')}
