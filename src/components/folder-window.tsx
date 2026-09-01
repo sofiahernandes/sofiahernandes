@@ -1,13 +1,11 @@
 'use client';
 
 import Image from 'next/image';
-import { useMemo, useState } from 'react';
+import { useMemo, useState, useEffect } from 'react';
 import { aboutContent } from '@/lib/content/about';
 import BackIcon from '../../public/images/previous-icon.svg?component';
 import NextIcon from '../../public/images/next-icon.svg?component';
 import PlayIcon from '../../public/images/play-icon.svg?component';
-
-const paragraphIndent = '\u00a0\u00a0\u00a0\u00a0';
 
 const clothes = [
   { src: '/images/clothes/shirt-1.png', alt: 'Blue printed top', type: 'top' },
@@ -53,15 +51,16 @@ function AboutFolderWindow() {
     }));
   };
 
-  const toggleClothing = (item: (typeof clothes)[number]) => {
-    setSelectedClothes((current) => ({
-      ...current,
-      [item.type]: current[item.type] === item.src ? null : item.src,
-    }));
-  };
+  useEffect(() => {
+    document.querySelectorAll('span').forEach(span => {
+      if (span.textContent.includes('sofia.hernandes@macbook-pro ~')) {
+        span.style.color = 'blue';
+      }
+    });
+  }, []);
 
   return (
-    <section className="relative h-full overflow-hidden bg-[#f7f3f0] text-[#1d1715]">
+    <section className="relative h-full overflow-hidden bg-[#f7f3f0]">
       <div className="pointer-events-none absolute inset-y-0 left-0 w-12 md:w-20">
         <Image
           src="/images/border.png"
@@ -81,33 +80,31 @@ function AboutFolderWindow() {
         />
       </div>
 
-      <div className="mx-auto flex h-full max-w-full flex-col gap-6 px-14 py-4 md:px-24 lg:grid lg:grid-cols-[minmax(0,1.05fr)_minmax(420px,0.95fr)] lg:gap-10">
-        <article className="space-y-3 self-center">
+      <div className="mx-auto grid h-full max-w-full grid-cols-1 gap-6 overflow-y-auto overflow-x-hidden px-14 py-4 md:min-h-0 md:grid-cols-[minmax(0,1.05fr)_minmax(280px,0.95fr)] md:grid-rows-[minmax(0,1fr)] md:gap-8 md:overflow-hidden md:px-24 lg:grid-cols-[minmax(0,1.05fr)_minmax(420px,0.95fr)] lg:gap-10">
+        <article className="min-h-0 space-y-3 self-center md:flex md:flex-col md:overflow-hidden md:self-stretch">
           <h2 className="text-3xl font-extrabold text-balance">
             {aboutContent.title}
           </h2>
 
-          <div className="space-y-5 text-sm text-[#352924]">
+          <div className="min-h-0 space-y-5 overflow-y-auto text-sm text-[#352924] md:flex-1">
             <p key={aboutContent.content} className="text-pretty">
               {aboutContent.content}
             </p>
           </div>
         </article>
 
-        <aside className="relative h-full min-h-0 overflow-hidden rounded-sm bg-[#D8C8BF]">
+        <aside className="relative h-[min(70vh,34rem)] min-h-[22rem] overflow-hidden rounded-sm bg-[#D8C8BF] md:h-full md:min-h-0">
           <div className="absolute inset-0 flex items-end justify-center overflow-hidden">
-            <div className="relative h-full w-full">
-              <div className="absolute inset-x-0 bottom-0 h-[90%]">
-                <Image
-                  src="/images/character.png"
-                  alt="Illustrated character to dress up"
-                  fill
-                  className="object-contain object-bottom"
-                  priority
-                />
-              </div>
+            <div className="relative h-full aspect-[382/1300] origin-bottom scale-[0.95]">
+              <Image
+                src="/images/character.png"
+                alt="Illustrated character to dress up"
+                fill
+                className="object-contain"
+                priority
+              />
               {selectedClothes.top && (
-                <div className="absolute inset-x-0 top-[9.2rem] h-[25%]">
+                <div className="absolute inset-x-0 top-[18%] h-[28%]">
                   <Image
                     src={selectedClothes.top}
                     alt="Selected top clothing"
@@ -118,7 +115,7 @@ function AboutFolderWindow() {
                 </div>
               )}
               {selectedClothes.bottom && (
-                <div className="absolute inset-x-0 bottom-0 h-[51.6%] mr-[0.3rem]">
+                <div className="absolute inset-x-0 top-[44%] h-[59%] mr-1">
                   <Image
                     src={selectedClothes.bottom}
                     alt="Selected bottom clothing"
@@ -139,13 +136,13 @@ function AboutFolderWindow() {
                   <button
                     key={item.src}
                     type="button"
-                    onClick={() => toggleClothing(item)}
+                    onClick={() => setClothing(item.type, item.src)}
                     className={`group rounded-sm p-3 ${
                       selected ? 'glass-highlight' : 'glass'
                     }`}
                     aria-pressed={selected}
                   >
-                    <div className="relative mx-auto aspect-[4/5] w-full max-w-[9rem]">
+                    <div className="relative mx-auto aspect-[5/3] w-full max-w-[9rem]">
                       <Image
                         src={item.src}
                         alt={item.alt}
