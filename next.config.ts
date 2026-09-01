@@ -5,19 +5,24 @@ const nextConfig: NextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
+
   typescript: {
     ignoreBuildErrors: true,
   },
+
   images: {
     unoptimized: true,
   },
+
   webpack(config) {
+    // SVGs without ?component → URL
     config.module.rules.push({
       test: /\.svg$/i,
       resourceQuery: { not: [/component/] },
       type: 'asset/resource',
     })
 
+    // SVGs with ?component → React component
     config.module.rules.push({
       test: /\.svg$/i,
       issuer: /\.[jt]sx?$/,
@@ -26,6 +31,7 @@ const nextConfig: NextConfig = {
         {
           loader: '@svgr/webpack',
           options: {
+            svgo: true,
             svgoConfig: {
               plugins: [
                 {
@@ -45,29 +51,12 @@ const nextConfig: NextConfig = {
 
     return config
   },
+
   turbopack: {
     root: __dirname,
     rules: {
       '*.svg?component': {
-        loaders: [
-          {
-            loader: '@svgr/webpack',
-            options: {
-              svgoConfig: {
-                plugins: [
-                  {
-                    name: 'preset-default',
-                    params: {
-                      overrides: {
-                        removeViewBox: false,
-                      },
-                    },
-                  },
-                ],
-              },
-            },
-          },
-        ],
+        loaders: ['@svgr/webpack'],
         as: '*.js',
       },
     },
