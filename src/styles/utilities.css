@@ -39,6 +39,22 @@
     border: 1px solid rgba(255, 255, 255, 0.3);
   }
 
+  .scrollbar-none {
+    /* Enables scrolling */
+    overflow: auto;
+
+    /* Firefox */
+    scrollbar-width: none;
+
+    /* Internet Explorer 10+ and Edge Legacy */
+    -ms-overflow-style: none;
+  }
+
+  /* Chrome, Safari, Opera, and Newer Edge */
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+
   .theme-swatch {
     @apply flex h-6 w-6 cursor-pointer items-center justify-center rounded-full border border-border p-0 shadow-sm transition-transform duration-200;
   }

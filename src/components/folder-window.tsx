@@ -80,13 +80,13 @@ function AboutFolderWindow() {
         />
       </div>
 
-      <div className="mx-auto grid h-full max-w-full grid-cols-1 gap-6 overflow-y-auto overflow-x-hidden px-14 py-4 md:min-h-0 md:grid-cols-[minmax(0,1.05fr)_minmax(280px,0.95fr)] md:grid-rows-[minmax(0,1fr)] md:gap-8 md:overflow-hidden md:px-24 lg:grid-cols-[minmax(0,1.05fr)_minmax(420px,0.95fr)] lg:gap-10">
+      <div className="mx-auto grid h-full max-w-full grid-cols-1 gap-6 overflow-y-auto overflow-x-hidden px-14 pt-4 md:min-h-0 md:grid-cols-[minmax(0,1.05fr)_minmax(280px,0.95fr)] md:grid-rows-[minmax(0,1fr)] md:gap-8 md:overflow-hidden md:px-24 lg:grid-cols-[minmax(0,1.05fr)_minmax(420px,0.95fr)] lg:gap-10">
         <article className="min-h-0 space-y-3 self-center md:flex md:flex-col md:overflow-hidden md:self-stretch">
           <h2 className="text-3xl font-extrabold text-balance">
             {aboutContent.title}
           </h2>
 
-          <div className="min-h-0 space-y-5 overflow-y-auto text-sm text-[#352924] md:flex-1">
+          <div className="min-h-0 pb-4 space-y-5 overflow-y-auto text-sm text-[#352924] md:flex-1 scrollbar-none">
             <p key={aboutContent.content} className="text-pretty">
               {aboutContent.content}
             </p>
@@ -127,8 +127,8 @@ function AboutFolderWindow() {
             </div>
           </div>
 
-          <div className="absolute inset-x-4 bottom-4 z-10 grid gap-2">
-            <div className="grid grid-cols-3 gap-2">
+          <div className="absolute inset-x-2 bottom-2 z-10 grid gap-2">
+            <div className="grid grid-cols-3 gap-1.5">
               {visibleClothes.map((item) => {
                 const selected = selectedClothes[item.type] === item.src;
 
@@ -137,8 +137,8 @@ function AboutFolderWindow() {
                     key={item.src}
                     type="button"
                     onClick={() => setClothing(item.type, item.src)}
-                    className={`group rounded-sm p-3 ${
-                      selected ? 'glass-highlight' : 'glass'
+                    className={`group rounded-sm p-2 ${
+                      selected ? 'glass-highlight hover:glass' : 'glass hover:glass-highlight'
                     }`}
                     aria-pressed={selected}
                   >
@@ -160,10 +160,10 @@ function AboutFolderWindow() {
               <button
                 type="button"
                 onClick={() => cycleClothes(-1)}
-                className="flex justify-center items-center glass hover:glass-highlight rounded-sm px-4 py-3"
+                className="flex justify-center items-center glass hover:glass-highlight rounded-sm px-4 py-2"
                 aria-label="Show previous clothes"
               >
-                <BackIcon className="h-6 w-6" />
+                <BackIcon className="h-4 w-4" />
               </button>
               <button
                 type="button"
@@ -173,17 +173,17 @@ function AboutFolderWindow() {
                     visibleClothes[1].src,
                   )
                 }
-                className="flex justify-center items-center glass hover:glass-highlight rounded-sm px-4 py-3"
+                className="flex justify-center items-center glass hover:glass-highlight rounded-sm px-4 py-2"
               >
-                <PlayIcon className="h-6 w-6" />
+                <PlayIcon className="h-4 w-4" />
               </button>
               <button
                 type="button"
                 onClick={() => cycleClothes(1)}
-                className="flex justify-center items-center glass hover:glass-highlight rounded-sm px-4 py-3"
+                className="flex justify-center items-center glass hover:glass-highlight rounded-sm px-4 py-2"
                 aria-label="Show next clothes"
               >
-                <NextIcon className="h-6 w-6" />
+                <NextIcon className="h-4 w-4" />
               </button>
             </div>
           </div>
