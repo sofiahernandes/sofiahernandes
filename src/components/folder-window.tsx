@@ -80,20 +80,20 @@ function AboutFolderWindow() {
         />
       </div>
 
-      <div className="mx-auto grid h-full max-w-full grid-cols-1 gap-6 overflow-y-auto overflow-x-hidden px-14 pt-4 md:min-h-0 md:grid-cols-[minmax(0,1.05fr)_minmax(280px,0.95fr)] md:grid-rows-[minmax(0,1fr)] md:gap-8 md:overflow-hidden md:px-24 lg:grid-cols-[minmax(0,1.05fr)_minmax(420px,0.95fr)] lg:gap-10">
+      <div className="mx-auto grid h-full max-w-full grid-cols-1 gap-6 overflow-y-auto overflow-x-hidden px-14 py-4 md:min-h-0 md:grid-cols-[minmax(0,1.05fr)_minmax(280px,0.95fr)] md:grid-rows-[minmax(0,1fr)] md:gap-8 md:overflow-hidden md:px-24 lg:grid-cols-[minmax(0,1.05fr)_minmax(420px,0.95fr)] lg:gap-10">
         <article className="min-h-0 space-y-3 self-center md:flex md:flex-col md:overflow-hidden md:self-stretch">
           <h2 className="text-3xl font-extrabold text-balance">
             {aboutContent.title}
           </h2>
 
-          <div className="min-h-0 pb-4 space-y-5 overflow-y-auto text-sm text-[#352924] md:flex-1 scrollbar-none">
+          <div className="min-h-0 space-y-5 overflow-y-auto text-sm text-[#352924] md:flex-1 scrollbar-none">
             <p key={aboutContent.content} className="text-pretty">
               {aboutContent.content}
             </p>
           </div>
         </article>
 
-        <aside className="relative h-[min(70vh,34rem)] min-h-[22rem] overflow-hidden rounded-sm bg-[#D8C8BF] md:h-full md:min-h-0">
+        <aside className="relative h-full overflow-hidden rounded-sm bg-[#D8C8BF]">
           <div className="absolute inset-0 flex items-end justify-center overflow-hidden">
             <div className="relative h-full aspect-[382/1300] origin-bottom scale-[0.95]">
               <Image
