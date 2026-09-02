@@ -255,10 +255,6 @@ export default function Window({
             onMouseDown={(e) => handleResizeMouseDown(e, 's')}
           />
           <div
-            className="absolute left-0 top-4 bottom-4 z-20 w-2 cursor-w-resize"
-            onMouseDown={(e) => handleResizeMouseDown(e, 'w')}
-          />
-          <div
             className="absolute right-0 top-4 bottom-4 z-20 w-2 cursor-e-resize"
             onMouseDown={(e) => handleResizeMouseDown(e, 'e')}
           />

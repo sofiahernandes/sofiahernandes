@@ -4,6 +4,8 @@ import type React from 'react';
 
 import { useState, useRef, useEffect } from 'react';
 
+const prompt = 'sofia.hernandes@macbook-pro ~ $';
+
 export default function Terminal() {
   const [input, setInput] = useState('');
   const [history, setHistory] = useState<string[]>([]);
@@ -81,7 +83,7 @@ export default function Terminal() {
 
     setHistory((prev) => [
       ...prev,
-      `sofia.hernandes@macbook-pro ~ $ ${cmd}`,
+      `${prompt} ${cmd}`,
       '',
     ]);
 
@@ -144,12 +146,19 @@ export default function Terminal() {
     >
       {history.map((line, index) => (
         <div key={index} className="teminal-line whitespace-pre-wrap">
-          {line}
+          {line.startsWith(prompt) ? (
+            <>
+              <span className="text-gray-300">{prompt}</span>
+              {line.slice(prompt.length)}
+            </>
+          ) : (
+            line
+          )}
         </div>
       ))}
 
       <div className="flex">
-        <span className="mr-2">sofia.hernandes@macbook-pro ~ $</span>
+        <span className="mr-2 text-gray-300">{prompt}</span>
         <input
           ref={inputRef}
           type="text"

@@ -1,23 +1,25 @@
 'use client';
 
 import Image from 'next/image';
-import { useMemo, useState, useEffect } from 'react';
+import { useMemo, useState } from 'react';
 import { aboutContent } from '@/lib/content/about';
 import BackIcon from '../../public/images/previous-icon.svg?component';
 import NextIcon from '../../public/images/next-icon.svg?component';
 import PlayIcon from '../../public/images/play-icon.svg?component';
 
 const clothes = [
-  { src: '/images/clothes/shirt-1.png', alt: 'Blue printed top', type: 'top' },
+  { src: '/images/clothes/shirt-1.png', alt: 'Blue printed top', type: 'top', width: 251, height: 362 },
   {
     src: '/images/clothes/shirt-2.png',
     alt: 'Brown one-shoulder top',
     type: 'top',
+    width: 201,
+    height: 334,
   },
-  { src: '/images/clothes/shirt-3.png', alt: 'Brazil jersey top', type: 'top' },
-  { src: '/images/clothes/pants-2.png', alt: 'Blue jeans', type: 'bottom' },
-  { src: '/images/clothes/pants-3.png', alt: 'Dark skirt', type: 'bottom' },
-] as const;
+  { src: '/images/clothes/shirt-3.png', alt: 'Brazil jersey top', type: 'top', width: 320, height: 374 },
+  { src: '/images/clothes/pants-1.png', alt: 'Blue jeans', type: 'bottom', width: 325, height: 839 },
+  { src: '/images/clothes/pants-2.png', alt: 'Dark skirt', type: 'bottom', width: 491, height: 864 },
+];
 
 type ClothingType = (typeof clothes)[number]['type'];
 type SelectedClothes = Record<ClothingType, string | null>;
@@ -51,13 +53,10 @@ function AboutFolderWindow() {
     }));
   };
 
-  useEffect(() => {
-    document.querySelectorAll('span').forEach(span => {
-      if (span.textContent.includes('sofia.hernandes@macbook-pro ~')) {
-        span.style.color = 'blue';
-      }
-    });
-  }, []);
+  const selectedTop = clothes.find((item) => item.src === selectedClothes.top);
+  const selectedBottom = clothes.find(
+    (item) => item.src === selectedClothes.bottom,
+  );
 
   return (
     <section className="relative h-full overflow-hidden bg-[#f7f3f0]">
@@ -80,16 +79,20 @@ function AboutFolderWindow() {
         />
       </div>
 
-      <div className="mx-auto grid h-full max-w-full grid-cols-1 gap-6 overflow-y-auto overflow-x-hidden px-14 py-4 md:min-h-0 md:grid-cols-[minmax(0,1.05fr)_minmax(280px,0.95fr)] md:grid-rows-[minmax(0,1fr)] md:gap-8 md:overflow-hidden md:px-24 lg:grid-cols-[minmax(0,1.05fr)_minmax(420px,0.95fr)] lg:gap-10">
+      <div className="mx-auto grid h-full max-w-full grid-cols-1 gap-6 overflow-y-auto overflow-x-hidden px-14 py-4 md:min-h-0 md:grid-cols-[minmax(0,1.2fr)_minmax(280px,1.2fr)] md:grid-rows-[minmax(0,1fr)] md:gap-8 md:overflow-hidden md:px-24">
         <article className="min-h-0 space-y-3 self-center md:flex md:flex-col md:overflow-hidden md:self-stretch">
           <h2 className="text-3xl font-extrabold text-balance">
             {aboutContent.title}
           </h2>
 
-          <div className="min-h-0 space-y-5 overflow-y-auto text-sm text-[#352924] md:flex-1 scrollbar-none">
-            <p key={aboutContent.content} className="text-pretty">
-              {aboutContent.content}
-            </p>
+          <div className="relative min-h-0 md:flex-1">
+            <div className="scrollbar-none h-full overflow-y-auto text-sm text-[#352924]">
+              <p key={aboutContent.content} className="text-pretty my-3">
+                {aboutContent.content}
+              </p>
+            </div>
+            <div className="pointer-events-none absolute inset-x-0 top-0 h-5 bg-gradient-to-b from-[#f7f3f0] to-transparent" />
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-5 bg-gradient-to-t from-[#f7f3f0] to-transparent" />
           </div>
         </article>
 
@@ -103,24 +106,25 @@ function AboutFolderWindow() {
                 className="object-contain"
                 priority
               />
-              {selectedClothes.top && (
-                <div className="absolute inset-x-0 top-[18%] h-[28%]">
+              {selectedTop && (
+                <div className="absolute left-1/2 top-[18%] h-[28%] -translate-x-1/2">
                   <Image
-                    src={selectedClothes.top}
+                    src={selectedTop.src}
                     alt="Selected top clothing"
-                    fill
-                    sizes="(max-width: 1024px) 80vw, 40vw"
-                    className="object-contain object-bottom"
+                    width={selectedTop.width}
+                    height={selectedTop.height}
+                    className="h-full w-auto max-w-none object-contain"
                   />
                 </div>
               )}
-              {selectedClothes.bottom && (
-                <div className="absolute inset-x-0 top-[44%] h-[59%] mr-1">
+              {selectedBottom && (
+                <div className="absolute left-1/2 top-[44%] h-[59%] -translate-x-1/2">
                   <Image
-                    src={selectedClothes.bottom}
+                    src={selectedBottom.src}
                     alt="Selected bottom clothing"
-                    fill
-                    className="object-contain object-bottom"
+                    width={selectedBottom.width}
+                    height={selectedBottom.height}
+                    className="h-full w-auto max-w-none object-contain mr-[0.3rem]"
                   />
                 </div>
               )}
@@ -137,12 +141,12 @@ function AboutFolderWindow() {
                     key={item.src}
                     type="button"
                     onClick={() => setClothing(item.type, item.src)}
-                    className={`group rounded-sm p-2 ${
+                    className={`group rounded-sm p-1 ${
                       selected ? 'glass-highlight hover:glass' : 'glass hover:glass-highlight'
                     }`}
                     aria-pressed={selected}
                   >
-                    <div className="relative mx-auto aspect-[5/3] w-full max-w-[9rem]">
+                    <div className="relative mx-auto aspect-[5/3.5] w-full max-w-[9rem]">
                       <Image
                         src={item.src}
                         alt={item.alt}

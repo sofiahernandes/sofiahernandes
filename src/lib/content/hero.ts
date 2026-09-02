@@ -24,6 +24,6 @@ export const heroContent = {
       icon: "mail",
     },
   ],
-} as const;
+};
 
 export type HeroSocialIcon = (typeof heroContent.socialLinks)[number]["icon"];

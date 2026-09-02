@@ -57,7 +57,7 @@ const Desktop = () => {
     { id: 'folder-2', title: 'About', x: '4rem', y: '35%' },
     { id: 'folder-3', title: 'Work', x: '1rem', y: '50%' },
     { id: 'folder-4', title: 'Contact', x: '4rem', y: '65%' },
-  ] as const;
+  ];
 
   const [openWindows, setOpenWindows] = useState<AppWindow[]>([]);
   const [activeWindowId, setActiveWindowId] = useState<string | null>(null);
