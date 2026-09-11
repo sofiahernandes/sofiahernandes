@@ -60,7 +60,7 @@ function AboutFolderWindow() {
 
   return (
     <section className="relative h-full overflow-hidden bg-[#f7f3f0]">
-      <div className="pointer-events-none absolute inset-y-0 left-0 w-12 md:w-20">
+      <div className="desktop-folder-border pointer-events-none absolute inset-y-0 left-0 w-12 md:w-20">
         <Image
           src="/images/border.png"
           alt=""
@@ -69,7 +69,7 @@ function AboutFolderWindow() {
           className="object-cover object-left"
         />
       </div>
-      <div className="pointer-events-none absolute inset-y-0 right-0 w-12 md:w-20">
+      <div className="desktop-folder-border pointer-events-none absolute inset-y-0 right-0 w-12 md:w-20">
         <Image
           src="/images/border.png"
           alt=""
@@ -79,20 +79,20 @@ function AboutFolderWindow() {
         />
       </div>
 
-      <div className="mx-auto grid h-full max-w-full grid-cols-1 gap-6 overflow-y-auto overflow-x-hidden px-14 py-4 md:min-h-0 md:grid-cols-[minmax(0,1.2fr)_minmax(280px,1.2fr)] md:grid-rows-[minmax(0,1fr)] md:gap-8 md:overflow-hidden md:px-24">
-        <article className="min-h-0 space-y-3 self-center md:flex md:flex-col md:overflow-hidden md:self-stretch">
+      <div className="desktop-folder-layout mx-auto grid h-full max-w-full grid-cols-1 gap-6 overflow-y-auto overflow-x-hidden px-14 py-4 md:min-h-0 md:grid-cols-[minmax(0,1.3fr)_minmax(300px,1.3fr)] md:grid-rows-[minmax(0,1.3fr)] md:gap-8 md:overflow-hidden md:px-24">
+        <article className="desktop-folder-article min-h-0 space-y-3 self-center md:flex md:flex-col md:overflow-hidden md:self-stretch">
           <h2 className="text-3xl font-extrabold text-balance">
             {aboutContent.title}
           </h2>
 
-          <div className="relative min-h-0 md:flex-1">
+          <div className="desktop-folder-scroll-region relative min-h-0 md:flex-1">
             <div className="scrollbar-none h-full overflow-y-auto text-sm text-[#352924]">
-              <p key={aboutContent.content} className="text-pretty my-3">
+              <p key={aboutContent.content} className="text-pretty my-4">
                 {aboutContent.content}
               </p>
             </div>
-            <div className="pointer-events-none absolute inset-x-0 top-0 h-5 bg-gradient-to-b from-[#f7f3f0] to-transparent" />
-            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-5 bg-gradient-to-t from-[#f7f3f0] to-transparent" />
+            <div className="pointer-events-none absolute inset-x-0 top-0 h-4 bg-gradient-to-b from-[#f7f3f0] to-transparent" />
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-4 bg-gradient-to-t from-[#f7f3f0] to-transparent" />
           </div>
         </article>
 
@@ -131,8 +131,8 @@ function AboutFolderWindow() {
             </div>
           </div>
 
-          <div className="absolute inset-x-2 bottom-2 z-10 grid gap-2">
-            <div className="grid grid-cols-3 gap-1.5">
+          <div className="absolute inset-x-1 md:inset-x-2 bottom-2 z-10 grid gap-1 md:gap-2">
+            <div className="grid grid-cols-3 gap-1 md:gap-1.5">
               {visibleClothes.map((item) => {
                 const selected = selectedClothes[item.type] === item.src;
 
@@ -141,7 +141,7 @@ function AboutFolderWindow() {
                     key={item.src}
                     type="button"
                     onClick={() => setClothing(item.type, item.src)}
-                    className={`group rounded-sm p-1 ${
+                    className={`group rounded-sm md:p-1 ${
                       selected ? 'glass-highlight hover:glass' : 'glass hover:glass-highlight'
                     }`}
                     aria-pressed={selected}
@@ -160,7 +160,7 @@ function AboutFolderWindow() {
               })}
             </div>
 
-            <div className="grid grid-cols-3 gap-2">
+            <div className="grid grid-cols-3 gap-1 md:gap-2">
               <button
                 type="button"
                 onClick={() => cycleClothes(-1)}

@@ -7,6 +7,10 @@ import { X, Minus, ArrowRightIcon as ArrowsMaximize } from 'lucide-react';
 import Terminal from '@/components/terminal';
 import HomeImage from '@/components/home-image';
 import FolderWindow from '@/components/folder-window';
+import {
+  getDesktopPointerPosition,
+  getDesktopViewport,
+} from '@/lib/desktop-viewport';
 
 export interface AppWindow {
   id: string;
@@ -59,16 +63,20 @@ export default function Window({
   const AppComponent = componentMap[window.component];
 
   useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
+    const handlePointerMove = (e: PointerEvent) => {
       if (isDragging) {
+        e.preventDefault();
+        const pointer = getDesktopPointerPosition(e);
+
         setPosition({
-          x: e.clientX - dragOffset.x,
-          y: e.clientY - dragOffset.y,
+          x: pointer.x - dragOffset.x,
+          y: pointer.y - dragOffset.y,
         });
       } else if (isResizing && resizeDirection) {
         e.preventDefault();
-        const dx = e.clientX - resizeStartPos.x;
-        const dy = e.clientY - resizeStartPos.y;
+        const pointer = getDesktopPointerPosition(e);
+        const dx = pointer.x - resizeStartPos.x;
+        const dy = pointer.y - resizeStartPos.y;
 
         let newWidth = resizeStartSize.width;
         let newHeight = resizeStartSize.height;
@@ -106,20 +114,24 @@ export default function Window({
       }
     };
 
-    const handleMouseUp = () => {
+    const handlePointerUp = () => {
       setIsDragging(false);
       setIsResizing(false);
       setResizeDirection(null);
     };
 
     if (isDragging || isResizing) {
-      document.addEventListener('mousemove', handleMouseMove);
-      document.addEventListener('mouseup', handleMouseUp);
+      document.addEventListener('pointermove', handlePointerMove, {
+        passive: false,
+      });
+      document.addEventListener('pointerup', handlePointerUp);
+      document.addEventListener('pointercancel', handlePointerUp);
     }
 
     return () => {
-      document.removeEventListener('mousemove', handleMouseMove);
-      document.removeEventListener('mouseup', handleMouseUp);
+      document.removeEventListener('pointermove', handlePointerMove);
+      document.removeEventListener('pointerup', handlePointerUp);
+      document.removeEventListener('pointercancel', handlePointerUp);
     };
   }, [
     isDragging,
@@ -131,7 +143,7 @@ export default function Window({
     position,
   ]);
 
-  const handleTitleBarMouseDown = (e: React.MouseEvent) => {
+  const handleTitleBarPointerDown = (e: React.PointerEvent) => {
     if (isMaximized) return;
 
     if ((e.target as HTMLElement).closest('.window-controls')) {
@@ -139,23 +151,30 @@ export default function Window({
     }
 
     setIsDragging(true);
+    const pointer = getDesktopPointerPosition(e.nativeEvent);
+
     setDragOffset({
-      x: e.clientX - position.x,
-      y: e.clientY - position.y,
+      x: pointer.x - position.x,
+      y: pointer.y - position.y,
     });
 
     onFocus();
   };
 
-  const handleResizeMouseDown = (e: React.MouseEvent, direction: string) => {
+  const handleResizePointerDown = (
+    e: React.PointerEvent,
+    direction: string
+  ) => {
     e.preventDefault();
     e.stopPropagation();
+
+    const pointer = getDesktopPointerPosition(e.nativeEvent);
 
     setIsResizing(true);
     setResizeDirection(direction);
     setResizeStartPos({
-      x: e.clientX,
-      y: e.clientY,
+      x: pointer.x,
+      y: pointer.y,
     });
     setResizeStartSize({
       width: size.width,
@@ -172,11 +191,12 @@ export default function Window({
     } else {
       setPreMaximizeState({ position, size });
 
-      const availableHeight = window.innerHeight - 40;
+      const { width, height } = getDesktopViewport();
+      const availableHeight = height - 40;
 
       setPosition({ x: 0, y: 26 });
       setSize({
-        width: window.innerWidth,
+        width,
         height: availableHeight - 70,
       });
     }
@@ -204,32 +224,32 @@ export default function Window({
       onClick={onFocus}
     >
       <div
-        className="flex items-center px-2 h-7"
-        onMouseDown={handleTitleBarMouseDown}
+        className="flex touch-none items-center px-2 h-7"
+        onPointerDown={handleTitleBarPointerDown}
       >
         <div className="window-controls flex items-center space-x-1">
           <button
-            className="flex h-5 w-5 items-center justify-center rounded-full bg-rose-400 hover:bg-red-600 md:h-3 md:w-3"
+            className="desktop-window-control desktop-window-close-control flex h-3 w-10 items-center justify-center rounded-full bg-rose-400 hover:bg-red-600 md:w-3"
             onClick={onClose}
           >
-            <X className="h-4 w-4 text-red-900 md:h-2 md:w-2 md:opacity-60 md:hover:opacity-100" />
+            <X className="desktop-window-control-icon desktop-window-close-icon h-2 w-2 text-red-900 md:opacity-60 md:hover:opacity-100" />
           </button>
           <button
-            className="hidden h-3 w-3 items-center justify-center rounded-full bg-yellow-300 hover:bg-yellow-600 md:flex"
+            className="desktop-window-control hidden h-3 w-3 items-center justify-center rounded-full bg-yellow-300 hover:bg-yellow-600 md:flex"
             onClick={handleMinimize}
           >
-            <Minus className="h-2 w-2 text-yellow-900 opacity-60 hover:opacity-100" />
+            <Minus className="desktop-window-control-icon h-2 w-2 text-yellow-900 opacity-60 hover:opacity-100" />
           </button>
           <button
-            className="hidden h-3 w-3 items-center justify-center rounded-full bg-green-400 hover:bg-green-600 md:flex"
+            className="desktop-window-control hidden h-3 w-3 items-center justify-center rounded-full bg-green-400 hover:bg-green-600 md:flex"
             onClick={toggleMaximize}
           >
-            <ArrowsMaximize className="h-2 w-2 text-green-900 opacity-60 hover:opacity-100" />
+            <ArrowsMaximize className="desktop-window-control-icon h-2 w-2 text-green-900 opacity-60 hover:opacity-100" />
           </button>
         </div>
 
         <div
-          className={`flex-1 select-none text-center text-sm -ml-11 md:ml-0 ${textClass}`}
+          className={`desktop-window-title flex-1 select-none text-center text-sm pr-14 ${textClass}`}
         >
           {window.title}
         </div>
@@ -246,17 +266,17 @@ export default function Window({
       {!isMaximized && (
         <>
           <div
-            className="absolute bottom-0 right-0 z-20 h-4 w-4 cursor-se-resize"
-            onMouseDown={(e) => handleResizeMouseDown(e, 'se')}
+            className="absolute bottom-0 right-0 z-20 h-4 w-4 cursor-se-resize touch-none"
+            onPointerDown={(e) => handleResizePointerDown(e, 'se')}
           />
 
           <div
-            className="absolute bottom-0 left-4 right-4 z-20 h-2 cursor-s-resize"
-            onMouseDown={(e) => handleResizeMouseDown(e, 's')}
+            className="absolute bottom-0 left-4 right-4 z-20 h-2 cursor-s-resize touch-none"
+            onPointerDown={(e) => handleResizePointerDown(e, 's')}
           />
           <div
-            className="absolute right-0 top-4 bottom-4 z-20 w-2 cursor-e-resize"
-            onMouseDown={(e) => handleResizeMouseDown(e, 'e')}
+            className="absolute right-0 top-4 bottom-4 z-20 w-2 cursor-e-resize touch-none"
+            onPointerDown={(e) => handleResizePointerDown(e, 'e')}
           />
         </>
       )}
