@@ -47,7 +47,7 @@ export default function Navbar() {
             />
           </Link>
 
-          <nav className="hidden md:flex gap-5">
+          <nav className="desktop-menu hidden md:flex gap-5">
             <span className="transition-all duration-200 hover:opacity-60">
               Finder
             </span>

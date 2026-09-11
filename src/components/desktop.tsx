@@ -5,6 +5,10 @@ import Image from 'next/image';
 import Window, { AppWindow } from '@/components/window';
 import Navbar from './navbar';
 import Dock, { AppConfig } from './dock';
+import {
+  getDesktopViewport,
+  isCompactDesktopViewport,
+} from '@/lib/desktop-viewport';
 
 const appsConfig: AppConfig[] = [
   {
@@ -97,10 +101,8 @@ const Desktop = () => {
       return;
     }
 
-    const winWidth = typeof window !== 'undefined' ? window.innerWidth : 1024;
-    const winHeight = typeof window !== 'undefined' ? window.innerHeight : 768;
-
-    const isMobile = winWidth < 768;
+    const { width: winWidth, height: winHeight } = getDesktopViewport();
+    const isMobile = isCompactDesktopViewport();
 
     const width = isMobile ? winWidth * 0.9 : 700;
     const height = isMobile ? winHeight * 0.7 : 500;
@@ -134,9 +136,8 @@ const Desktop = () => {
       return;
     }
 
-    const winWidth = typeof window !== 'undefined' ? window.innerWidth : 1024;
-    const winHeight = typeof window !== 'undefined' ? window.innerHeight : 768;
-    const mobile = winWidth < 768;
+    const { width: winWidth, height: winHeight } = getDesktopViewport();
+    const mobile = isCompactDesktopViewport();
     const isAbout = title === 'About';
     const chromeHeight = 28;
     const sideMargin = mobile ? 8 : 16;
@@ -194,9 +195,8 @@ const Desktop = () => {
     if (openedHomeRef.current) return;
     openedHomeRef.current = true;
 
-    const winWidth = typeof window !== 'undefined' ? window.innerWidth : 1024;
-    const winHeight = typeof window !== 'undefined' ? window.innerHeight : 768;
-    const mobile = winWidth < 768;
+    const { width: winWidth, height: winHeight } = getDesktopViewport();
+    const mobile = isCompactDesktopViewport();
     const aspectRatio = 2700 / 1539;
     const chromeHeight = 28;
     const maxWindowWidth = Math.max(320, winWidth - (mobile ? 16 : 200));
@@ -222,45 +222,20 @@ const Desktop = () => {
   }, []);
 
   return (
-    <main className="relative h-screen overflow-hidden bg-gray-100">
-      <div className="relative">
+    <main className="desktop-orientation-frame desktop-viewport bg-gray-100">
+      <div className="desktop-stage relative">
         <div
           ref={desktopRef}
-          className={`relative h-screen w-screen overflow-hidden`}
+          className="relative h-full w-full overflow-hidden"
           onClick={handleDesktopClick}
         >
           <Navbar />
 
-          <div className="absolute inset-x-0 bottom-32 px-4 md:hidden">
-            <div className="grid w-fit grid-cols-2 gap-x-12 gap-y-5 mx-auto">
-              {folderIcons.map((folder, index) => (
-                <button
-                  key={folder.id}
-                  className={`pointer-events-auto flex flex-col items-center gap-1 text-xs text-black drop-shadow-sm ${index === 1 ? 'translate-x-4' : index === 0 ? 'translate-x-4' : '-translate-x-4'}`}
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handleOpenFolder(folder.title, folder.id);
-                  }}
-                >
-                  <Image
-                    src="/images/folder.png"
-                    alt={folder.title}
-                    width={76}
-                    height={76}
-                    className="select-none"
-                    priority
-                  />
-                  <span>{folder.title}</span>
-                </button>
-              ))}
-            </div>
-          </div>
-
-          <div className="absolute inset-0 hidden pt-8 pb-20 md:block">
+          <div className="desktop-folders-grid absolute inset-0 hidden pt-8 pb-20 md:block">
             {folderIcons.map((folder) => (
               <button
                 key={folder.id}
-                className="absolute pointer-events-auto flex flex-col items-center gap-1 text-xs text-black drop-shadow-sm transition-all duration-300 hover:scale-105"
+                className="desktop-folder-icon absolute pointer-events-auto flex flex-col items-center gap-1 text-xs text-black drop-shadow-sm transition-all duration-300 hover:scale-105"
                 style={{ left: folder.x, top: folder.y }}
                 onClick={(e) => {
                   e.stopPropagation();
@@ -270,12 +245,12 @@ const Desktop = () => {
                 <Image
                   src="/images/folder.png"
                   alt={folder.title}
-                  width={76}
-                  height={76}
-                  className="select-none"
+                  width={72}
+                  height={72}
+                  className="desktop-folder-icon-image select-none"
                   priority
                 />
-                <span>{folder.title}</span>
+                <span className="desktop-folder-icon-label">{folder.title}</span>
               </button>
             ))}
           </div>
