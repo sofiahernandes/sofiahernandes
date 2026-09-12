@@ -8,8 +8,9 @@ import Terminal from '@/components/terminal';
 import HomeImage from '@/components/home-image';
 import FolderWindow from '@/components/folder-window';
 import {
+  clampDesktopWindow,
   getDesktopPointerPosition,
-  getDesktopViewport,
+  getDesktopWorkArea,
 } from '@/lib/desktop-viewport';
 
 export interface AppWindow {
@@ -68,10 +69,15 @@ export default function Window({
         e.preventDefault();
         const pointer = getDesktopPointerPosition(e);
 
-        setPosition({
-          x: pointer.x - dragOffset.x,
-          y: pointer.y - dragOffset.y,
-        });
+        const nextWindow = clampDesktopWindow(
+          {
+            x: pointer.x - dragOffset.x,
+            y: pointer.y - dragOffset.y,
+          },
+          size
+        );
+
+        setPosition(nextWindow.position);
       } else if (isResizing && resizeDirection) {
         e.preventDefault();
         const pointer = getDesktopPointerPosition(e);
@@ -107,10 +113,13 @@ export default function Window({
           }
         }
 
-        setSize({ width: newWidth, height: newHeight });
-        if (resizeDirection.includes('w') || resizeDirection.includes('n')) {
-          setPosition({ x: newX, y: newY });
-        }
+        const nextWindow = clampDesktopWindow(
+          { x: newX, y: newY },
+          { width: newWidth, height: newHeight }
+        );
+
+        setSize(nextWindow.size);
+        setPosition(nextWindow.position);
       }
     };
 
@@ -191,13 +200,12 @@ export default function Window({
     } else {
       setPreMaximizeState({ position, size });
 
-      const { width, height } = getDesktopViewport();
-      const availableHeight = height - 40;
+      const workArea = getDesktopWorkArea();
 
-      setPosition({ x: 0, y: 26 });
+      setPosition({ x: workArea.left, y: workArea.top });
       setSize({
-        width,
-        height: availableHeight - 70,
+        width: workArea.width,
+        height: workArea.height,
       });
     }
 

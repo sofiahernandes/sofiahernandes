@@ -87,7 +87,10 @@ function AboutFolderWindow() {
 
           <div className="desktop-folder-scroll-region relative min-h-0 md:flex-1">
             <div className="scrollbar-none h-full overflow-y-auto text-sm text-[#352924]">
-              <p key={aboutContent.content} className="text-pretty my-4">
+              <p
+                key={aboutContent.content}
+                className="my-4 whitespace-pre-line text-pretty"
+              >
                 {aboutContent.content}
               </p>
             </div>
@@ -98,12 +101,12 @@ function AboutFolderWindow() {
 
         <aside className="relative h-full overflow-hidden rounded-sm bg-[#D8C8BF]">
           <div className="absolute inset-0 flex items-end justify-center overflow-hidden">
-            <div className="relative h-full aspect-[382/1300] origin-bottom scale-[0.95]">
+            <div className="relative h-full aspect-[382/1300] origin-bottom scale-[0.95] select-none pointer-events-none">
               <Image
                 src="/images/character.png"
                 alt="Illustrated character to dress up"
                 fill
-                className="object-contain"
+                className="object-contain select-none pointer-events-none"
                 priority
               />
               {selectedTop && (
@@ -113,7 +116,7 @@ function AboutFolderWindow() {
                     alt="Selected top clothing"
                     width={selectedTop.width}
                     height={selectedTop.height}
-                    className="h-full w-auto max-w-none object-contain"
+                    className="h-full w-auto max-w-none object-contain select-none pointer-events-none"
                   />
                 </div>
               )}
@@ -124,7 +127,7 @@ function AboutFolderWindow() {
                     alt="Selected bottom clothing"
                     width={selectedBottom.width}
                     height={selectedBottom.height}
-                    className="h-full w-auto max-w-none object-contain mr-[0.3rem]"
+                    className="h-full w-auto max-w-none object-contain mr-[0.3rem] select-none pointer-events-none"
                   />
                 </div>
               )}
@@ -142,7 +145,7 @@ function AboutFolderWindow() {
                     type="button"
                     onClick={() => setClothing(item.type, item.src)}
                     className={`group rounded-sm md:p-1 ${
-                      selected ? 'glass-highlight hover:glass' : 'glass hover:glass-highlight'
+                      selected ? 'glass-highlight' : 'glass hover:glass-highlight'
                     }`}
                     aria-pressed={selected}
                   >

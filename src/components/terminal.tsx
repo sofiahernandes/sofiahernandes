@@ -15,26 +15,11 @@ export default function Terminal() {
   const terminalRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const handleClick = () => {
-      inputRef.current?.focus();
-    };
-
-    const terminal = terminalRef.current;
-    if (terminal) {
-      terminal.addEventListener('click', handleClick);
-
-      setHistory([
-        'Last login: ' + new Date().toLocaleString(),
-        "Type 'help' to see available commands",
-        '',
-      ]);
-    }
-
-    return () => {
-      if (terminal) {
-        terminal.removeEventListener('click', handleClick);
-      }
-    };
+    setHistory([
+      'Last login: ' + new Date().toLocaleString(),
+      "Type 'help' to see available commands",
+      '',
+    ]);
   }, []);
 
   useEffect(() => {
@@ -131,21 +116,19 @@ export default function Terminal() {
     }
   };
 
-  const terminalLines = document.querySelectorAll('.teminal-line');
-
-  terminalLines.forEach((el) => {
-    if (el.clientHeight === 0) {
-      el.classList.add('line-divisor');
-    }
-  });
+  const focusInput = () => {
+    inputRef.current?.focus({ preventScroll: true });
+  };
 
   return (
     <div
       ref={terminalRef}
       className="h-full bg-black text-white p-2 font-mono text-sm overflow-auto"
+      onClick={focusInput}
+      onPointerDown={focusInput}
     >
       {history.map((line, index) => (
-        <div key={index} className="teminal-line whitespace-pre-wrap">
+        <div key={index} className="terminal-line">
           {line.startsWith(prompt) ? (
             <>
               <span className="text-gray-300">{prompt}</span>
@@ -165,7 +148,7 @@ export default function Terminal() {
           value={input}
           onChange={handleInputChange}
           onKeyDown={handleKeyDown}
-          className="flex-1 bg-transparent outline-none text-white"
+          className="min-w-0 flex-1 bg-transparent text-base text-white outline-none sm:text-sm"
           autoFocus
         />
       </div>
