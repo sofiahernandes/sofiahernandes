@@ -78,6 +78,9 @@ export default function DockItem({
 
   const handleClick = () => {
     switch (name) {
+      case 'Email':
+        window.open('mailto:sofiahernandes.dev@gmail.com', '_blank');
+        break;
       case 'LinkedIn':
         window.open('https://www.linkedin.com/in/sofiahernandes', '_blank');
         break;

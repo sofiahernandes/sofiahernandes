@@ -6,7 +6,9 @@ import Window, { AppWindow } from '@/components/window';
 import Navbar from './navbar';
 import Dock, { AppConfig } from './dock';
 import {
+  clampDesktopWindow,
   getDesktopViewport,
+  getDesktopWorkArea,
   isCompactDesktopViewport,
 } from '@/lib/desktop-viewport';
 
@@ -104,18 +106,24 @@ const Desktop = () => {
     const { width: winWidth, height: winHeight } = getDesktopViewport();
     const isMobile = isCompactDesktopViewport();
 
-    const width = isMobile ? winWidth * 0.9 : 700;
-    const height = isMobile ? winHeight * 0.7 : 500;
+    const workArea = getDesktopWorkArea();
+    const width = Math.min(isMobile ? winWidth * 0.9 : 700, workArea.width);
+    const height = Math.min(isMobile ? winHeight * 0.7 : 500, workArea.height);
 
-    const x = Math.max(0, (winWidth - width) / 2);
-    const y = Math.max(26, (winHeight - height) / 2);
+    const { position, size } = clampDesktopWindow(
+      {
+        x: (winWidth - width) / 2,
+        y: (winHeight - height) / 2,
+      },
+      { width, height }
+    );
 
     const newApp: AppWindow = {
       id: appConfig.id,
       title: appConfig.name,
       component: appConfig.component,
-      position: { x, y },
-      size: { width, height },
+      position,
+      size,
       innerWidth: winWidth,
       innerHeight: winHeight,
     };
@@ -139,53 +147,48 @@ const Desktop = () => {
     const { width: winWidth, height: winHeight } = getDesktopViewport();
     const mobile = isCompactDesktopViewport();
     const isAbout = title === 'About';
+    const workArea = getDesktopWorkArea();
     const chromeHeight = 28;
     const sideMargin = mobile ? 8 : 16;
-    const topMargin = 40;
-    const bottomMargin = mobile ? 40 : 56;
     const width = isAbout
       ? (() => {
-          const aspectRatio = 2700 / 1539;
-          const maxWindowWidth = Math.max(320, winWidth - sideMargin * 2);
-          const maxWindowHeight = Math.max(260, winHeight - topMargin - bottomMargin);
-          const maxContentHeight = maxWindowHeight - chromeHeight;
+          const maxWindowWidth = Math.min(
+            workArea.width,
+            Math.max(320, winWidth - sideMargin * 2)
+          );
 
-          return Math.min(maxWindowWidth, maxContentHeight * aspectRatio);
+          return Math.min(maxWindowWidth, Math.max(520, winWidth * 0.72));
         })()
       : mobile
         ? winWidth * 0.9
-        : Math.min(520, Math.max(320, winWidth * 0.34));
+        : Math.min(520, Math.max(320, winWidth * 0.34), workArea.width);
     const height = isAbout
-      ? width / (2700 / 1539) + chromeHeight
+      ? Math.min(workArea.height, width / (2700 / 1540) + chromeHeight)
       : mobile
         ? winHeight * 0.7
-        : Math.min(360, Math.max(240, winHeight * 0.3));
-    const x = isAbout
-      ? Math.min(
-          Math.max(sideMargin, (winWidth - width) / 2),
-          winWidth - width - sideMargin
-        )
-      : mobile
-        ? Math.max(0, (winWidth - width) / 2)
-        : Math.max(0, winWidth * 0.28);
-    const y = isAbout
-      ? Math.min(
-          Math.max(topMargin, (winHeight - height) / 2),
-          winHeight - height - bottomMargin
-        )
-      : mobile
-        ? Math.max(26, (winHeight - height) / 2)
-        : Math.max(26, winHeight * 0.2);
+        : Math.min(360, Math.max(240, winHeight * 0.3), workArea.height);
+    const { position, size } = clampDesktopWindow(
+      {
+        x: isAbout
+          ? (winWidth - width) / 2
+          : mobile
+            ? (winWidth - width) / 2
+            : winWidth * 0.28,
+        y: isAbout
+          ? (winHeight - height) / 2
+          : mobile
+            ? (winHeight - height) / 2
+            : winHeight * 0.2,
+      },
+      { width, height }
+    );
 
     openApp({
       id,
       title,
       component: 'Folder',
-      position: {
-        x,
-        y,
-      },
-      size: { width, height },
+      position,
+      size,
       innerWidth: winWidth,
       innerHeight: winHeight,
     });
@@ -197,25 +200,29 @@ const Desktop = () => {
 
     const { width: winWidth, height: winHeight } = getDesktopViewport();
     const mobile = isCompactDesktopViewport();
+    const workArea = getDesktopWorkArea();
     const aspectRatio = 2700 / 1539;
     const chromeHeight = 28;
     const maxWindowWidth = Math.max(320, winWidth - (mobile ? 16 : 200));
-    const maxWindowHeight = Math.max(260, winHeight - (mobile ? 120 : 200));
+    const maxWindowHeight = Math.max(220, workArea.height);
     const maxContentWidth = maxWindowWidth;
     const maxContentHeight = maxWindowHeight - chromeHeight;
     const width = Math.min(maxContentWidth, maxContentHeight * aspectRatio);
     const height = width / aspectRatio + chromeHeight;
-    const x = mobile
-      ? Math.max(8, (winWidth - width) / 2)
-      : Math.max(16, winWidth - width - 24);
-    const y = mobile ? 40 : Math.max(40, (winHeight - height) / 2.5);
+    const { position, size } = clampDesktopWindow(
+      {
+        x: mobile ? (winWidth - width) / 2 : winWidth - width - 24,
+        y: mobile ? 40 : (winHeight - height) / 2.5,
+      },
+      { width, height }
+    );
 
     openApp({
       id: 'home',
       title: 'Home',
       component: 'Home',
-      position: { x, y },
-      size: { width, height },
+      position,
+      size,
       innerWidth: winWidth,
       innerHeight: winHeight,
     });
