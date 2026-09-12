@@ -79,8 +79,8 @@
     }
 
     .desktop-viewport .desktop-window-close-control {
-      width: 2rem;
-      height: 0.75rem;
+      width: 2.5rem;
+      height: 1.25rem;
     }
 
     .desktop-viewport .desktop-window-control-icon {
@@ -91,8 +91,8 @@
 
     .desktop-viewport .desktop-window-close-icon {
       width: 1rem;
-      height: 0.5rem;
-      opacity: 0.6;
+      height: 1rem;
+      opacity: 1;
     }
 
     .desktop-viewport .desktop-window-control-icon:hover {
