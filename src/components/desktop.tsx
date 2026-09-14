@@ -57,6 +57,25 @@ const appsConfig: AppConfig[] = [
   },
 ];
 
+const preloadedWindowImages = [
+  '/images/wallpaper.png',
+  '/images/home.png',
+  '/images/folder.png',
+  '/images/finder.png',
+  '/images/terminal.png',
+  '/images/email.png',
+  '/images/linkedin.png',
+  '/images/instagram.png',
+  '/images/github.png',
+  '/images/border.png',
+  '/images/character.png',
+  '/images/clothes/shirt-1.png',
+  '/images/clothes/shirt-2.png',
+  '/images/clothes/shirt-3.png',
+  '/images/clothes/pants-1.png',
+  '/images/clothes/pants-2.png',
+];
+
 const Desktop = () => {
   const folderIcons = [
     { id: 'folder-1', title: 'Projects', x: '1rem', y: '20%' },
@@ -70,8 +89,32 @@ const Desktop = () => {
   const [showLaunchpad, setShowLaunchpad] = useState(false);
   const [showControlCenter, setShowControlCenter] = useState(false);
   const [showSpotlight, setShowSpotlight] = useState(false);
+  const [desktopChromeReady, setDesktopChromeReady] = useState(false);
   const desktopRef = useRef<HTMLDivElement>(null);
   const openedHomeRef = useRef(false);
+  const preloadPromiseRef = useRef<Promise<void> | null>(null);
+  const windowAssetsReadyRef = useRef(false);
+
+  const preloadWindowAssets = () => {
+    if (windowAssetsReadyRef.current) return Promise.resolve();
+    if (preloadPromiseRef.current) return preloadPromiseRef.current;
+
+    preloadPromiseRef.current = Promise.all(
+      preloadedWindowImages.map(
+        (src) =>
+          new Promise<void>((resolve) => {
+            const image = new globalThis.Image();
+            image.onload = () => resolve();
+            image.onerror = () => resolve();
+            image.src = src;
+          })
+      )
+    ).then(() => {
+      windowAssetsReadyRef.current = true;
+    });
+
+    return preloadPromiseRef.current;
+  };
 
   const closeWindow = (id: string) => {
     setOpenWindows((prev) => prev.filter((window) => window.id !== id));
@@ -137,11 +180,15 @@ const Desktop = () => {
     if (showLaunchpad) setShowLaunchpad(false);
   };
 
-  const handleOpenFolder = (title: string, id: string) => {
+  const handleOpenFolder = async (title: string, id: string) => {
     const existingWindow = openWindows.find((w) => w.id === id);
     if (existingWindow) {
       setActiveWindowId(id);
       return;
+    }
+
+    if (title === 'About') {
+      await preloadWindowAssets();
     }
 
     const { width: winWidth, height: winHeight } = getDesktopViewport();
@@ -195,6 +242,10 @@ const Desktop = () => {
   };
 
   useEffect(() => {
+    preloadWindowAssets().then(() => {
+      window.setTimeout(() => setDesktopChromeReady(true), 120);
+    });
+
     if (openedHomeRef.current) return;
     openedHomeRef.current = true;
 
@@ -238,7 +289,38 @@ const Desktop = () => {
         >
           <Navbar />
 
-          <div className="desktop-folders-grid absolute inset-0 hidden pt-8 pb-20 md:block">
+          <Image
+            src="/images/wallpaper.png"
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className="pointer-events-none absolute inset-0 object-cover select-none"
+            aria-hidden="true"
+          />
+
+          <div
+            className="pointer-events-none absolute -left-[9999px] top-0 h-px w-px overflow-hidden opacity-0"
+            aria-hidden="true"
+          >
+            {preloadedWindowImages.map((src) => (
+              <Image
+                key={src}
+                src={src}
+                alt=""
+                width={32}
+                height={32}
+                priority
+                sizes="32px"
+              />
+            ))}
+          </div>
+
+          <div
+            className={`desktop-folders-grid desktop-chrome-reveal desktop-folders-reveal absolute inset-0 hidden pt-8 pb-20 md:block ${
+              desktopChromeReady ? 'is-ready' : ''
+            }`}
+          >
             {folderIcons.map((folder) => (
               <button
                 key={folder.id}
@@ -254,7 +336,7 @@ const Desktop = () => {
                   alt={folder.title}
                   width={72}
                   height={72}
-                  className="desktop-folder-icon-image select-none"
+                  className="desktop-folder-icon-image select-none shadow-black shadow-sm"
                   priority
                 />
                 <span className="desktop-folder-icon-label">{folder.title}</span>
@@ -275,7 +357,13 @@ const Desktop = () => {
             ))}
           </div>
 
-          <Dock apps={appsConfig} onOpenApp={handleLaunchApp} />
+          <Dock
+            apps={appsConfig}
+            onOpenApp={handleLaunchApp}
+            className={`desktop-chrome-reveal desktop-dock-reveal ${
+              desktopChromeReady ? 'is-ready' : ''
+            }`}
+          />
         </div>
       </div>
     </main>
