@@ -67,6 +67,7 @@ function AboutFolderWindow() {
           fill
           sizes="80px"
           className="object-cover object-left"
+          priority
         />
       </div>
       <div className="desktop-folder-border pointer-events-none absolute inset-y-0 right-0 w-12 md:w-20">
@@ -76,6 +77,7 @@ function AboutFolderWindow() {
           fill
           sizes="80px"
           className="object-cover object-right"
+          priority
         />
       </div>
 
@@ -117,6 +119,7 @@ function AboutFolderWindow() {
                     width={selectedTop.width}
                     height={selectedTop.height}
                     className="h-full w-auto max-w-none object-contain select-none pointer-events-none"
+                    priority
                   />
                 </div>
               )}
@@ -128,6 +131,7 @@ function AboutFolderWindow() {
                     width={selectedBottom.width}
                     height={selectedBottom.height}
                     className="h-full w-auto max-w-none object-contain mr-[0.3rem] select-none pointer-events-none"
+                    priority
                   />
                 </div>
               )}
@@ -156,6 +160,7 @@ function AboutFolderWindow() {
                         fill
                         sizes="(max-width: 1024px) 25vw, 12vw"
                         className="object-contain"
+                        priority
                       />
                     </div>
                   </button>

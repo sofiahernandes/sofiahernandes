@@ -77,12 +77,12 @@ export default function Terminal() {
         setHistory((prev) => [
           ...prev,
           'Available commands:',
-          '  help       Show this help message',
-          '  clear      Clear the terminal',
-          '  ls         List apps in the portfolio',
-          '  about      A little about me',
-          '  skills     My primary skills',
-          '  contact    Contact information',
+          '  help:       Show this help message',
+          '  clear:      Clear the terminal',
+          '  ls:         List apps in the portfolio',
+          '  about:      A little about me',
+          '  skills:     My primary skills',
+          '  contact:    Contact information',
           '',
         ]);
         break;
@@ -145,6 +145,8 @@ export default function Terminal() {
         <input
           ref={inputRef}
           type="text"
+          inputMode="text"
+          enterKeyHint="done"
           value={input}
           onChange={handleInputChange}
           onKeyDown={handleKeyDown}

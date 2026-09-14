@@ -222,7 +222,7 @@ export default function Window({
   return (
     <div
       ref={windowRef}
-      className={`absolute rounded-md overflow-hidden drop-shadow-black/20 drop-shadow-md transition-shadow ${contentBgClass} ${isActive ? 'drop-shadow-lg z-10' : 'drop-shadow-md z-0'}`}
+      className={`desktop-window-shell absolute rounded-md overflow-hidden drop-shadow-black/20 drop-shadow-md transition-shadow ${contentBgClass} ${isActive ? 'drop-shadow-lg z-10' : 'drop-shadow-md z-0'}`}
       style={{
         left: `${position.x}px`,
         top: `${position.y}px`,
