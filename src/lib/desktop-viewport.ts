@@ -1,5 +1,6 @@
 const ROTATED_BREAKPOINT = 1024;
 const MENU_BAR_HEIGHT = 32;
+const MENU_BAR_GAP = 10;
 const DOCK_CLEARANCE = 88;
 
 export function isRotatedDesktopViewport() {
@@ -41,7 +42,7 @@ export function isCompactDesktopViewport() {
 
 export function getDesktopWorkArea() {
   const viewport = getDesktopViewport();
-  const top = MENU_BAR_HEIGHT;
+  const top = MENU_BAR_HEIGHT + MENU_BAR_GAP;
   const bottom = DOCK_CLEARANCE;
 
   return {

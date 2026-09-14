@@ -14,6 +14,51 @@
     overflow: hidden;
   }
 
+  .desktop-window-shell {
+    animation: desktop-window-open 140ms ease-out both;
+    transform-origin: center;
+    will-change: opacity, transform;
+  }
+
+  .desktop-chrome-reveal {
+    opacity: 0;
+    transform: translateY(0.35rem) scale(0.99);
+    transition:
+      opacity 180ms ease,
+      transform 180ms ease;
+    will-change: opacity, transform;
+  }
+
+  .desktop-chrome-reveal.is-ready {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  .desktop-folders-reveal {
+    transition-delay: 40ms;
+  }
+
+  .desktop-dock-reveal {
+    transition-delay: 120ms;
+    transform: translateX(-50%) translateY(0.35rem) scale(0.99);
+  }
+
+  .desktop-dock-reveal.is-ready {
+    transform: translateX(-50%) translateY(0) scale(1);
+  }
+
+  @keyframes desktop-window-open {
+    from {
+      opacity: 0;
+      transform: scale(0.985);
+    }
+
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
   @media (max-width: 1023px) and (orientation: portrait) {
     .desktop-orientation-frame {
       position: fixed;
@@ -50,6 +95,10 @@
       max-width: 100%;
       overflow-wrap: anywhere;
       text-align: center;
+      background: #fff;
+      background-opacity: 0.5;
+      border-radius: 0.25rem;
+      padding: 0.125rem 0.3rem;
     }
 
     .desktop-viewport .desktop-folder-icon:nth-child(1) {

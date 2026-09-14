@@ -14,9 +14,10 @@ export interface AppConfig {
 interface DockProps {
   apps: AppConfig[];
   onOpenApp: (app: AppConfig) => void;
+  className?: string;
 }
 
-export default function Dock({ apps, onOpenApp }: DockProps) {
+export default function Dock({ apps, onOpenApp, className = '' }: DockProps) {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   const handleMouseMove = (event: MouseEvent): void => {
@@ -28,7 +29,7 @@ export default function Dock({ apps, onOpenApp }: DockProps) {
 
   return (
     <nav
-      className="dock"
+      className={`dock ${className}`}
       onMouseMove={handleMouseMove}
       onMouseLeave={() => setMousePosition({ x: 0, y: 0 })}
     >
