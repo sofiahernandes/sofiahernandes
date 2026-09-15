@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import favicon from '../app/favicon.svg';
 
 export default function Navbar() {
   const getDatetime = (): string => {
@@ -40,10 +41,12 @@ export default function Navbar() {
             className="transition-all duration-200 hover:opacity-60"
           >
             <Image
-              alt="Apple Logo"
-              src="/images/apple-logo.png"
-              width={12}
-              height={12}
+              src={favicon}
+              alt=""
+              width={20}
+              height={20}
+              className="h-5 w-5"
+              priority
             />
           </Link>
 

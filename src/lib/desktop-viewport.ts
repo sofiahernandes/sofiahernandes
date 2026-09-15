@@ -56,11 +56,16 @@ export function getDesktopWorkArea() {
 
 export function clampDesktopWindow(
   position: { x: number; y: number },
-  size: { width: number; height: number }
+  size: { width: number; height: number },
+  options: { avoidDock?: boolean } = {}
 ) {
   const workArea = getDesktopWorkArea();
+  const viewport = getDesktopViewport();
+  const avoidDock = options.avoidDock ?? true;
+  const bottom = avoidDock ? workArea.bottom : viewport.height;
+  const availableHeight = Math.max(200, bottom - workArea.top);
   const width = Math.min(size.width, workArea.width);
-  const height = Math.min(size.height, workArea.height);
+  const height = Math.min(size.height, availableHeight);
 
   return {
     position: {
@@ -70,7 +75,7 @@ export function clampDesktopWindow(
       ),
       y: Math.min(
         Math.max(workArea.top, position.y),
-        Math.max(workArea.top, workArea.bottom - height)
+        Math.max(workArea.top, bottom - height)
       ),
     },
     size: { width, height },
