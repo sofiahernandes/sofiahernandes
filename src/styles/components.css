@@ -14,6 +14,126 @@
     overflow: hidden;
   }
 
+  .desktop-scene {
+    opacity: 0;
+    transform: scale(0.995);
+    transition:
+      opacity 220ms ease,
+      transform 220ms ease;
+  }
+
+  .desktop-scene.is-ready {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .desktop-boot-screen {
+    position: absolute;
+    inset: 0;
+    z-index: 999;
+    overflow: hidden;
+    background: #dfe7f2;
+    opacity: 1;
+    pointer-events: none;
+    transition:
+      opacity 220ms ease,
+      visibility 220ms ease;
+  }
+
+  .desktop-boot-screen.is-ready {
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  /*
+  .desktop-boot-wallpaper {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.24),
+        rgba(255, 255, 255, 0)
+      ),
+      url('/images/wallpaper.png') center / cover;
+    backdrop-filter: blur(0.5rem);
+  }
+  */
+
+  .desktop-boot-folders span,
+  .desktop-boot-dock span {
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.3),
+      rgba(255, 255, 255, 0.6),
+      rgba(255, 255, 255, 0.3)
+    );
+    background-size: 220% 100%;
+    animation: desktop-skeleton-shimmer 1.2s ease-in-out infinite;
+  }
+
+  .desktop-boot-folders {
+    position: absolute;
+    inset: 0;
+  }
+
+  .desktop-boot-folders span {
+    position: absolute;
+    width: 4.5rem;
+    height: 5.25rem;
+    border-radius: 0.55rem;
+  }
+
+  .desktop-boot-folders span:nth-child(1) {
+    left: 1rem;
+    top: 20%;
+  }
+
+  .desktop-boot-folders span:nth-child(2) {
+    left: 4rem;
+    top: 35%;
+  }
+
+  .desktop-boot-folders span:nth-child(3) {
+    left: 1rem;
+    top: 50%;
+  }
+
+  .desktop-boot-folders span:nth-child(4) {
+    left: 4rem;
+    top: 65%;
+  }
+
+  .desktop-boot-dock {
+    position: absolute;
+    left: 50%;
+    bottom: 1rem;
+    display: flex;
+    gap: 0.35rem;
+    align-items: flex-end;
+    padding: 0.45rem;
+    border-radius: 0.65rem;
+    background: rgba(83, 83, 83, 0.18);
+    transform: translateX(-50%);
+    backdrop-filter: blur(1rem);
+  }
+
+  .desktop-boot-dock span {
+    width: 2.7rem;
+    height: 2.7rem;
+    border-radius: 0.6rem;
+  }
+
+  @keyframes desktop-skeleton-shimmer {
+    0% {
+      background-position: 120% 0;
+    }
+
+    100% {
+      background-position: -120% 0;
+    }
+  }
+
   .desktop-window-shell {
     animation: desktop-window-open 140ms ease-out both;
     transform-origin: center;
@@ -45,6 +165,18 @@
 
   .desktop-dock-reveal.is-ready {
     transform: translateX(-50%) translateY(0) scale(1);
+  }
+
+  .desktop-viewport .desktop-folder-icon-label {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+    text-align: center;
+    background: rgba(83, 83, 83, 0.2);
+    backdrop-filter: blur(3rem);
+    -webkit-backdrop-filter: blur(3rem);
+    border: 0.06rem solid rgba(255, 255, 255, 0.3);
+    border-radius: 0.25rem;
+    padding: 0 0.3rem;
   }
 
   @keyframes desktop-window-open {
@@ -91,30 +223,41 @@
       height: auto;
     }
 
-    .desktop-viewport .desktop-folder-icon-label {
-      max-width: 100%;
-      overflow-wrap: anywhere;
-      text-align: center;
-      background: #fff;
-      background-opacity: 0.5;
-      border-radius: 0.25rem;
-      padding: 0.125rem 0.3rem;
-    }
-
     .desktop-viewport .desktop-folder-icon:nth-child(1) {
       top: 12% !important;
+    }
+
+    .desktop-boot-folders span {
+      width: clamp(3rem, 10vmin, 4.5rem);
+      height: calc(clamp(3rem, 10vmin, 4.5rem) + 1rem);
+    }
+
+    .desktop-boot-folders span:nth-child(1) {
+      top: 12%;
     }
 
     .desktop-viewport .desktop-folder-icon:nth-child(2) {
       top: 34% !important;
     }
 
+    .desktop-boot-folders span:nth-child(2) {
+      top: 34%;
+    }
+
     .desktop-viewport .desktop-folder-icon:nth-child(3) {
       top: 56% !important;
     }
 
+    .desktop-boot-folders span:nth-child(3) {
+      top: 56%;
+    }
+
     .desktop-viewport .desktop-folder-icon:nth-child(4) {
       top: 78% !important;
+    }
+
+    .desktop-boot-folders span:nth-child(4) {
+      top: 78%;
     }
 
     .desktop-viewport .desktop-menu {
@@ -129,7 +272,7 @@
 
     .desktop-viewport .desktop-window-close-control {
       width: 2.5rem;
-      height: 1.25rem;
+      height: 0.75rem;
     }
 
     .desktop-viewport .desktop-window-control-icon {
@@ -140,7 +283,7 @@
 
     .desktop-viewport .desktop-window-close-icon {
       width: 1rem;
-      height: 1rem;
+      height: 0.5rem;
       opacity: 1;
     }
 
@@ -271,7 +414,7 @@
     background: rgba(83, 83, 83, 0.2);
     backdrop-filter: blur(3rem);
     -webkit-backdrop-filter: blur(3rem);
-    border: 0.06rem solid rgba(255, 255, 255, 0.2);
+    border: 0.06rem solid rgba(255, 255, 255, 0.3);
     list-style-type: none;
   }
 

@@ -60,6 +60,7 @@ const appsConfig: AppConfig[] = [
 const preloadedWindowImages = [
   '/images/wallpaper.png',
   '/images/home.png',
+  '/images/garden.png',
   '/images/folder.png',
   '/images/finder.png',
   '/images/terminal.png',
@@ -90,6 +91,7 @@ const Desktop = () => {
   const [showControlCenter, setShowControlCenter] = useState(false);
   const [showSpotlight, setShowSpotlight] = useState(false);
   const [desktopChromeReady, setDesktopChromeReady] = useState(false);
+  const [desktopBootReady, setDesktopBootReady] = useState(false);
   const desktopRef = useRef<HTMLDivElement>(null);
   const openedHomeRef = useRef(false);
   const preloadPromiseRef = useRef<Promise<void> | null>(null);
@@ -242,46 +244,112 @@ const Desktop = () => {
   };
 
   useEffect(() => {
-    preloadWindowAssets().then(() => {
-      window.setTimeout(() => setDesktopChromeReady(true), 120);
-    });
+    let cancelled = false;
 
-    if (openedHomeRef.current) return;
-    openedHomeRef.current = true;
+    const bootDesktop = async () => {
+      await Promise.all([
+        preloadWindowAssets(),
+        new Promise<void>((resolve) => window.setTimeout(resolve, 650)),
+      ]);
 
-    const { width: winWidth, height: winHeight } = getDesktopViewport();
-    const mobile = isCompactDesktopViewport();
-    const workArea = getDesktopWorkArea();
-    const aspectRatio = 2700 / 1539;
-    const chromeHeight = 28;
-    const maxWindowWidth = Math.max(320, winWidth - (mobile ? 16 : 200));
-    const maxWindowHeight = Math.max(220, workArea.height);
-    const maxContentWidth = maxWindowWidth;
-    const maxContentHeight = maxWindowHeight - chromeHeight;
-    const width = Math.min(maxContentWidth, maxContentHeight * aspectRatio);
-    const height = width / aspectRatio + chromeHeight;
-    const { position, size } = clampDesktopWindow(
-      {
-        x: mobile ? (winWidth - width) / 2 : winWidth - width - 24,
-        y: mobile ? 40 : (winHeight - height) / 2.5,
-      },
-      { width, height }
-    );
+      if (cancelled || openedHomeRef.current) return;
+      openedHomeRef.current = true;
 
-    openApp({
-      id: 'home',
-      title: 'Home',
-      component: 'Home',
-      position,
-      size,
-      innerWidth: winWidth,
-      innerHeight: winHeight,
-    });
+      const { width: winWidth, height: winHeight } = getDesktopViewport();
+      const mobile = isCompactDesktopViewport();
+      const workArea = getDesktopWorkArea();
+      const aspectRatio = 2700 / 1539;
+      const gardenAspectRatio = 1175 / 940;
+      const chromeHeight = 28;
+      const maxWindowWidth = Math.max(320, winWidth - (mobile ? 16 : 200));
+      const maxWindowHeight = Math.max(220, workArea.height);
+      const maxContentWidth = maxWindowWidth;
+      const maxContentHeight = maxWindowHeight - chromeHeight;
+      const homeMaxContentHeight =
+        maxContentHeight * (mobile ? 0.9 : 0.95);
+      const width = Math.min(maxContentWidth, homeMaxContentHeight * aspectRatio);
+      const height = width / aspectRatio + chromeHeight;
+      const gardenMaxContentHeight = Math.max(
+        260,
+        (workArea.height - chromeHeight) * (mobile ? 1.2 : 1.1)
+      );
+      const gardenContentWidth = Math.min(
+        width * (mobile ? 0.7 : 0.65),
+        gardenMaxContentHeight * gardenAspectRatio
+      );
+      const gardenSize = {
+        width: gardenContentWidth,
+        height: gardenContentWidth / gardenAspectRatio + chromeHeight,
+      };
+      const homeWindow = clampDesktopWindow(
+        {
+          x: mobile ? (winWidth - width) / 2 : winWidth - width - 24,
+          y: mobile ? 40 : (winHeight - height) / 2.5,
+        },
+        { width, height }
+      );
+      const homeLift = Math.min(height * 0.1, mobile ? 40 : 72);
+      const { position, size } = clampDesktopWindow(
+        {
+          x: homeWindow.position.x,
+          y: homeWindow.position.y - homeLift,
+        },
+        homeWindow.size
+      );
+      const gardenOffset = {
+        x: Math.min(width * 0.10, mobile ? 50 : 150),
+        y: Math.min(height * 0.74, mobile ? 184 : 324),
+      };
+      const gardenWindow = clampDesktopWindow(
+        {
+          x: position.x - gardenOffset.x,
+          y: position.y + gardenOffset.y,
+        },
+        gardenSize
+      );
+
+      openApp({
+        id: 'garden',
+        title: 'Garden',
+        component: 'Garden',
+        position: gardenWindow.position,
+        size: gardenWindow.size,
+        innerWidth: winWidth,
+        innerHeight: winHeight,
+      });
+
+      openApp({
+        id: 'home',
+        title: 'Home',
+        component: 'Home',
+        position,
+        size,
+        innerWidth: winWidth,
+        innerHeight: winHeight,
+      });
+
+      window.requestAnimationFrame(() => {
+        if (!cancelled) {
+          setDesktopChromeReady(true);
+          setDesktopBootReady(true);
+        }
+      });
+    };
+
+    bootDesktop();
+
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   return (
-    <main className="desktop-orientation-frame desktop-viewport bg-gray-100">
-      <div className="desktop-stage relative">
+    <main className="desktop-orientation-frame desktop-viewport bg-gray-50">
+      <div
+        className={`desktop-stage desktop-scene relative ${
+          desktopBootReady ? 'is-ready' : ''
+        }`}
+      >
         <div
           ref={desktopRef}
           className="relative h-full w-full overflow-hidden"
@@ -289,6 +357,7 @@ const Desktop = () => {
         >
           <Navbar />
 
+          {/*
           <Image
             src="/images/wallpaper.png"
             alt=""
@@ -298,6 +367,7 @@ const Desktop = () => {
             className="pointer-events-none absolute inset-0 object-cover select-none"
             aria-hidden="true"
           />
+          */}
 
           <div
             className="pointer-events-none absolute -left-[9999px] top-0 h-px w-px overflow-hidden opacity-0"
@@ -336,7 +406,7 @@ const Desktop = () => {
                   alt={folder.title}
                   width={72}
                   height={72}
-                  className="desktop-folder-icon-image select-none shadow-black shadow-sm"
+                  className="desktop-folder-icon-image select-none drop-shadow-black drop-shadow-md"
                   priority
                 />
                 <span className="desktop-folder-icon-label">{folder.title}</span>
@@ -364,6 +434,25 @@ const Desktop = () => {
               desktopChromeReady ? 'is-ready' : ''
             }`}
           />
+        </div>
+      </div>
+      <div
+        className={`desktop-boot-screen ${desktopBootReady ? 'is-ready' : ''}`}
+        aria-hidden={desktopBootReady}
+      >
+        <div className="desktop-boot-wallpaper" />
+        <div className="desktop-boot-folders">
+          <span />
+          <span />
+          <span />
+          <span />
+        </div>
+        <div className="desktop-boot-dock">
+          <span />
+          <span />
+          <span />
+          <span />
+          <span />
         </div>
       </div>
     </main>
