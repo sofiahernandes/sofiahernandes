@@ -6,6 +6,7 @@ import { useState, useRef, useEffect } from 'react';
 import { X, Minus, ArrowRightIcon as ArrowsMaximize } from 'lucide-react';
 import Terminal from '@/components/terminal';
 import HomeImage from '@/components/home-image';
+import GardenImage from '@/components/garden-image';
 import FolderWindow from '@/components/folder-window';
 import {
   clampDesktopWindow,
@@ -29,6 +30,7 @@ const componentMap: Record<
 > = {
   Terminal,
   Home: HomeImage,
+  Garden: GardenImage,
   Folder: FolderWindow,
 };
 
@@ -74,7 +76,8 @@ export default function Window({
             x: pointer.x - dragOffset.x,
             y: pointer.y - dragOffset.y,
           },
-          size
+          size,
+          { avoidDock: false }
         );
 
         setPosition(nextWindow.position);
@@ -115,7 +118,8 @@ export default function Window({
 
         const nextWindow = clampDesktopWindow(
           { x: newX, y: newY },
-          { width: newWidth, height: newHeight }
+          { width: newWidth, height: newHeight },
+          { avoidDock: false }
         );
 
         setSize(nextWindow.size);
