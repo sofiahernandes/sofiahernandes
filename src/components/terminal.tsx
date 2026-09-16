@@ -66,11 +66,7 @@ export default function Terminal() {
     const args = command.split(' ');
     const mainCommand = args[0];
 
-    setHistory((prev) => [
-      ...prev,
-      `${prompt} ${cmd}`,
-      '',
-    ]);
+    setHistory((prev) => [...prev, `${prompt} ${cmd}`, '']);
 
     switch (mainCommand) {
       case 'help':

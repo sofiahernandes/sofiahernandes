@@ -85,7 +85,7 @@ export default function Window({
             y: pointer.y - dragOffset.y,
           },
           sizeRef.current,
-          { avoidDock: false }
+          { avoidDock: false },
         );
 
         setPosition(nextWindow.position);
@@ -127,7 +127,7 @@ export default function Window({
         const nextWindow = clampDesktopWindow(
           { x: newX, y: newY },
           { width: newWidth, height: newHeight },
-          { avoidDock: false }
+          { avoidDock: false },
         );
 
         setSize(nextWindow.size);
@@ -184,7 +184,7 @@ export default function Window({
 
   const handleResizePointerDown = (
     e: React.PointerEvent,
-    direction: string
+    direction: string,
   ) => {
     e.preventDefault();
     e.stopPropagation();
@@ -240,11 +240,10 @@ export default function Window({
       ref={windowRef}
       className={`desktop-window-shell absolute rounded-md overflow-hidden drop-shadow-black/20 drop-shadow-md transition-shadow ${contentBgClass} ${isActive ? 'drop-shadow-lg z-10' : 'drop-shadow-md z-0'}`}
       style={{
-        left: 0,
-        top: 0,
+        left: `${position.x}px`,
+        top: `${position.y}px`,
         width: `${size.width}px`,
         height: `${size.height}px`,
-        transform: `translate3d(${position.x}px, ${position.y}px, 0)`,
       }}
       onClick={onFocus}
     >

@@ -8,7 +8,13 @@ import NextIcon from '../../public/images/next-icon.svg?component';
 import PlayIcon from '../../public/images/play-icon.svg?component';
 
 const clothes = [
-  { src: '/images/clothes/shirt-1.png', alt: 'Blue printed top', type: 'top', width: 251, height: 362 },
+  {
+    src: '/images/clothes/shirt-1.png',
+    alt: 'Blue printed top',
+    type: 'top',
+    width: 251,
+    height: 362,
+  },
   {
     src: '/images/clothes/shirt-2.png',
     alt: 'Brown one-shoulder top',
@@ -16,9 +22,27 @@ const clothes = [
     width: 201,
     height: 334,
   },
-  { src: '/images/clothes/shirt-3.png', alt: 'Brazil jersey top', type: 'top', width: 320, height: 374 },
-  { src: '/images/clothes/pants-1.png', alt: 'Blue jeans', type: 'bottom', width: 325, height: 839 },
-  { src: '/images/clothes/pants-2.png', alt: 'Dark skirt', type: 'bottom', width: 491, height: 864 },
+  {
+    src: '/images/clothes/shirt-3.png',
+    alt: 'Brazil jersey top',
+    type: 'top',
+    width: 320,
+    height: 374,
+  },
+  {
+    src: '/images/clothes/pants-1.png',
+    alt: 'Blue jeans',
+    type: 'bottom',
+    width: 325,
+    height: 839,
+  },
+  {
+    src: '/images/clothes/pants-2.png',
+    alt: 'Dark skirt',
+    type: 'bottom',
+    width: 491,
+    height: 864,
+  },
 ];
 
 type ClothingType = (typeof clothes)[number]['type'];
@@ -149,7 +173,9 @@ function AboutFolderWindow() {
                     type="button"
                     onClick={() => setClothing(item.type, item.src)}
                     className={`group rounded-sm md:p-1 ${
-                      selected ? 'glass-highlight' : 'glass hover:glass-highlight'
+                      selected
+                        ? 'glass-highlight'
+                        : 'glass hover:glass-highlight'
                     }`}
                     aria-pressed={selected}
                   >
@@ -180,10 +206,7 @@ function AboutFolderWindow() {
               <button
                 type="button"
                 onClick={() =>
-                  setClothing(
-                    visibleClothes[1].type,
-                    visibleClothes[1].src,
-                  )
+                  setClothing(visibleClothes[1].type, visibleClothes[1].src)
                 }
                 className="flex justify-center items-center glass hover:glass-highlight rounded-sm px-4 py-2"
               >
