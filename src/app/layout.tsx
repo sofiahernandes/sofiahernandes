@@ -1,5 +1,3 @@
-import { ThemeProvider } from "@/components/theme-provider";
-import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import { headers } from "next/headers";
 import "@/styles/globals.css";
@@ -31,7 +29,7 @@ export default async function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={cn("font-sans scroll-auto", rethink.className)}
+      className={`blue font-sans scroll-auto ${rethink.className}`}
     >
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
@@ -39,22 +37,13 @@ export default async function RootLayout({
         <link rel="apple-touch-icon" href="/apple-touch.png"></link>
       </head>
       <body
-        className={cn(
-          "min-h-screen overflow-x-clip overflow-y-auto p-0! m-0! bg-background font-sans antialiased",
-          rethink.className
-        )}
+        className={`min-h-screen overflow-x-clip overflow-y-auto p-0! m-0! bg-background font-sans antialiased ${rethink.className}`}
         style={{
           padding: 0,
           margin: 0,
         }}
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="blue"
-          disableTransitionOnChange
-        >
-          {children}
-        </ThemeProvider>
+        {children}
       </body>
     </html>
   );

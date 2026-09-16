@@ -82,7 +82,7 @@ function AboutFolderWindow() {
       </div>
 
       <div className="desktop-folder-layout mx-auto grid h-full max-w-full grid-cols-1 gap-6 overflow-y-auto overflow-x-hidden px-14 py-4 md:min-h-0 md:grid-cols-[minmax(0,1.3fr)_minmax(300px,1.3fr)] md:grid-rows-[minmax(0,1.3fr)] md:gap-8 md:overflow-hidden md:px-24">
-        <article className="desktop-folder-article min-h-0 space-y-3 self-center md:flex md:flex-col md:overflow-hidden md:self-stretch">
+        <article className="desktop-folder-article min-h-0 self-center md:flex md:flex-col md:overflow-hidden md:self-stretch">
           <h2 className="text-3xl font-extrabold text-balance">
             {aboutContent.title}
           </h2>
