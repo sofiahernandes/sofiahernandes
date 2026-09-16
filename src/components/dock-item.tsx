@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState, useMemo } from 'react';
+import { memo, useCallback, useEffect, useRef, useState, useMemo } from 'react';
 import Image from 'next/image';
 
 export interface DockItemProps {
@@ -16,7 +16,7 @@ const maxBtnSize = 65;
 const minBtnSize = 45;
 const maxBtnDistance = 200;
 
-export default function DockItem({
+function DockItem({
   active,
   mousePosition,
   name,
@@ -52,10 +52,7 @@ export default function DockItem({
 
     const distance =
       dockItemRef.current && dockItemRect
-        ? Math.sqrt(
-            Math.pow(mousePosition.x - buttonMidX, 2) +
-              Math.pow(mousePosition.y - buttonMidY, 2),
-          )
+        ? Math.hypot(mousePosition.x - buttonMidX, mousePosition.y - buttonMidY)
         : 0;
 
     const buttonSize =
@@ -70,9 +67,9 @@ export default function DockItem({
     return {
       height: buttonSize,
       width: buttonSize,
-      transition: 'all 0.25s ease-out',
+      transition: 'height 0.25s ease-out, width 0.25s ease-out',
     };
-  }, [dockItemRef, dockItemRect, mousePosition]);
+  }, [dockItemRect, mousePosition]);
 
   const [clicked, setClicked] = useState(false);
 
@@ -121,3 +118,5 @@ export default function DockItem({
     </li>
   );
 }
+
+export default memo(DockItem);

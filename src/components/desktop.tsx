@@ -57,17 +57,13 @@ const appsConfig: AppConfig[] = [
   },
 ];
 
-const preloadedWindowImages = [
-  '/images/wallpaper.png',
+const bootImages = [
   '/images/home.png',
   '/images/garden.png',
   '/images/folder.png',
-  '/images/finder.png',
-  '/images/terminal.png',
-  '/images/email.png',
-  '/images/linkedin.png',
-  '/images/instagram.png',
-  '/images/github.png',
+];
+
+const aboutImages = [
   '/images/border.png',
   '/images/character.png',
   '/images/clothes/shirt-1.png',
@@ -87,35 +83,30 @@ const Desktop = () => {
 
   const [openWindows, setOpenWindows] = useState<AppWindow[]>([]);
   const [activeWindowId, setActiveWindowId] = useState<string | null>(null);
-  const [showLaunchpad, setShowLaunchpad] = useState(false);
-  const [showControlCenter, setShowControlCenter] = useState(false);
-  const [showSpotlight, setShowSpotlight] = useState(false);
   const [desktopChromeReady, setDesktopChromeReady] = useState(false);
   const [desktopBootReady, setDesktopBootReady] = useState(false);
   const desktopRef = useRef<HTMLDivElement>(null);
   const openedHomeRef = useRef(false);
-  const preloadPromiseRef = useRef<Promise<void> | null>(null);
-  const windowAssetsReadyRef = useRef(false);
+  const preloadPromisesRef = useRef(new Map<string, Promise<void>>());
 
-  const preloadWindowAssets = () => {
-    if (windowAssetsReadyRef.current) return Promise.resolve();
-    if (preloadPromiseRef.current) return preloadPromiseRef.current;
+  const preloadImages = (group: string, sources: string[]) => {
+    const existingPreload = preloadPromisesRef.current.get(group);
+    if (existingPreload) return existingPreload;
 
-    preloadPromiseRef.current = Promise.all(
-      preloadedWindowImages.map(
+    const preload = Promise.all(
+      sources.map(
         (src) =>
           new Promise<void>((resolve) => {
             const image = new globalThis.Image();
             image.onload = () => resolve();
             image.onerror = () => resolve();
             image.src = src;
-          })
-      )
-    ).then(() => {
-      windowAssetsReadyRef.current = true;
-    });
+          }),
+      ),
+    ).then(() => undefined);
 
-    return preloadPromiseRef.current;
+    preloadPromisesRef.current.set(group, preload);
+    return preload;
   };
 
   const closeWindow = (id: string) => {
@@ -136,8 +127,6 @@ const Desktop = () => {
   const handleDesktopClick = (e: React.MouseEvent) => {
     if (e.target === desktopRef.current) {
       setActiveWindowId(null);
-      if (showControlCenter) setShowControlCenter(false);
-      if (showSpotlight) setShowSpotlight(false);
     }
   };
 
@@ -179,7 +168,6 @@ const Desktop = () => {
   const openApp = (app: AppWindow) => {
     setOpenWindows((prev) => [...prev, app]);
     setActiveWindowId(app.id);
-    if (showLaunchpad) setShowLaunchpad(false);
   };
 
   const handleOpenFolder = async (title: string, id: string) => {
@@ -189,9 +177,7 @@ const Desktop = () => {
       return;
     }
 
-    if (title === 'About') {
-      await preloadWindowAssets();
-    }
+    if (title === 'About') void preloadImages('about', aboutImages);
 
     const { width: winWidth, height: winHeight } = getDesktopViewport();
     const mobile = isCompactDesktopViewport();
@@ -248,7 +234,7 @@ const Desktop = () => {
 
     const bootDesktop = async () => {
       await Promise.all([
-        preloadWindowAssets(),
+        preloadImages('boot', bootImages),
         new Promise<void>((resolve) => window.setTimeout(resolve, 650)),
       ]);
 
@@ -332,6 +318,9 @@ const Desktop = () => {
         if (!cancelled) {
           setDesktopChromeReady(true);
           setDesktopBootReady(true);
+          window.setTimeout(() => {
+            void preloadImages('about', aboutImages);
+          }, 1000);
         }
       });
     };
@@ -368,23 +357,6 @@ const Desktop = () => {
             aria-hidden="true"
           />
           */}
-
-          <div
-            className="pointer-events-none absolute -left-[9999px] top-0 h-px w-px overflow-hidden opacity-0"
-            aria-hidden="true"
-          >
-            {preloadedWindowImages.map((src) => (
-              <Image
-                key={src}
-                src={src}
-                alt=""
-                width={32}
-                height={32}
-                priority
-                sizes="32px"
-              />
-            ))}
-          </div>
 
           <div
             className={`desktop-folders-grid desktop-chrome-reveal desktop-folders-reveal absolute inset-0 hidden pt-8 pb-20 md:block ${

@@ -3,11 +3,8 @@
 import type React from 'react';
 
 import { useState, useRef, useEffect } from 'react';
+import dynamic from 'next/dynamic';
 import { X, Minus, ArrowRightIcon as ArrowsMaximize } from 'lucide-react';
-import Terminal from '@/components/terminal';
-import HomeImage from '@/components/home-image';
-import GardenImage from '@/components/garden-image';
-import FolderWindow from '@/components/folder-window';
 import {
   clampDesktopWindow,
   getDesktopPointerPosition,
@@ -24,14 +21,11 @@ export interface AppWindow {
   innerHeight: number;
 }
 
-const componentMap: Record<
-  string,
-  React.ComponentType<any>
-> = {
-  Terminal,
-  Home: HomeImage,
-  Garden: GardenImage,
-  Folder: FolderWindow,
+const componentMap: Record<string, React.ComponentType<{ title?: string }>> = {
+  Terminal: dynamic(() => import('@/components/terminal')),
+  Home: dynamic(() => import('@/components/home-image')),
+  Garden: dynamic(() => import('@/components/garden-image')),
+  Folder: dynamic(() => import('@/components/folder-window')),
 };
 
 interface WindowProps {
@@ -56,12 +50,26 @@ export default function Window({
   const [isResizing, setIsResizing] = useState(false);
   const [resizeDirection, setResizeDirection] = useState<string | null>(null);
   const [resizeStartPos, setResizeStartPos] = useState({ x: 0, y: 0 });
+  const [resizeStartPosition, setResizeStartPosition] = useState({
+    x: 0,
+    y: 0,
+  });
   const [resizeStartSize, setResizeStartSize] = useState({
     width: 0,
     height: 0,
   });
 
   const windowRef = useRef<HTMLDivElement>(null);
+  const positionRef = useRef(position);
+  const sizeRef = useRef(size);
+
+  useEffect(() => {
+    positionRef.current = position;
+  }, [position]);
+
+  useEffect(() => {
+    sizeRef.current = size;
+  }, [size]);
 
   const AppComponent = componentMap[window.component];
 
@@ -76,7 +84,7 @@ export default function Window({
             x: pointer.x - dragOffset.x,
             y: pointer.y - dragOffset.y,
           },
-          size,
+          sizeRef.current,
           { avoidDock: false }
         );
 
@@ -89,8 +97,8 @@ export default function Window({
 
         let newWidth = resizeStartSize.width;
         let newHeight = resizeStartSize.height;
-        let newX = position.x;
-        let newY = position.y;
+        let newX = resizeStartPosition.x;
+        let newY = resizeStartPosition.y;
 
         const minWidth = 300;
         const minHeight = 200;
@@ -105,14 +113,14 @@ export default function Window({
           const proposedWidth = resizeStartSize.width - dx;
           if (proposedWidth >= minWidth) {
             newWidth = proposedWidth;
-            newX = position.x + dx;
+            newX = resizeStartPosition.x + dx;
           }
         }
         if (resizeDirection.includes('n')) {
           const proposedHeight = resizeStartSize.height - dy;
           if (proposedHeight >= minHeight) {
             newHeight = proposedHeight;
-            newY = position.y + dy;
+            newY = resizeStartPosition.y + dy;
           }
         }
 
@@ -152,8 +160,8 @@ export default function Window({
     isResizing,
     resizeDirection,
     resizeStartPos,
+    resizeStartPosition,
     resizeStartSize,
-    position,
   ]);
 
   const handleTitleBarPointerDown = (e: React.PointerEvent) => {
@@ -188,6 +196,10 @@ export default function Window({
     setResizeStartPos({
       x: pointer.x,
       y: pointer.y,
+    });
+    setResizeStartPosition({
+      x: position.x,
+      y: position.y,
     });
     setResizeStartSize({
       width: size.width,
@@ -228,10 +240,11 @@ export default function Window({
       ref={windowRef}
       className={`desktop-window-shell absolute rounded-md overflow-hidden drop-shadow-black/20 drop-shadow-md transition-shadow ${contentBgClass} ${isActive ? 'drop-shadow-lg z-10' : 'drop-shadow-md z-0'}`}
       style={{
-        left: `${position.x}px`,
-        top: `${position.y}px`,
+        left: 0,
+        top: 0,
         width: `${size.width}px`,
         height: `${size.height}px`,
+        transform: `translate3d(${position.x}px, ${position.y}px, 0)`,
       }}
       onClick={onFocus}
     >
