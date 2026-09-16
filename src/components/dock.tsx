@@ -17,11 +17,7 @@ interface DockProps {
   className?: string;
 }
 
-export default function Dock({
-  apps,
-  onOpenApp,
-  className = '',
-}: DockProps) {
+export default function Dock({ apps, onOpenApp, className = '' }: DockProps) {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const frameRef = useRef<number | null>(null);
   const nextMousePositionRef = useRef(mousePosition);

@@ -32,7 +32,7 @@
     inset: 0;
     z-index: 999;
     overflow: hidden;
-    background: #dfe7f2;
+    background: #f9fafb;
     opacity: 1;
     pointer-events: none;
     transition:
@@ -45,28 +45,13 @@
     opacity: 0;
   }
 
-  /*
-  .desktop-boot-wallpaper {
-    position: absolute;
-    inset: 0;
-    background:
-      linear-gradient(
-        135deg,
-        rgba(255, 255, 255, 0.24),
-        rgba(255, 255, 255, 0)
-      ),
-      url('/images/wallpaper.png') center / cover;
-    backdrop-filter: blur(0.5rem);
-  }
-  */
-
   .desktop-boot-folders span,
   .desktop-boot-dock span {
     background: linear-gradient(
       90deg,
-      rgba(255, 255, 255, 0.3),
-      rgba(255, 255, 255, 0.6),
-      rgba(255, 255, 255, 0.3)
+      rgba(83, 83, 83, 0.05),
+      rgba(83, 83, 83, 0.15),
+      rgba(83, 83, 83, 0.05)
     );
     background-size: 220% 100%;
     animation: desktop-skeleton-shimmer 1.2s ease-in-out infinite;
@@ -113,7 +98,7 @@
     align-items: flex-end;
     padding: 0.45rem;
     border-radius: 0.65rem;
-    background: rgba(83, 83, 83, 0.18);
+    background: rgba(83, 83, 83, 0.15);
     transform: translateX(-50%);
     backdrop-filter: blur(1rem);
   }
@@ -129,8 +114,12 @@
       background-position: 120% 0;
     }
 
-    100% {
+    50% {
       background-position: -120% 0;
+    }
+
+    100% {
+      background-position: 120% 0;
     }
   }
 
@@ -176,6 +165,7 @@
     -webkit-backdrop-filter: blur(3rem);
     border: 0.06rem solid rgba(255, 255, 255, 0.3);
     border-radius: 0.25rem;
+    shadow: 0px 0px 0.1rem rgba(0, 0, 0, 0.6);
     padding: 0 0.3rem;
   }
 

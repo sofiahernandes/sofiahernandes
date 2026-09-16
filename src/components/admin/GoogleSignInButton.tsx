@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 export default function GoogleSignInButton() {
   return (
@@ -8,5 +8,5 @@ export default function GoogleSignInButton() {
     >
       Sign in with Google
     </a>
-  )
+  );
 }

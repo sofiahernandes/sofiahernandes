@@ -149,7 +149,7 @@ const Desktop = () => {
         x: (winWidth - width) / 2,
         y: (winHeight - height) / 2,
       },
-      { width, height }
+      { width, height },
     );
 
     const newApp: AppWindow = {
@@ -189,7 +189,7 @@ const Desktop = () => {
       ? (() => {
           const maxWindowWidth = Math.min(
             workArea.width,
-            Math.max(320, winWidth - sideMargin * 2)
+            Math.max(320, winWidth - sideMargin * 2),
           );
 
           return Math.min(maxWindowWidth, Math.max(520, winWidth * 0.72));
@@ -215,7 +215,7 @@ const Desktop = () => {
             ? (winHeight - height) / 2
             : winHeight * 0.2,
       },
-      { width, height }
+      { width, height },
     );
 
     openApp({
@@ -251,17 +251,19 @@ const Desktop = () => {
       const maxWindowHeight = Math.max(220, workArea.height);
       const maxContentWidth = maxWindowWidth;
       const maxContentHeight = maxWindowHeight - chromeHeight;
-      const homeMaxContentHeight =
-        maxContentHeight * (mobile ? 0.9 : 0.95);
-      const width = Math.min(maxContentWidth, homeMaxContentHeight * aspectRatio);
+      const homeMaxContentHeight = maxContentHeight * (mobile ? 0.9 : 0.95);
+      const width = Math.min(
+        maxContentWidth,
+        homeMaxContentHeight * aspectRatio,
+      );
       const height = width / aspectRatio + chromeHeight;
       const gardenMaxContentHeight = Math.max(
         260,
-        (workArea.height - chromeHeight) * (mobile ? 1.2 : 1.1)
+        (workArea.height - chromeHeight) * (mobile ? 1.2 : 1.1),
       );
       const gardenContentWidth = Math.min(
         width * (mobile ? 0.7 : 0.65),
-        gardenMaxContentHeight * gardenAspectRatio
+        gardenMaxContentHeight * gardenAspectRatio,
       );
       const gardenSize = {
         width: gardenContentWidth,
@@ -272,7 +274,7 @@ const Desktop = () => {
           x: mobile ? (winWidth - width) / 2 : winWidth - width - 24,
           y: mobile ? 40 : (winHeight - height) / 2.5,
         },
-        { width, height }
+        { width, height },
       );
       const homeLift = Math.min(height * 0.1, mobile ? 40 : 72);
       const { position, size } = clampDesktopWindow(
@@ -280,10 +282,10 @@ const Desktop = () => {
           x: homeWindow.position.x,
           y: homeWindow.position.y - homeLift,
         },
-        homeWindow.size
+        homeWindow.size,
       );
       const gardenOffset = {
-        x: Math.min(width * 0.10, mobile ? 50 : 150),
+        x: Math.min(width * 0.1, mobile ? 50 : 150),
         y: Math.min(height * 0.74, mobile ? 184 : 324),
       };
       const gardenWindow = clampDesktopWindow(
@@ -291,7 +293,7 @@ const Desktop = () => {
           x: position.x - gardenOffset.x,
           y: position.y + gardenOffset.y,
         },
-        gardenSize
+        gardenSize,
       );
 
       openApp({
@@ -346,18 +348,6 @@ const Desktop = () => {
         >
           <Navbar />
 
-          {/*
-          <Image
-            src="/images/wallpaper.png"
-            alt=""
-            fill
-            priority
-            sizes="100vw"
-            className="pointer-events-none absolute inset-0 object-cover select-none"
-            aria-hidden="true"
-          />
-          */}
-
           <div
             className={`desktop-folders-grid desktop-chrome-reveal desktop-folders-reveal absolute inset-0 hidden pt-8 pb-20 md:block ${
               desktopChromeReady ? 'is-ready' : ''
@@ -381,7 +371,9 @@ const Desktop = () => {
                   className="desktop-folder-icon-image select-none drop-shadow-black drop-shadow-md"
                   priority
                 />
-                <span className="desktop-folder-icon-label">{folder.title}</span>
+                <span className="desktop-folder-icon-label">
+                  {folder.title}
+                </span>
               </button>
             ))}
           </div>
@@ -412,7 +404,6 @@ const Desktop = () => {
         className={`desktop-boot-screen ${desktopBootReady ? 'is-ready' : ''}`}
         aria-hidden={desktopBootReady}
       >
-        <div className="desktop-boot-wallpaper" />
         <div className="desktop-boot-folders">
           <span />
           <span />
@@ -420,6 +411,7 @@ const Desktop = () => {
           <span />
         </div>
         <div className="desktop-boot-dock">
+          <span />
           <span />
           <span />
           <span />
