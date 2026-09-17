@@ -386,6 +386,7 @@ const Desktop = () => {
                   isActive={activeWindowId === window.id}
                   onClose={() => closeWindow(window.id)}
                   onFocus={() => setActiveWindow(window.id)}
+                  onOpenFolder={handleOpenFolder}
                 />
               </div>
             ))}

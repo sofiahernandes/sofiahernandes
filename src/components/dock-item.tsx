@@ -28,6 +28,7 @@ function DockItem({
   const [dockItemRect, setDockItemRect] = useState<DOMRect | undefined>(
     undefined,
   );
+  const [canMagnify, setCanMagnify] = useState(false);
 
   const handleResize = useCallback(() => {
     const newDockItemRect = dockItemRef.current?.getBoundingClientRect();
@@ -42,7 +43,23 @@ function DockItem({
     return () => window.removeEventListener('resize', handleResize);
   }, [handleResize]);
 
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(min-width: 768px)');
+    const updateCanMagnify = () => setCanMagnify(mediaQuery.matches);
+
+    updateCanMagnify();
+    mediaQuery.addEventListener('change', updateCanMagnify);
+    return () => mediaQuery.removeEventListener('change', updateCanMagnify);
+  }, []);
+
   const buttonStyle = useMemo(() => {
+    if (!canMagnify) {
+      return {
+        height: minBtnSize,
+        width: minBtnSize,
+      };
+    }
+
     const buttonMidX = dockItemRect?.left
       ? dockItemRect.left + dockItemRect.width / 2
       : 0;
@@ -69,7 +86,7 @@ function DockItem({
       width: buttonSize,
       transition: 'height 0.25s ease-out, width 0.25s ease-out',
     };
-  }, [dockItemRect, mousePosition]);
+  }, [canMagnify, dockItemRect, mousePosition]);
 
   const [clicked, setClicked] = useState(false);
 

@@ -1,6 +1,6 @@
 'use client';
 
-import { MouseEvent, useEffect, useRef, useState } from 'react';
+import { Fragment, MouseEvent, useEffect, useRef, useState } from 'react';
 import DockItem from '@/components/dock-item';
 
 export interface AppConfig {
@@ -51,15 +51,22 @@ export default function Dock({ apps, onOpenApp, className = '' }: DockProps) {
       onMouseLeave={() => setMousePosition({ x: 0, y: 0 })}
     >
       <ul className="dock-inner">
-        {apps.map((app) => (
-          <DockItem
-            active={app.active}
-            key={app.id}
-            mousePosition={mousePosition}
-            name={app.name}
-            src={app.src}
-            onClick={() => onOpenApp(app)}
-          />
+        {apps.map((app, index) => (
+          <Fragment key={app.id}>
+            {index === 2 && (
+              <li
+                aria-hidden="true"
+                className="mx-1.5 h-8 w-px self-center bg-white/60"
+              />
+            )}
+            <DockItem
+              active={app.active}
+              mousePosition={mousePosition}
+              name={app.name}
+              src={app.src}
+              onClick={() => onOpenApp(app)}
+            />
+          </Fragment>
         ))}
       </ul>
     </nav>
