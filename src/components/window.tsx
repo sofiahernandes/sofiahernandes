@@ -21,7 +21,12 @@ export interface AppWindow {
   innerHeight: number;
 }
 
-const componentMap: Record<string, React.ComponentType<{ title?: string }>> = {
+type WindowContentProps = {
+  title?: string;
+  onOpenFolder?: (title: string, id: string) => void;
+};
+
+const componentMap: Record<string, React.ComponentType<WindowContentProps>> = {
   Terminal: dynamic(() => import('@/components/terminal')),
   Home: dynamic(() => import('@/components/home-image')),
   Garden: dynamic(() => import('@/components/garden-image')),
@@ -33,6 +38,7 @@ interface WindowProps {
   isActive: boolean;
   onClose: () => void;
   onFocus: () => void;
+  onOpenFolder: (title: string, id: string) => void;
 }
 
 export default function Window({
@@ -40,6 +46,7 @@ export default function Window({
   isActive,
   onClose,
   onFocus,
+  onOpenFolder,
 }: WindowProps) {
   const [position, setPosition] = useState(window.position);
   const [size, setSize] = useState(window.size);
@@ -281,7 +288,7 @@ export default function Window({
 
       <div className={`${contentBgClass} h-[calc(100%-1.75rem)] overflow-auto`}>
         {AppComponent ? (
-          <AppComponent title={window.title} />
+          <AppComponent title={window.title} onOpenFolder={onOpenFolder} />
         ) : (
           <div className="p-4">Content not available</div>
         )}

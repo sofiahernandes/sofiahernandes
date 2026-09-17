@@ -6,7 +6,11 @@ import { useState, useRef, useEffect } from 'react';
 
 const prompt = 'sofia.hernandes@macbook-pro ~ $';
 
-export default function Terminal() {
+export default function Terminal({
+  onOpenFolder,
+}: {
+  onOpenFolder?: (title: string, id: string) => void;
+}) {
   const [input, setInput] = useState('');
   const [history, setHistory] = useState<string[]>([]);
   const [commandHistory, setCommandHistory] = useState<string[]>([]);
@@ -90,14 +94,26 @@ export default function Terminal() {
       case 'ls':
         setHistory((prev) => [
           ...prev,
-          'Projects Library',
-          'About Me Game',
-          'Gallery',
+          'Projects',
+          'About',
+          'Work',
+          'Contact',
+          'Finder',
           'Terminal',
           'Email',
           'LinkedIn',
           'Instagram',
           'GitHub',
+          '',
+        ]);
+        break;
+
+      case 'about':
+      case 'contact':
+        onOpenFolder?.('About', 'folder-2');
+        setHistory((prev) => [
+          ...prev,
+          'Opening About...',
           '',
         ]);
         break;

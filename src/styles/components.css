@@ -157,8 +157,6 @@
   }
 
   .desktop-viewport .desktop-folder-icon-label {
-    max-width: 100%;
-    overflow-wrap: anywhere;
     text-align: center;
     background: rgba(83, 83, 83, 0.2);
     backdrop-filter: blur(3rem);
