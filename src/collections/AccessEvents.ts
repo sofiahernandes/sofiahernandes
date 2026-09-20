@@ -1,4 +1,4 @@
-import type { CollectionConfig } from 'payload'
+import type { CollectionConfig } from 'payload';
 
 export const AccessEvents: CollectionConfig = {
   slug: 'access-events',
@@ -35,4 +35,4 @@ export const AccessEvents: CollectionConfig = {
       required: true,
     },
   ],
-}
+};

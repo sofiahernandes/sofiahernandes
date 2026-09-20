@@ -1,3 +1,3 @@
 export function invalidateSettingsCache() {
-  return undefined
+  return undefined;
 }

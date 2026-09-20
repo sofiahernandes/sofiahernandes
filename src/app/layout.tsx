@@ -1,12 +1,12 @@
-import type { Metadata } from "next";
-import { headers } from "next/headers";
-import "@/styles/globals.css";
-import type React from "react";
-import { rethink } from "@/app/fonts";
+import type { Metadata } from 'next';
+import { headers } from 'next/headers';
+import '@/styles/globals.css';
+import type React from 'react';
+import { rethink } from '@/app/fonts';
 
 export const metadata: Metadata = {
-  title: "Sofia Botechia",
-  description: "Software Developer & AI Engineer",
+  title: 'Sofia Botechia',
+  description: 'Software Developer & AI Engineer',
 };
 
 export default async function RootLayout({
@@ -16,12 +16,12 @@ export default async function RootLayout({
 }) {
   const headerList = await headers();
   const pathname =
-    headerList.get("next-url") ||
-    headerList.get("x-next-url") ||
-    headerList.get("x-matched-path") ||
-    "";
+    headerList.get('next-url') ||
+    headerList.get('x-next-url') ||
+    headerList.get('x-matched-path') ||
+    '';
 
-  if (pathname.startsWith("/admin")) {
+  if (pathname.startsWith('/admin')) {
     return <>{children}</>;
   }
 
@@ -33,7 +33,12 @@ export default async function RootLayout({
     >
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="any"></link>
+        <link
+          rel="icon"
+          href="/favicon.svg"
+          type="image/svg+xml"
+          sizes="any"
+        ></link>
         <link rel="apple-touch-icon" href="/apple-touch.png"></link>
       </head>
       <body

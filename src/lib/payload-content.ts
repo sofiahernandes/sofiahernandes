@@ -1,51 +1,51 @@
-import { cache } from 'react'
-import config from '@payload-config'
-import { getPayload } from 'payload'
+import { cache } from 'react';
+import config from '@payload-config';
+import { getPayload } from 'payload';
 
 export type SiteContentDoc = {
-  siteTitle: string
+  siteTitle: string;
   hero: {
-    title: string
-    description: string
+    title: string;
+    description: string;
     socialLinks: Array<{
-      label: string
-      href: string
-      icon: 'github' | 'linkedin' | 'instagram' | 'mail'
-    }>
-  }
+      label: string;
+      href: string;
+      icon: 'github' | 'linkedin' | 'instagram' | 'mail';
+    }>;
+  };
   about: {
-    title: string
-    introLeading: string
-    introEmphasized: string
-    introTrailing: string
-    paragraphs: Array<{ text: string }>
-    closing: string
-  }
-  techStackTitle: string
+    title: string;
+    introLeading: string;
+    introEmphasized: string;
+    introTrailing: string;
+    paragraphs: Array<{ text: string }>;
+    closing: string;
+  };
+  techStackTitle: string;
   techStack: Array<{
-    category: string
-    highlight?: boolean
-    skills: Array<{ name: string; link?: string }>
-  }>
+    category: string;
+    highlight?: boolean;
+    skills: Array<{ name: string; link?: string }>;
+  }>;
   contact: {
-    title: string
-    fields: { name: string; email: string; message: string }
-    submitIdle: string
-    submitPending: string
-    errorResponse: string
-  }
+    title: string;
+    fields: { name: string; email: string; message: string };
+    submitIdle: string;
+    submitPending: string;
+    errorResponse: string;
+  };
   footer: {
-    href: string
-    text: string
-  }
-}
+    href: string;
+    text: string;
+  };
+};
 
 export type ProjectDoc = {
-  title: string
-  description: string
-  githubUrl?: string
-  images: Array<{ src: string; alt: string }>
-}
+  title: string;
+  description: string;
+  githubUrl?: string;
+  images: Array<{ src: string; alt: string }>;
+};
 
 const fallbackSiteContent: SiteContentDoc = {
   siteTitle: 'Sofia Botechia',
@@ -54,10 +54,26 @@ const fallbackSiteContent: SiteContentDoc = {
     description:
       'Whether you need a scalable application, a user-first interface, or automated systems to scale your impact, let’s build something smarter.',
     socialLinks: [
-      { label: 'GitHub', href: 'https://github.com/sofiahernandes/', icon: 'github' },
-      { label: 'LinkedIn', href: 'https://www.linkedin.com/in/sofiahernandes/', icon: 'linkedin' },
-      { label: 'Instagram', href: 'https://www.instagram.com/sofiabotechia/', icon: 'instagram' },
-      { label: 'Email', href: 'mailto:sofiahernandes.dev@gmail.com', icon: 'mail' },
+      {
+        label: 'GitHub',
+        href: 'https://github.com/sofiahernandes/',
+        icon: 'github',
+      },
+      {
+        label: 'LinkedIn',
+        href: 'https://www.linkedin.com/in/sofiahernandes/',
+        icon: 'linkedin',
+      },
+      {
+        label: 'Instagram',
+        href: 'https://www.instagram.com/sofiabotechia/',
+        icon: 'instagram',
+      },
+      {
+        label: 'Email',
+        href: 'mailto:sofiahernandes.dev@gmail.com',
+        icon: 'mail',
+      },
     ],
   },
   about: {
@@ -90,34 +106,34 @@ const fallbackSiteContent: SiteContentDoc = {
     href: 'https://www.linkedin.com/in/sofiahernandes/',
     text: '© 2026 Sofia Botechia Hernandes. All rights reserved.',
   },
-}
+};
 
 export const getSiteContent = cache(async (): Promise<SiteContentDoc> => {
   try {
-    const payload = await getPayload({ config })
+    const payload = await getPayload({ config });
     const doc = await payload.findGlobal({
       slug: 'site-content',
-    })
+    });
 
-    if (!doc) return fallbackSiteContent
+    if (!doc) return fallbackSiteContent;
 
-    return doc as SiteContentDoc
+    return doc as SiteContentDoc;
   } catch {
-    return fallbackSiteContent
+    return fallbackSiteContent;
   }
-})
+});
 
 export const getProjectsContent = cache(async (): Promise<ProjectDoc[]> => {
   try {
-    const payload = await getPayload({ config })
+    const payload = await getPayload({ config });
     const result = await payload.find({
       collection: 'projects',
       limit: 100,
       sort: 'title',
-    })
+    });
 
-    return result.docs as ProjectDoc[]
+    return result.docs as ProjectDoc[];
   } catch {
-    return []
+    return [];
   }
-})
+});

@@ -22,10 +22,10 @@ export function getDesktopViewport() {
   }
 
   const width = Math.round(
-    globalThis.window.visualViewport?.width ?? globalThis.window.innerWidth
+    globalThis.window.visualViewport?.width ?? globalThis.window.innerWidth,
   );
   const height = Math.round(
-    globalThis.window.visualViewport?.height ?? globalThis.window.innerHeight
+    globalThis.window.visualViewport?.height ?? globalThis.window.innerHeight,
   );
   const isRotated = isRotatedDesktopViewport();
 
@@ -57,7 +57,7 @@ export function getDesktopWorkArea() {
 export function clampDesktopWindow(
   position: { x: number; y: number },
   size: { width: number; height: number },
-  options: { avoidDock?: boolean } = {}
+  options: { avoidDock?: boolean } = {},
 ) {
   const workArea = getDesktopWorkArea();
   const viewport = getDesktopViewport();
@@ -71,11 +71,11 @@ export function clampDesktopWindow(
     position: {
       x: Math.min(
         Math.max(workArea.left, position.x),
-        Math.max(workArea.left, workArea.left + workArea.width - width)
+        Math.max(workArea.left, workArea.left + workArea.width - width),
       ),
       y: Math.min(
         Math.max(workArea.top, position.y),
-        Math.max(workArea.top, bottom - height)
+        Math.max(workArea.top, bottom - height),
       ),
     },
     size: { width, height },
@@ -94,7 +94,7 @@ export function getDesktopPointerPosition(event: {
   }
 
   const width = Math.round(
-    globalThis.window.visualViewport?.width ?? globalThis.window.innerWidth
+    globalThis.window.visualViewport?.width ?? globalThis.window.innerWidth,
   );
 
   return {

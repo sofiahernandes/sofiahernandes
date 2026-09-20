@@ -4,7 +4,8 @@ html body {
   overflow: auto !important;
 }
 
-input, textarea {
+input,
+textarea {
   border: 1px solid #00000040;
   border-radius: 8px;
   padding: 4px 8px;

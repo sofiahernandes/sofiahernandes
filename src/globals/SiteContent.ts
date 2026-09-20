@@ -1,4 +1,4 @@
-import type { GlobalConfig } from 'payload'
+import type { GlobalConfig } from 'payload';
 
 export const SiteContent: GlobalConfig = {
   slug: 'site-content',
@@ -144,4 +144,4 @@ export const SiteContent: GlobalConfig = {
       ],
     },
   ],
-}
+};

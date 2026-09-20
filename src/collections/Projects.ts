@@ -1,4 +1,4 @@
-import type { CollectionConfig } from 'payload'
+import type { CollectionConfig } from 'payload';
 
 export const Projects: CollectionConfig = {
   slug: 'projects',
@@ -23,4 +23,4 @@ export const Projects: CollectionConfig = {
       ],
     },
   ],
-}
+};

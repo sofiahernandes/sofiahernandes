@@ -1,5 +1,5 @@
-import path from 'path'
-import type { CollectionConfig } from 'payload'
+import path from 'path';
+import type { CollectionConfig } from 'payload';
 
 export const Media: CollectionConfig = {
   slug: 'media',
@@ -10,10 +10,10 @@ export const Media: CollectionConfig = {
     beforeValidate: [
       ({ data }) => {
         if (!data?.alt && typeof data?.filename === 'string') {
-          data.alt = data.filename
+          data.alt = data.filename;
         }
 
-        return data
+        return data;
       },
     ],
   },
@@ -27,4 +27,4 @@ export const Media: CollectionConfig = {
   upload: {
     staticDir: path.resolve(process.cwd(), 'temp/media'),
   },
-}
+};
