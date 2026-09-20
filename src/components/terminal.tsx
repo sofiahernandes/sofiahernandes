@@ -96,7 +96,7 @@ export default function Terminal({
           ...prev,
           'Projects',
           'About',
-          'Work',
+          'Resume',
           'Contact',
           'Finder',
           'Terminal',
@@ -111,11 +111,7 @@ export default function Terminal({
       case 'about':
       case 'contact':
         onOpenFolder?.('About', 'folder-2');
-        setHistory((prev) => [
-          ...prev,
-          'Opening About...',
-          '',
-        ]);
+        setHistory((prev) => [...prev, 'Opening About...', '']);
         break;
 
       default:

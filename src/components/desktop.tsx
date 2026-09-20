@@ -77,7 +77,7 @@ const Desktop = () => {
   const folderIcons = [
     { id: 'folder-1', title: 'Projects', x: '1rem', y: '20%' },
     { id: 'folder-2', title: 'About', x: '4rem', y: '35%' },
-    { id: 'folder-3', title: 'Work', x: '1rem', y: '50%' },
+    { id: 'folder-3', title: 'Resume', x: '1rem', y: '50%' },
     { id: 'folder-4', title: 'Contact', x: '4rem', y: '65%' },
   ];
 
@@ -221,7 +221,7 @@ const Desktop = () => {
     openApp({
       id,
       title,
-      component: 'Folder',
+      component: title === 'Contact' ? 'Contact' : 'Folder',
       position,
       size,
       innerWidth: winWidth,
