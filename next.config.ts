@@ -2,6 +2,9 @@ import type { NextConfig } from 'next'
 import { withPayload } from '@payloadcms/next/withPayload'
 
 const nextConfig: NextConfig = {
+  poweredByHeader: false,
+  compress: true,
+
   eslint: {
     ignoreDuringBuilds: true,
   },
@@ -12,6 +15,50 @@ const nextConfig: NextConfig = {
 
   images: {
     unoptimized: true,
+  },
+
+  async headers() {
+    return [
+      {
+        source: '/(llms\\.txt|llms-full\\.txt)',
+        headers: [
+          {
+            key: 'Content-Type',
+            value: 'text/plain; charset=utf-8',
+          },
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=3600, s-maxage=86400',
+          },
+          {
+            key: 'X-Robots-Tag',
+            value: 'index, follow',
+          },
+        ],
+      },
+      {
+        source: '/(admin|api|auth)/:path*',
+        headers: [
+          {
+            key: 'X-Robots-Tag',
+            value: 'noindex, nofollow',
+          },
+        ],
+      },
+      {
+        source: '/:path*',
+        headers: [
+          {
+            key: 'X-Content-Type-Options',
+            value: 'nosniff',
+          },
+          {
+            key: 'Referrer-Policy',
+            value: 'strict-origin-when-cross-origin',
+          },
+        ],
+      },
+    ]
   },
 
   webpack(config) {
