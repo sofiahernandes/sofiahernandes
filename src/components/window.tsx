@@ -27,6 +27,7 @@ type WindowContentProps = {
 };
 
 const componentMap: Record<string, React.ComponentType<WindowContentProps>> = {
+  Finder: dynamic(() => import('@/components/finder')),
   Contact: dynamic(() => import('@/components/contact')),
   Terminal: dynamic(() => import('@/components/terminal')),
   Home: dynamic(() => import('@/components/home-image')),

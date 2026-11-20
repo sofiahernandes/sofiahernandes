@@ -56,7 +56,7 @@ export default function Dock({ apps, onOpenApp, className = '' }: DockProps) {
             {index === 2 && (
               <li
                 aria-hidden="true"
-                className="mx-1.5 h-8 w-px self-center bg-white/60"
+                className="mx-1.5 h-8 w-px self-center bg-white/50"
               />
             )}
             <DockItem

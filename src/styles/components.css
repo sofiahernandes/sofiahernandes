@@ -45,16 +45,17 @@
     opacity: 0;
   }
 
+  .finder-skeleton,
   .desktop-boot-folders span,
   .desktop-boot-dock span {
     background: linear-gradient(
       90deg,
-      rgba(83, 83, 83, 0.05),
-      rgba(83, 83, 83, 0.15),
-      rgba(83, 83, 83, 0.05)
+      rgba(83, 83, 83, 0.025),
+      rgba(83, 83, 83, 0.1),
+      rgba(83, 83, 83, 0.025)
     );
-    background-size: 220% 100%;
-    animation: desktop-skeleton-shimmer 1.2s ease-in-out infinite;
+    background-size: 200% 100%;
+    animation: desktop-skeleton-shimmer 2s ease-in-out infinite;
   }
 
   .desktop-boot-folders {
@@ -100,7 +101,8 @@
     border-radius: 0.65rem;
     background: rgba(83, 83, 83, 0.15);
     transform: translateX(-50%);
-    backdrop-filter: blur(1rem);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
   }
 
   .desktop-boot-dock span {
@@ -111,7 +113,7 @@
 
   @keyframes desktop-skeleton-shimmer {
     0% {
-      background-position: 120% 0;
+      background-position: 100% 0;
     }
 
     50% {
@@ -119,7 +121,7 @@
     }
 
     100% {
-      background-position: 120% 0;
+      background-position: 100% 0;
     }
   }
 
@@ -159,9 +161,9 @@
   .desktop-viewport .desktop-folder-icon-label {
     text-align: center;
     background: rgba(83, 83, 83, 0.2);
-    backdrop-filter: blur(3rem);
-    -webkit-backdrop-filter: blur(3rem);
-    border: 0.06rem solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border: 0.06rem solid rgba(255, 255, 255, 0.25);
     border-radius: 0.25rem;
     shadow: 0px 0px 0.1rem rgba(0, 0, 0, 0.6);
     padding: 0 0.3rem;
@@ -388,6 +390,9 @@
     left: 50%;
     transform: translateX(-50%);
     box-shadow: 0px 0px 0.1rem rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
   }
 
   .dock .dock-inner {
@@ -399,9 +404,9 @@
     gap: 0px;
     border-radius: 10px;
     background: rgba(83, 83, 83, 0.2);
-    backdrop-filter: blur(3rem);
-    -webkit-backdrop-filter: blur(3rem);
-    border: 0.06rem solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border: 0.06rem solid rgba(255, 255, 255, 0.25);
     list-style-type: none;
   }
 
@@ -432,12 +437,13 @@
     position: absolute;
     top: -4rem;
     background: rgba(0, 0, 0, 0.4);
-    backdrop-filter: blur(50px);
-    -webkit-backdrop-filter: blur(50px);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
     color: rgba(255, 255, 255, 0.9);
     padding: 0.4rem 0.8rem;
     border-radius: 0.3rem;
     opacity: 0;
+    border: 1px solid rgba(255, 255, 255, 0.25);
     transition: opacity 0.2s ease-in-out;
   }
 

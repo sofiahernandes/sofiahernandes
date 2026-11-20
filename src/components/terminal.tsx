@@ -81,7 +81,7 @@ export default function Terminal({
           '  clear:      Clear the terminal',
           '  ls:         List apps in the portfolio',
           '  about:      A little about me',
-          '  skills:     My primary skills',
+          '  resume:     My exportable resume',
           '  contact:    Contact information',
           '',
         ]);

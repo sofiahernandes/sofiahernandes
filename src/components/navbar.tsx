@@ -51,27 +51,13 @@ export default function Navbar() {
           </Link>
 
           <nav className="desktop-menu hidden md:flex gap-5">
-            <span className="transition-all duration-200 hover:opacity-60">
-              Finder
-            </span>
-            <span className="transition-all duration-200 hover:opacity-60">
-              File
-            </span>
-            <span className="transition-all duration-200 hover:opacity-60">
-              Edit
-            </span>
-            <span className="transition-all duration-200 hover:opacity-60">
-              View
-            </span>
-            <span className="transition-all duration-200 hover:opacity-60">
-              Go
-            </span>
-            <span className="transition-all duration-200 hover:opacity-60">
-              Window
-            </span>
-            <span className="transition-all duration-200 hover:opacity-60">
-              Help
-            </span>
+            <span>Finder</span>
+            <span>File</span>
+            <span>Edit</span>
+            <span>View</span>
+            <span>Go</span>
+            <span>Window</span>
+            <span>Help</span>
           </nav>
         </div>
 
