@@ -2,7 +2,11 @@
 
 import { useEffect, useMemo, useState } from 'react';
 import Image from 'next/image';
-import { type FinderImage, getFinderImages } from '@/lib/finder-images';
+import {
+  DEFAULT_FINDER_IMAGES,
+  type FinderImage,
+} from '@/lib/content/finder-images';
+import { getFinderImages } from '@/lib/finder-images';
 
 const SKELETON_COLUMNS: [string[], string[]] = [
   ['aspect-[4/3]', 'aspect-[3/4]', 'aspect-[4/3]'],
@@ -10,6 +14,21 @@ const SKELETON_COLUMNS: [string[], string[]] = [
 ];
 
 let cachedFinderImages: FinderImage[] | null = null;
+
+function filterFinderImages(
+  images: FinderImage[],
+  selectedFilter: string,
+): FinderImage[] {
+  switch (selectedFilter) {
+    case 'old':
+      return images.filter((image) => image.src.includes('finder-old-images'));
+    case 'new':
+      return images.filter((image) => image.src.includes('finder-new-images'));
+    case 'all':
+    default:
+      return images;
+  }
+}
 
 function distributeIntoTwoColumns(
   images: FinderImage[],
@@ -84,24 +103,26 @@ export default function Finder() {
   useEffect(() => {
     let cancelled = false;
 
-    getFinderImages().then((loaded) => {
-      if (!cancelled) {
-        switch (selectedFilter) {
-          case 'old':
-            loaded = loaded.filter((image) =>
-              image.src.includes('finder-old-images'),
-            );
-          case 'new':
-            loaded = loaded.filter((image) =>
-              image.src.includes('finder-new-images'),
-            );
-          case 'all':
-            loaded;
+    getFinderImages()
+      .then((loaded) => {
+        if (!cancelled) {
+          const baseImages =
+            loaded.length > 0 ? loaded : DEFAULT_FINDER_IMAGES;
+          const filtered = filterFinderImages(baseImages, selectedFilter);
+          cachedFinderImages = filtered;
+          setImages(filtered);
         }
-        cachedFinderImages = loaded;
-        setImages(loaded);
-      }
-    });
+      })
+      .catch(() => {
+        if (!cancelled) {
+          const filtered = filterFinderImages(
+            DEFAULT_FINDER_IMAGES,
+            selectedFilter,
+          );
+          cachedFinderImages = filtered;
+          setImages(filtered);
+        }
+      });
 
     return () => {
       cancelled = true;

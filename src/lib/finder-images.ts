@@ -3,13 +3,12 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import sharp from 'sharp';
+import {
+  DEFAULT_FINDER_IMAGES,
+  type FinderImage,
+} from '@/lib/content/finder-images';
 
-export interface FinderImage {
-  src: string;
-  alt: string;
-  width: number;
-  height: number;
-}
+export type { FinderImage };
 
 const IMAGE_EXTENSIONS = new Set([
   '.png',
@@ -78,5 +77,6 @@ export async function getFinderImages(): Promise<FinderImage[]> {
     readImagesFromDir(path.join(publicDir, 'finder'), '/finder'),
   ]);
 
-  return [...imagesFinder, ...rootFinder];
+  const discovered = [...imagesFinder, ...rootFinder];
+  return discovered.length > 0 ? discovered : DEFAULT_FINDER_IMAGES;
 }
