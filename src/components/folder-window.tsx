@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { useMemo, useState } from 'react';
 import { aboutContent } from '@/lib/content/about';
+import Resume from '@/components/resume';
 import BackIcon from '../../public/images/previous-icon.svg?component';
 import NextIcon from '../../public/images/next-icon.svg?component';
 import PlayIcon from '../../public/images/play-icon.svg?component';
@@ -231,6 +232,7 @@ function AboutFolderWindow() {
 
 export default function FolderWindow({ title }: { title?: string }) {
   if (title === 'About') return <AboutFolderWindow />;
+  if (title === 'Resume') return <Resume />;
 
   return <div className="h-full w-full bg-white p-5 text-sm" />;
 }

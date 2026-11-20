@@ -182,6 +182,7 @@ const Desktop = () => {
     const { width: winWidth, height: winHeight } = getDesktopViewport();
     const mobile = isCompactDesktopViewport();
     const isAbout = title === 'About';
+    const isResume = title === 'Resume';
     const workArea = getDesktopWorkArea();
     const chromeHeight = 28;
     const sideMargin = mobile ? 8 : 16;
@@ -194,22 +195,36 @@ const Desktop = () => {
 
           return Math.min(maxWindowWidth, Math.max(520, winWidth * 0.72));
         })()
+      : isResume
+        ? Math.min(
+            workArea.width,
+            mobile
+              ? winWidth * 0.9
+              : Math.max(560, Math.min(760, winWidth * 0.52)),
+          )
       : mobile
         ? winWidth * 0.9
         : Math.min(520, Math.max(320, winWidth * 0.34), workArea.width);
     const height = isAbout
       ? Math.min(workArea.height, width / (2700 / 1540) + chromeHeight)
+      : isResume
+        ? Math.min(
+            workArea.height,
+            mobile ? winHeight * 0.75 : Math.max(480, winHeight * 0.78),
+          )
       : mobile
         ? winHeight * 0.7
         : Math.min(360, Math.max(240, winHeight * 0.3), workArea.height);
     const { position, size } = clampDesktopWindow(
       {
-        x: isAbout
+        x:
+          isAbout || isResume
           ? (winWidth - width) / 2
           : mobile
             ? (winWidth - width) / 2
             : winWidth * 0.28,
-        y: isAbout
+        y:
+          isAbout || isResume
           ? (winHeight - height) / 2
           : mobile
             ? (winHeight - height) / 2
@@ -221,7 +236,12 @@ const Desktop = () => {
     openApp({
       id,
       title,
-      component: title === 'Contact' ? 'Contact' : 'Folder',
+      component:
+        title === 'Contact'
+          ? 'Contact'
+          : title === 'Resume'
+            ? 'Resume'
+            : 'Folder',
       position,
       size,
       innerWidth: winWidth,

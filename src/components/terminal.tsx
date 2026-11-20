@@ -108,6 +108,11 @@ export default function Terminal({
         ]);
         break;
 
+      case 'resume':
+        onOpenFolder?.('Resume', 'folder-3');
+        setHistory((prev) => [...prev, 'Opening Resume...', '']);
+        break;
+
       case 'about':
       case 'contact':
         onOpenFolder?.('About', 'folder-2');

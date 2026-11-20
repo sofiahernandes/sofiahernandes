@@ -29,6 +29,7 @@ type WindowContentProps = {
 const componentMap: Record<string, React.ComponentType<WindowContentProps>> = {
   Finder: dynamic(() => import('@/components/finder')),
   Contact: dynamic(() => import('@/components/contact')),
+  Resume: dynamic(() => import('@/components/resume')),
   Terminal: dynamic(() => import('@/components/terminal')),
   Home: dynamic(() => import('@/components/home-image')),
   Garden: dynamic(() => import('@/components/garden-image')),
@@ -294,7 +295,11 @@ export default function Window({
         </div>
       </div>
 
-      <div className={`${contentBgClass} h-[calc(100%-1.75rem)] overflow-auto`}>
+      <div
+        className={`${contentBgClass} h-[calc(100%-1.75rem)] overflow-auto ${
+          isDragging || isResizing ? 'pointer-events-none select-none' : ''
+        }`}
+      >
         {AppComponent ? (
           <AppComponent title={window.title} onOpenFolder={onOpenFolder} />
         ) : (
