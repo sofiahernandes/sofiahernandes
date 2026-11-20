@@ -1,0 +1,61 @@
+# Sofia Botechia Hernandes — Complete Technical Profile
+
+> Comprehensive reference for AI agents, search engines, and recruiters detailing the background, enterprise engineering work, technical stack, and contact channels of Sofia Botechia Hernandes, Software Developer & AI Engineer based in São Paulo, Brazil.
+
+## Overview
+
+- **Full Name:** Sofia Botechia Hernandes (also known as Sofia Botechia)
+- **Role:** Software Developer & AI Engineer
+- **Location:** São Paulo, SP, Brazil
+- **Website:** https://sofiab-portfolio.vercel.app/
+- **Email:** mailto:sofiahernandes.dev@gmail.com
+- **Phone:** +55 (11) 94447-8200
+- **Languages:** Portuguese (Native), English (C2 Proficient), Spanish (C1 Advanced)
+
+## Professional Bio
+
+As a Software Developer, Sofia Botechia Hernandes builds operationally critical web applications that support large brands through major rebranding and restructuring initiatives. Her work focuses on developing systems designed to handle complex architectures and support dynamic content management by non-technical teams through custom visual interfaces and headless CMS panels.
+
+As part of these efforts, she has engineered and maintained digital platforms for major enterprise rebranding initiatives including:
+- Amazônia
+- Ativos (Banco do Brasil)
+- Banco da Amazônia
+- Crown
+- GCB Investimentos
+- Totvs Techfin
+
+Alongside public brand platforms, her work as an AI Engineer involves designing and deploying internal AI automations and workflow tools to accelerate everyday operations across organization sectors. She builds secure, optimized automations—including managed plugins for internal tools, custom multi-agent systems, RAG pipelines, and API integrations—that translate advanced AI capabilities into straightforward product interfaces.
+
+## Professional Experience
+
+### FutureBrand — Software Engineer Intern (Aug 2025 – Present)
+- Develops production-grade CMS platforms, internal productivity tools, and AI applications for enterprise clients.
+- Contributed to 26 production repositories with 1,700+ commits across one year.
+- Built solutions deployed across 16+ enterprise websites.
+- Developed three production AI systems and reusable CMS architectures adopted across multiple client projects.
+- Works across frontend, backend, infrastructure, AI orchestration, authentication, and developer tooling.
+
+### Freelance — Software Developer & UX/UI Designer (Mar 2022 – Jul 2025)
+- Designed and developed custom web applications and digital products for businesses and creators, spanning UX research, Figma prototyping, full-stack implementation, and cloud deployment.
+
+## Education & Honors
+
+- **Degree:** Bachelor's Degree in Computer Science (2026 – 2028)
+- **Honors:** Academic Merit Award (2× Best Student)
+- **Coursework:** Algorithms and Programming Logic, Software Engineering and Systems Architecture, Full-Stack Web Development, Object-Oriented Programming and Data Structures, Database Projects, Business Management and Organizational Dynamics, AWS Cloud Practitioner Fundamentals.
+
+## Technical Stack
+
+- **Frontend:** Next.js, React, React Native, TypeScript, Tailwind CSS, Framer Motion, GSAP
+- **Backend & CMS:** Node.js, Express, Payload CMS, Strapi, WordPress, Prisma, REST APIs
+- **AI Engineering:** Model APIs, RAG Systems, Prompt Engineering, Multi-Agent Applications, Agentic Workflows, AI-powered CMS Automation, MCP Ecosystem, LLM Evaluation
+- **Databases:** PostgreSQL, MySQL, SQLite
+- **Cloud & DevOps:** AWS, Vercel, Railway, Cloudinary, Git, GitHub
+- **Design & Product:** Figma, UX/UI Architecture, Agile, Scrum
+
+## Verified Links
+
+- [Portfolio Website](https://sofiab-portfolio.vercel.app/): Official interactive desktop portfolio.
+- [GitHub Profile](https://github.com/sofiahernandes): Code repositories and open-source projects.
+- [LinkedIn Profile](https://www.linkedin.com/in/sofiahernandes): Professional network and career history.
+- [Instagram Profile](https://www.instagram.com/sofiabotechia/): Visual portfolio and personal updates.

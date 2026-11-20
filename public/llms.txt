@@ -1,0 +1,19 @@
+# Sofia Botechia Hernandes
+
+> Portfolio of Sofia Botechia Hernandes, a Software Developer & AI Engineer based in São Paulo, Brazil, specializing in production-grade Next.js applications, reusable CMS architectures, and enterprise AI automations.
+
+## Core Pages
+
+- [Sofia Botechia Hernandes Portfolio](https://sofiab-portfolio.vercel.app/): Interactive macOS-inspired portfolio showcasing Sofia's software engineering background, enterprise CMS platforms, AI engineering workflows, photo gallery, and contact channels.
+- [Full LLM Profile & Technical Context](https://sofiab-portfolio.vercel.app/llms-full.txt): Complete Markdown documentation of Sofia Botechia Hernandes's professional experience, enterprise clients, technical stack, education, and contact details.
+
+## Profiles & Contact
+
+- [GitHub — @sofiahernandes](https://github.com/sofiahernandes): Open-source repositories, full-stack web applications, and AI engineering projects by Sofia Botechia Hernandes.
+- [LinkedIn — Sofia Botechia Hernandes](https://www.linkedin.com/in/sofiahernandes): Professional background, enterprise software engineering experience at FutureBrand, and academic honors.
+- [Instagram — @sofiabotechia](https://www.instagram.com/sofiabotechia/): Personal updates, creative collaborations, and photography.
+
+## Optional
+
+- [XML Sitemap](https://sofiab-portfolio.vercel.app/sitemap.xml): Search engine sitemap for the portfolio domain.
+- [Robots Policy](https://sofiab-portfolio.vercel.app/robots.txt): Crawler rules for search engines and AI agents.

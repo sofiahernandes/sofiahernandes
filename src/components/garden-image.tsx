@@ -7,7 +7,7 @@ export default function GardenImage() {
     <div className="relative h-full w-full overflow-hidden bg-white">
       <Image
         src="/images/garden.png"
-        alt="Garden"
+        alt="Illustrated garden artwork in Sofia Botechia Hernandes portfolio"
         fill
         className="object-cover"
         priority

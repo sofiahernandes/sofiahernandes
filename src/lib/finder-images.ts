@@ -37,7 +37,7 @@ async function readImagesFromDir(
       .sort((a, b) => a.localeCompare(b, undefined, { numeric: true }));
 
     const images = await Promise.all(
-      files.map(async (fileName) => {
+      files.map(async (fileName, index) => {
         const fullPath = path.join(dirPath, fileName);
         let width = 1200;
         let height = 900;
@@ -52,11 +52,9 @@ async function readImagesFromDir(
           // Use fallback dimensions if metadata cannot be read
         }
 
-        const baseName = path.basename(fileName, path.extname(fileName));
-
         return {
           src: `${urlPrefix}/${fileName}`,
-          alt: baseName,
+          alt: `Sofia Botechia Hernandes gallery photo ${index + 1}`,
           width,
           height,
         };

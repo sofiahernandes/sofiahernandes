@@ -38,11 +38,12 @@ export default function Navbar() {
         <div className="flex items-center gap-5">
           <Link
             href="/"
+            aria-label="Sofia Botechia Hernandes Home"
             className="transition-all duration-200 hover:opacity-60"
           >
             <Image
               src={favicon}
-              alt=""
+              alt="Sofia Botechia Hernandes icon"
               width={20}
               height={20}
               className="h-5 w-5"

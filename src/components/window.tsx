@@ -262,18 +262,24 @@ export default function Window({
       >
         <div className="window-controls flex items-center space-x-1">
           <button
+            type="button"
+            aria-label={`Close ${window.title} window`}
             className="desktop-window-control desktop-window-close-control flex h-3 w-10 items-center justify-center rounded-full bg-rose-400 hover:bg-red-600 md:w-3"
             onClick={onClose}
           >
             <X className="desktop-window-control-icon desktop-window-close-icon h-2 w-2 text-red-900 md:opacity-60 md:hover:opacity-100" />
           </button>
           <button
+            type="button"
+            aria-label={`Minimize ${window.title} window`}
             className="desktop-window-control hidden h-3 w-3 items-center justify-center rounded-full bg-yellow-300 hover:bg-yellow-600 md:flex"
             onClick={handleMinimize}
           >
             <Minus className="desktop-window-control-icon h-2 w-2 text-yellow-900 opacity-60 hover:opacity-100" />
           </button>
           <button
+            type="button"
+            aria-label={`Maximize ${window.title} window`}
             className="desktop-window-control hidden h-3 w-3 items-center justify-center rounded-full bg-green-400 hover:bg-green-600 md:flex"
             onClick={toggleMaximize}
           >

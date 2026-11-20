@@ -209,6 +209,7 @@ function AboutFolderWindow() {
                   setClothing(visibleClothes[1].type, visibleClothes[1].src)
                 }
                 className="flex justify-center items-center glass hover:glass-highlight rounded-sm px-4 py-2"
+                aria-label="Select highlighted clothing item"
               >
                 <PlayIcon className="h-4 w-4" />
               </button>

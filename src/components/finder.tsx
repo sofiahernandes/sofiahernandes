@@ -62,7 +62,7 @@ function FinderImageCard({ image }: { image: FinderImage }) {
       )}
       <Image
         src={image.src}
-        alt=""
+        alt={image.alt || 'Sofia Botechia Hernandes gallery photo'}
         width={image.width}
         height={image.height}
         sizes="(max-width: 768px) 45vw, 340px"

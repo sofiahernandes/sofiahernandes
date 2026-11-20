@@ -119,11 +119,16 @@ function DockItem({
 
   return (
     <li className="dock-item" style={buttonStyle} ref={dockItemRef}>
-      <button className="btn" onClick={handleClick}>
+      <button
+        type="button"
+        aria-label={`Open ${name}`}
+        className="btn"
+        onClick={handleClick}
+      >
         <Image
           className={`icon ${clicked ? 'bounce' : ''}`}
           src={src}
-          alt={name}
+          alt={`${name} icon`}
           width={buttonStyle.width}
           height={buttonStyle.height}
           style={buttonStyle}
