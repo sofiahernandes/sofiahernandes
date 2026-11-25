@@ -3,6 +3,8 @@
 import Image from 'next/image';
 import { useMemo, useState } from 'react';
 import { aboutContent } from '@/lib/content/about';
+import { type PortfolioProject } from '@/lib/content/projects';
+import { ProjectsShelfView } from '@/components/projects-window';
 import Resume from '@/components/resume';
 import BackIcon from '../../public/images/previous-icon.svg?component';
 import NextIcon from '../../public/images/next-icon.svg?component';
@@ -230,9 +232,22 @@ function AboutFolderWindow() {
   );
 }
 
-export default function FolderWindow({ title }: { title?: string }) {
+export default function FolderWindow({
+  title,
+  onSelectProject,
+}: {
+  title?: string;
+  onSelectProject?: (project: PortfolioProject) => void;
+}) {
   if (title === 'About') return <AboutFolderWindow />;
   if (title === 'Resume') return <Resume />;
+  if (title === 'Projects') {
+    return (
+      <ProjectsShelfView
+        onSelectProject={(project) => onSelectProject?.(project)}
+      />
+    );
+  }
 
   return <div className="h-full w-full bg-white p-5 text-sm" />;
 }

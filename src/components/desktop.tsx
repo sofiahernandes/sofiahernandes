@@ -11,6 +11,7 @@ import {
   getDesktopWorkArea,
   isCompactDesktopViewport,
 } from '@/lib/desktop-viewport';
+import type { PortfolioProject } from '@/lib/content/projects';
 
 const appsConfig: AppConfig[] = [
   {
@@ -183,6 +184,7 @@ const Desktop = () => {
     const mobile = isCompactDesktopViewport();
     const isAbout = title === 'About';
     const isResume = title === 'Resume';
+    const isProjects = title === 'Projects';
     const workArea = getDesktopWorkArea();
     const chromeHeight = 28;
     const sideMargin = mobile ? 8 : 16;
@@ -195,18 +197,30 @@ const Desktop = () => {
 
           return Math.min(maxWindowWidth, Math.max(520, winWidth * 0.72));
         })()
+      : isProjects
+        ? Math.min(
+            workArea.width,
+            mobile
+              ? winWidth * 0.94
+              : Math.max(620, Math.min(860, winWidth * 0.62)),
+          )
       : isResume
         ? Math.min(
             workArea.width,
             mobile
-              ? winWidth * 0.9
-              : Math.max(560, Math.min(760, winWidth * 0.52)),
+              ? winWidth
+              : Math.max(600, Math.min(780, winWidth * 0.6)),
           )
       : mobile
         ? winWidth * 0.9
         : Math.min(520, Math.max(320, winWidth * 0.34), workArea.width);
     const height = isAbout
       ? Math.min(workArea.height, width / (2700 / 1540) + chromeHeight)
+      : isProjects
+        ? Math.min(
+            workArea.height,
+            mobile ? winHeight * 0.72 : Math.max(360, Math.min(440, winHeight * 0.5)),
+          )
       : isResume
         ? Math.min(
             workArea.height,
@@ -218,13 +232,13 @@ const Desktop = () => {
     const { position, size } = clampDesktopWindow(
       {
         x:
-          isAbout || isResume
+          isAbout || isResume || isProjects
           ? (winWidth - width) / 2
           : mobile
             ? (winWidth - width) / 2
             : winWidth * 0.28,
         y:
-          isAbout || isResume
+          isAbout || isResume || isProjects
           ? (winHeight - height) / 2
           : mobile
             ? (winHeight - height) / 2
@@ -241,12 +255,53 @@ const Desktop = () => {
           ? 'Contact'
           : title === 'Resume'
             ? 'Resume'
-            : 'Folder',
+            : title === 'Projects'
+              ? 'Projects'
+              : 'Folder',
       position,
       size,
       innerWidth: winWidth,
       innerHeight: winHeight,
     });
+  };
+
+  const handleOpenProjectDetail = (project: PortfolioProject) => {
+    const windowId = 'project-detail';
+    const { width: winWidth, height: winHeight } = getDesktopViewport();
+    const fullPosition = { x: 0, y: 32 };
+    const fullSize = { width: winWidth, height: Math.max(200, winHeight - 32) };
+
+    setOpenWindows((prev) => {
+      const existing = prev.find((w) => w.id === windowId);
+      const nextWindow: AppWindow = {
+        id: windowId,
+        title: `Projects — ${project.title}`,
+        component: 'Projects',
+        projectSlug: project.slug,
+        initialMaximized: true,
+        position: fullPosition,
+        size: fullSize,
+        innerWidth: winWidth,
+        innerHeight: winHeight,
+      };
+
+      if (existing) {
+        return prev.map((w) => (w.id === windowId ? nextWindow : w));
+      }
+      return [...prev, nextWindow];
+    });
+
+    setActiveWindowId(windowId);
+  };
+
+  const handleBackToProjectsShelf = () => {
+    closeWindow('project-detail');
+    const shelfWindow = openWindows.find((w) => w.id === 'folder-1');
+    if (shelfWindow) {
+      setActiveWindowId('folder-1');
+    } else {
+      void handleOpenFolder('Projects', 'folder-1');
+    }
   };
 
   useEffect(() => {
@@ -407,6 +462,8 @@ const Desktop = () => {
                   onClose={() => closeWindow(window.id)}
                   onFocus={() => setActiveWindow(window.id)}
                   onOpenFolder={handleOpenFolder}
+                  onSelectProject={handleOpenProjectDetail}
+                  onBackToShelf={handleBackToProjectsShelf}
                 />
               </div>
             ))}

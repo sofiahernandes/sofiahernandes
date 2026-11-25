@@ -10,6 +10,7 @@ import {
   getDesktopPointerPosition,
   getDesktopWorkArea,
 } from '@/lib/desktop-viewport';
+import type { PortfolioProject } from '@/lib/content/projects';
 
 export interface AppWindow {
   id: string;
@@ -19,11 +20,16 @@ export interface AppWindow {
   size: { width: number; height: number };
   innerWidth: number;
   innerHeight: number;
+  initialMaximized?: boolean;
+  projectSlug?: string;
 }
 
 type WindowContentProps = {
   title?: string;
+  projectSlug?: string;
   onOpenFolder?: (title: string, id: string) => void;
+  onSelectProject?: (project: PortfolioProject) => void;
+  onBackToShelf?: () => void;
 };
 
 const componentMap: Record<string, React.ComponentType<WindowContentProps>> = {
@@ -34,6 +40,7 @@ const componentMap: Record<string, React.ComponentType<WindowContentProps>> = {
   Home: dynamic(() => import('@/components/home-image')),
   Garden: dynamic(() => import('@/components/garden-image')),
   Folder: dynamic(() => import('@/components/folder-window')),
+  Projects: dynamic(() => import('@/components/projects-window')),
 };
 
 interface WindowProps {
@@ -42,6 +49,8 @@ interface WindowProps {
   onClose: () => void;
   onFocus: () => void;
   onOpenFolder: (title: string, id: string) => void;
+  onSelectProject?: (project: PortfolioProject) => void;
+  onBackToShelf?: () => void;
 }
 
 export default function Window({
@@ -50,12 +59,16 @@ export default function Window({
   onClose,
   onFocus,
   onOpenFolder,
+  onSelectProject,
+  onBackToShelf,
 }: WindowProps) {
   const [position, setPosition] = useState(window.position);
   const [size, setSize] = useState(window.size);
   const [isDragging, setIsDragging] = useState(false);
   const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
-  const [isMaximized, setIsMaximized] = useState(false);
+  const [isMaximized, setIsMaximized] = useState(
+    Boolean(window.initialMaximized),
+  );
   const [preMaximizeState, setPreMaximizeState] = useState({ position, size });
   const [isResizing, setIsResizing] = useState(false);
   const [resizeDirection, setResizeDirection] = useState<string | null>(null);
@@ -80,6 +93,19 @@ export default function Window({
   useEffect(() => {
     sizeRef.current = size;
   }, [size]);
+
+  useEffect(() => {
+    setPosition(window.position);
+    setSize(window.size);
+    if (window.initialMaximized) {
+      setIsMaximized(true);
+    }
+  }, [
+    window.position,
+    window.size,
+    window.initialMaximized,
+    window.projectSlug,
+  ]);
 
   const AppComponent = componentMap[window.component];
 
@@ -244,11 +270,19 @@ export default function Window({
 
   const contentBgClass = 'bg-white';
   const textClass = 'text-gray-800';
+  const isInternalProjectPage = Boolean(window.projectSlug);
+  const zIndexClass = isInternalProjectPage
+    ? isActive
+      ? 'z-40'
+      : 'z-30'
+    : isActive
+      ? 'z-10'
+      : 'z-0';
 
   return (
     <div
       ref={windowRef}
-      className={`desktop-window-shell absolute rounded-md overflow-hidden drop-shadow-black/20 drop-shadow-md transition-shadow ${contentBgClass} ${isActive ? 'drop-shadow-lg z-10' : 'drop-shadow-md z-0'}`}
+      className={`desktop-window-shell absolute rounded-md overflow-hidden drop-shadow-md drop-shadow-black/60 transition-shadow ${contentBgClass} ${zIndexClass}`}
       style={{
         left: `${position.x}px`,
         top: `${position.y}px`,
@@ -301,7 +335,13 @@ export default function Window({
         }`}
       >
         {AppComponent ? (
-          <AppComponent title={window.title} onOpenFolder={onOpenFolder} />
+          <AppComponent
+            title={window.title}
+            projectSlug={window.projectSlug}
+            onOpenFolder={onOpenFolder}
+            onSelectProject={onSelectProject}
+            onBackToShelf={onBackToShelf}
+          />
         ) : (
           <div className="p-4">Content not available</div>
         )}

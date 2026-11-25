@@ -80,6 +80,7 @@ export default function Terminal({
           '  help:       Show this help message',
           '  clear:      Clear the terminal',
           '  ls:         List apps in the portfolio',
+          '  projects:   My projects library shelf',
           '  about:      A little about me',
           '  resume:     My exportable resume',
           '  contact:    Contact information',
@@ -106,6 +107,11 @@ export default function Terminal({
           'GitHub',
           '',
         ]);
+        break;
+
+      case 'projects':
+        onOpenFolder?.('Projects', 'folder-1');
+        setHistory((prev) => [...prev, 'Opening Projects...', '']);
         break;
 
       case 'resume':
