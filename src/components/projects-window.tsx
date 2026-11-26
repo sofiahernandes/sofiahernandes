@@ -2,9 +2,12 @@
 
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
+import { ArrowUpRight } from 'lucide-react';
 import {
   portfolioProjects,
   type PortfolioProject,
+  type ProjectCaseStudySection,
+  type ProjectMediaItem,
 } from '@/lib/content/projects';
 import BackIcon from '../../public/images/previous-icon.svg?component';
 import NextIcon from '../../public/images/next-icon.svg?component';
@@ -136,6 +139,103 @@ interface ProjectDetailInternalPageProps {
   onSelectProject: (project: PortfolioProject) => void;
 }
 
+function CaseStudyMediaCard({ item }: { item: ProjectMediaItem }) {
+  const isFull = item.span === 'full';
+
+  return (
+    <figure
+      className={`group relative overflow-hidden rounded-sm bg-neutral-900 ${
+        isFull ? 'md:col-span-2' : 'col-span-1'
+      }`}
+    >
+      <div className="relative aspect-video w-full overflow-hidden bg-neutral-900">
+        {item.type === 'video' ? (
+          <video
+            key={item.src}
+            src={item.src}
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="metadata"
+            aria-label={item.alt}
+            className="h-full w-full object-cover"
+          />
+        ) : (
+          <Image
+            src={item.src}
+            alt={item.alt}
+            fill
+            sizes={
+              isFull
+                ? '(max-width: 1280px) 100vw, 1200px'
+                : '(max-width: 768px) 100vw, 600px'
+            }
+            className="object-cover"
+          />
+        )}
+      </div>
+      {item.caption && (
+        <figcaption className="bg-neutral-100 pt-2 text-xs text-gray-500">
+          {item.caption}
+        </figcaption>
+      )}
+    </figure>
+  );
+}
+
+function CaseStudySectionRenderer({
+  section,
+}: {
+  section: ProjectCaseStudySection;
+}) {
+  if (section.type === 'media-grid') {
+    const gridCols =
+      section.columns === 1 ? 'grid-cols-1' : 'grid-cols-1 md:grid-cols-2';
+
+    return (
+      <div className="flex flex-col gap-3">
+        <div className={`grid ${gridCols} gap-3 md:gap-4`}>
+          {section.items.map((item) => (
+            <CaseStudyMediaCard key={item.src} item={item} />
+          ))}
+        </div>
+        {section.caption && (
+          <p className="text-xs text-gray-500">{section.caption}</p>
+        )}
+      </div>
+    );
+  }
+
+  return (
+    <div className="mx-auto grid max-w-4xl grid-cols-1 gap-6 py-6 md:grid-cols-[1fr_1.65fr] md:gap-12 md:py-10">
+      <div className="flex flex-col gap-2">
+        {section.eyebrow && (
+          <span className="text-xs font-semibold tracking-widest text-gray-400 uppercase">
+            {section.eyebrow}
+          </span>
+        )}
+        <h2 className="text-2xl font-extrabold tracking-tight text-balance text-gray-900 md:text-3xl">
+          {section.heading}
+        </h2>
+      </div>
+
+      <div className="flex flex-col gap-4 leading-relaxed text-gray-700">
+        {section.lead && (
+          <p className="text-base font-medium text-pretty text-gray-900 md:text-lg">
+            {section.lead}
+          </p>
+        )}
+        {section.paragraphs.map((paragraph, index) => (
+          <p key={index} className="text-sm text-pretty md:text-base">
+            {paragraph}
+          </p>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export function ProjectDetailInternalPage({
   project,
   onBackToShelf,
@@ -156,18 +256,18 @@ export function ProjectDetailInternalPage({
   }, [project.id]);
 
   return (
-    <section className="relative h-full w-full overflow-hidden bg-white text-gray-900">
+    <section className="relative h-full w-full overflow-hidden bg-neutral-100 text-gray-900">
       <div
         ref={scrollRef}
-        className="scrollbar-none bg-neutral-100 relative h-full w-full overflow-y-auto px-6 py-6 md:px-12 md:py-8"
+        className="scrollbar-none relative h-full w-full overflow-y-auto bg-neutral-100 px-5 py-6 md:px-12 md:py-8"
       >
-        <div className="mx-auto flex max-w-5xl flex-col gap-8 pb-12">
+        <div className="mx-auto flex max-w-6xl flex-col gap-10 pb-16 md:gap-14">
           {/* Top Navigation Bar inside the window */}
-          <div className="flex flex-wrap items-center justify-between gap-3 border-b border-gray-200 pb-4">
+          <div className="flex flex-wrap items-center justify-between gap-3 border-b border-gray-200/80 pb-4">
             <button
               type="button"
               onClick={onBackToShelf}
-              className="inline-flex items-center gap-2 rounded-md border border-gray-200 bg-gray-50 px-3 py-1.5 text-xs font-semibold text-gray-700 transition-colors hover:bg-gray-100 hover:text-gray-900"
+              className="inline-flex items-center gap-2 rounded-md border border-gray-200 bg-white px-3 py-1.5 text-xs font-semibold text-gray-700 transition-colors hover:bg-gray-50 hover:text-gray-900"
             >
               Library
             </button>
@@ -194,65 +294,70 @@ export function ProjectDetailInternalPage({
             </div>
           </div>
 
-          {/* Hero Section: Book Cover Image + Overview & External Links */}
-          <div className="flex flex-col gap-4">
-            <div>
-              <h1 className="mt-1 text-3xl font-extrabold text-balance text-gray-900 md:text-4xl">
-                {project.title}
-              </h1>
-              <p className="mt-1 text-sm font-medium text-gray-500">
-                {project.subtitle}
-              </p>
+          {/* Editorial Hero & Challenge Introduction (FutureBrand Case Study Style) */}
+          <header className="mx-auto grid w-full max-w-4xl grid-cols-1 gap-8 pt-2 md:grid-cols-[1fr_1.65fr] md:gap-12">
+            <div className="flex flex-col justify-between gap-6">
+              <div>
+                <p className="text-xs font-semibold tracking-widest text-gray-400 uppercase">
+                  {project.category} · {project.year}
+                </p>
+                <h1 className="mt-2 text-4xl font-extrabold tracking-tight text-balance text-gray-900 md:text-5xl">
+                  {project.title}
+                </h1>
+                <p className="mt-2 text-sm font-medium text-gray-500">
+                  {project.subtitle}
+                </p>
+              </div>
+
+              {project.links.length > 0 && (
+                <div className="flex flex-wrap gap-2">
+                  {project.links.map((link) => (
+                    <a
+                      key={link.href}
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 rounded-md border border-gray-200 bg-gray-900 px-3.5 py-2 text-xs font-medium text-white transition-colors hover:bg-gray-700"
+                    >
+                      <span>{link.label}</span>
+                      <ArrowUpRight className="h-3.5 w-3.5" />
+                    </a>
+                  ))}
+                </div>
+              )}
             </div>
 
-            {/* Project external links */}
-            <div className="flex flex-wrap gap-2">
-              {project.links.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 rounded-md border border-gray-200 bg-gray-900 px-3.5 py-2 text-xs font-medium text-white transition-colors hover:bg-gray-700"
-                >
-                  <span>{link.label}</span>
-                </a>
-              ))}
-            </div>
-
-            {/* Narrative paragraphs */}
-            <div className="flex flex-col gap-3 leading-relaxed text-gray-700">
+            <div className="flex flex-col gap-4 leading-relaxed text-gray-700">
+              {project.headline && (
+                <p className="text-xl font-bold tracking-tight text-balance text-gray-900 md:text-2xl">
+                  {project.headline}
+                </p>
+              )}
               {project.summaryParagraphs.map((paragraph, index) => (
-                <p key={index} className="text-pretty">
+                <p key={index} className="text-sm text-pretty md:text-base">
                   {paragraph}
                 </p>
               ))}
             </div>
-          </div>
+          </header>
 
-          {/* Optional CLI / Code workflow preview (for Margaret) */}
-          {/* {project.codePreview && (
-            <div className="rounded-lg border border-gray-200 bg-gray-950 p-4 text-gray-100 shadow-sm md:p-6">
-              <div className="mb-3 flex items-center justify-between border-b border-white/10 pb-2 text-xs text-gray-400">
-                <span className="font-medium">
-                  {project.codePreview.caption}
-                </span>
-                <span>Terminal</span>
-              </div>
-              <pre className="overflow-x-auto font-mono text-xs leading-relaxed">
-                {project.codePreview.lines.join('\n')}
-              </pre>
+          {/* Interleaved Media Grids & Editorial Text Sections */}
+          {project.sections && project.sections.length > 0 && (
+            <div className="flex flex-col gap-8 md:gap-12">
+              {project.sections.map((section, index) => (
+                <CaseStudySectionRenderer key={index} section={section} />
+              ))}
             </div>
-          )} */}
+          )}
 
-          {/* Metadata, Tags & Engineering Process in clean neutral palette */}
-          <div className="grid grid-cols-1 gap-6 rounded-lg border border-gray-200 bg-gray-50 p-5 md:grid-cols-[1fr_1.4fr] md:p-6">
+          {/* Metadata, Tags & Engineering Process Footer */}
+          <footer className="mx-auto grid w-full max-w-4xl grid-cols-1 gap-8 border-t border-gray-200 pt-8 md:grid-cols-[1fr_1.65fr] md:gap-12 md:pt-10">
             <div className="flex flex-col gap-6">
               <div>
-                <h3 className="font-medium text-gray-400 uppercase">
+                <h3 className="text-xs font-semibold tracking-widest text-gray-400 uppercase">
                   Capabilities & Tags
                 </h3>
-                <div className="mt-2 text-sm flex flex-wrap gap-1.5">
+                <div className="mt-3 flex flex-wrap gap-1.5">
                   {project.tags.map((tag) => (
                     <span
                       key={tag}
@@ -265,24 +370,24 @@ export function ProjectDetailInternalPage({
               </div>
 
               <div>
-                <h3 className="font-medium text-gray-400 uppercase">
+                <h3 className="text-xs font-semibold tracking-widest text-gray-400 uppercase">
                   Engineering Process
                 </h3>
-                <p className="mt-1.5 text-sm text-gray-600">
+                <p className="mt-2 text-sm leading-relaxed text-gray-600">
                   {project.process}
                 </p>
               </div>
             </div>
 
             <div className="flex flex-col gap-2">
-              <h3 className="font-medium text-gray-400 uppercase">
+              <h3 className="text-xs font-semibold tracking-widest text-gray-400 uppercase">
                 Project Details
               </h3>
-              <div className="text-sm flex flex-col divide-y divide-gray-200">
+              <div className="mt-1 flex flex-col divide-y divide-gray-200 text-sm">
                 {project.credits.map((credit) => (
                   <div
                     key={credit.label}
-                    className="grid grid-cols-1 gap-1 py-2 sm:grid-cols-[100px_1fr]"
+                    className="grid grid-cols-1 gap-1 py-2.5 sm:grid-cols-[130px_1fr]"
                   >
                     <span className="font-medium text-gray-500">
                       {credit.label}
@@ -292,7 +397,7 @@ export function ProjectDetailInternalPage({
                 ))}
               </div>
             </div>
-          </div>
+          </footer>
         </div>
       </div>
     </section>

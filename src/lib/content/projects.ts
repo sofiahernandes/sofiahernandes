@@ -15,11 +15,36 @@ export interface ProjectHighlightCard {
   meta?: string;
 }
 
+export interface ProjectMediaItem {
+  type: 'video' | 'image';
+  src: string;
+  alt: string;
+  caption?: string;
+  span?: 'full' | 'half';
+  aspectRatio?: '16/9' | '4/3' | 'auto';
+}
+
+export type ProjectCaseStudySection =
+  | {
+      type: 'text';
+      eyebrow?: string;
+      heading: string;
+      lead?: string;
+      paragraphs: string[];
+    }
+  | {
+      type: 'media-grid';
+      columns?: 1 | 2;
+      items: ProjectMediaItem[];
+      caption?: string;
+    };
+
 export interface PortfolioProject {
   id: string;
   slug: string;
   title: string;
   subtitle: string;
+  headline?: string;
   category: string;
   year: string;
   coverImage: string;
@@ -28,6 +53,7 @@ export interface PortfolioProject {
   tags: string[];
   credits: ProjectCredit[];
   process: string;
+  sections?: ProjectCaseStudySection[];
 }
 
 export const portfolioProjects: PortfolioProject[] = [
@@ -36,18 +62,23 @@ export const portfolioProjects: PortfolioProject[] = [
     slug: 'amazonia',
     title: 'Amazônia',
     subtitle: 'Living Brand Platform & Digital Rebranding System',
+    headline: 'A living brand for a living territory.',
     category: 'Brand Platform & Web Architecture',
     year: '2026',
     coverImage: '/images/projects/amazonia-cover.png',
     links: [
       {
-        label: 'Website',
+        label: 'Visit Live Website',
         href: 'https://www.visiteamazonia.com.br/',
+      },
+      {
+        label: 'FutureBrand Case Study',
+        href: 'https://www.futurebrand.com/work/amazonia/',
       },
     ],
     summaryParagraphs: [
-      'Amazônia is an award-winning living brand platform developed for the Brazilian Amazon region in collaboration with FutureBrand São Paulo. The digital platform translates a dynamic visual identity—whose custom typography and visual language are derived from satellite data mapping the organic curves of the Amazon River—into a scalable, high-performance web experience.',
-      'Engineered to empower non-technical brand and editorial teams, the platform pairs complex frontend motion and interactive typographic specimens with an intuitive content management architecture for showcasing regional stories, cultural assets, and design guidelines worldwide.',
+      'Across nine states, 772 cities, and 28 million residents, the Brazilian Amazon lacked a unified identity to bring its cultural richness, sustainable tourism, and bioeconomy potential together. Developed in collaboration with FutureBrand São Paulo and Embratur, Amazônia is a living brand and digital platform shaped directly by the territory itself.',
+      'The platform translates a generative visual identity—whose custom alphabet is derived from real satellite imagery mapping 25,000 kilometers of navigable Amazonian rivers—into an interactive, high-performance web experience and headless CMS architecture.',
     ],
     tags: [
       'Living Brand',
@@ -58,7 +89,7 @@ export const portfolioProjects: PortfolioProject[] = [
       'Rebranding',
     ],
     credits: [
-      { label: 'Client', value: 'Embratur / Amazônia' },
+      { label: 'Client', value: 'Embratur · RAI · Amazônia' },
       { label: 'Agency', value: 'FutureBrand São Paulo' },
       { label: 'Role', value: 'Software Developer' },
       { label: 'Recognition', value: 'Cannes Lions 3× Silver & 5× Shortlist' },
@@ -67,6 +98,82 @@ export const portfolioProjects: PortfolioProject[] = [
     ],
     process:
       'Built to support an internationally recognized territorial brand launch, bridging satellite-inspired generative typography (Igaratipo) and modular storytelling blocks within a resilient, production-ready web architecture.',
+    sections: [
+      {
+        type: 'media-grid',
+        columns: 2,
+        items: [
+          {
+            type: 'video',
+            src: '/images/projects/amazonia/amazonia-satelite-1.mp4',
+            alt: 'Satellite river curves morphing into the Amazônia logotype',
+            span: 'half',
+          },
+          {
+            type: 'video',
+            src: '/images/projects/amazonia/amazonia-satelite-2.mp4',
+            alt: 'Satellite river mosaic with GPS coordinates across Amazonian states',
+            span: 'half',
+          },
+          {
+            type: 'image',
+            src: '/images/projects/amazonia/amazonia-satelite-3.jpg',
+            alt: 'Complete A-Z and 0-9 satellite alphabet mapped from Amazonian rivers',
+            span: 'full',
+          },
+        ],
+      },
+      {
+        type: 'text',
+        eyebrow: 'The Solution',
+        heading: 'Written by 25,000 kilometers of Amazonian rivers.',
+        lead: 'Through deep co-creation with local residents, artists, and stakeholders, the key to the region’s identity was discovered in the Amazon River itself.',
+        paragraphs: [
+          'Rather than relying on static clichés, the visual identity and custom typeface (Igaratipo) were extracted directly from satellite imagery and real geographic coordinates across Pará, Amazonas, Acre, Amapá, Maranhão, Mato Grosso, Rondônia, Roraima, and Tocantins.',
+          'Every letter and numeral captures the organic curves of a real Amazonian waterway—creating a living design system that adapts across places and moments while honoring the distinct cultures of all nine states.',
+        ],
+      },
+      {
+        type: 'media-grid',
+        columns: 2,
+        items: [
+          {
+            type: 'video',
+            src: '/images/projects/amazonia/amazonia-landscape.mp4',
+            alt: 'Dynamic brand frames across Portel, Tefé, and Mamirauá landscapes',
+            span: 'half',
+          },
+          {
+            type: 'video',
+            src: '/images/projects/amazonia/amazonia-poster.mp4',
+            alt: 'Co-created poster series by regional Amazonian illustrators Cristo, Winny Tapajós, and Malu Menezes',
+            span: 'half',
+          },
+        ],
+      },
+      {
+        type: 'text',
+        eyebrow: 'Digital Platform & Impact',
+        heading: 'Bringing the living territory to the web.',
+        lead: 'Engineered to turn an experimental typographic identity into an accessible, interactive digital destination.',
+        paragraphs: [
+          'The web platform (visiteamazonia.com.br) pairs fluid scroll choreography and regional storytelling across all nine states with an interactive typographic laboratory—“Write with the Waters of the Amazonian Rivers”—allowing visitors worldwide to compose and export custom artwork using the river-derived alphabet.',
+          'Backed by a modular headless CMS architecture, editorial teams can continuously publish new cultural routes, regional experiences, and destination guides without engineering bottlenecks.',
+        ],
+      },
+      {
+        type: 'media-grid',
+        columns: 1,
+        items: [
+          {
+            type: 'video',
+            src: '/images/projects/amazonia/amazonia-website.mp4',
+            alt: 'Walkthrough of the live Amazônia digital platform and interactive Igaratype water typography tool',
+            span: 'full',
+          },
+        ],
+      },
+    ],
   },
   {
     id: 'project-margaret',
