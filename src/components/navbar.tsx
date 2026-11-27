@@ -34,12 +34,12 @@ export default function Navbar() {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 h-8 bg-white backdrop-blur-md select-none">
-      <div className="flex h-full items-center justify-between px-4 text-sm">
+      <div className="flex h-full items-center justify-between px-6 text-sm">
         <div className="flex items-center gap-5">
           <Link
             href="/"
             aria-label="Sofia Botechia Hernandes Home"
-            className="transition-all duration-200 hover:opacity-60"
+            className="transition-all duration-200 hover:opacity-50"
           >
             <Image
               src={favicon}

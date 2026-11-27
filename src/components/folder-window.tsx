@@ -108,7 +108,7 @@ function AboutFolderWindow() {
         />
       </div>
 
-      <div className="desktop-folder-layout mx-auto grid h-full max-w-full grid-cols-1 gap-6 overflow-y-auto overflow-x-hidden px-14 py-4 md:min-h-0 md:grid-cols-[minmax(0,1.3fr)_minmax(300px,1.3fr)] md:grid-rows-[minmax(0,1.3fr)] md:gap-8 md:overflow-hidden md:px-24">
+      <div className="desktop-folder-layout mx-auto grid h-full max-w-full grid-cols-1 gap-6 overflow-y-auto overflow-x-hidden px-14 py-6 md:min-h-0 md:grid-cols-[minmax(0,1.3fr)_minmax(300px,1.3fr)] md:grid-rows-[minmax(0,1.3fr)] md:gap-8 md:overflow-hidden md:px-24">
         <article className="desktop-folder-article min-h-0 self-center md:flex md:flex-col md:overflow-hidden md:self-stretch">
           <h2 className="text-3xl font-extrabold text-balance">
             {aboutContent.title}
@@ -118,7 +118,7 @@ function AboutFolderWindow() {
             <div className="scrollbar-none h-full overflow-y-auto text-sm text-[#352924]">
               <p
                 key={aboutContent.content}
-                className="my-4 whitespace-pre-line text-pretty"
+                className="my-4 whitespace-pre-line text-balance"
               >
                 {aboutContent.content}
               </p>
@@ -201,7 +201,7 @@ function AboutFolderWindow() {
               <button
                 type="button"
                 onClick={() => cycleClothes(-1)}
-                className="flex justify-center items-center glass hover:glass-highlight rounded-sm px-4 py-2"
+                className="flex justify-center items-center glass hover:glass-highlight rounded-sm px-6 py-2"
                 aria-label="Show previous clothes"
               >
                 <BackIcon className="h-4 w-4" />
@@ -211,7 +211,7 @@ function AboutFolderWindow() {
                 onClick={() =>
                   setClothing(visibleClothes[1].type, visibleClothes[1].src)
                 }
-                className="flex justify-center items-center glass hover:glass-highlight rounded-sm px-4 py-2"
+                className="flex justify-center items-center glass hover:glass-highlight rounded-sm px-6 py-2"
                 aria-label="Select highlighted clothing item"
               >
                 <PlayIcon className="h-4 w-4" />
@@ -219,7 +219,7 @@ function AboutFolderWindow() {
               <button
                 type="button"
                 onClick={() => cycleClothes(1)}
-                className="flex justify-center items-center glass hover:glass-highlight rounded-sm px-4 py-2"
+                className="flex justify-center items-center glass hover:glass-highlight rounded-sm px-6 py-2"
                 aria-label="Show next clothes"
               >
                 <NextIcon className="h-4 w-4" />

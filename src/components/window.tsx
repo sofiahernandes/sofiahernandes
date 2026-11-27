@@ -269,7 +269,7 @@ export default function Window({
   };
 
   const contentBgClass = 'bg-white';
-  const textClass = 'text-gray-800';
+  const textClass = 'text-black';
   const isInternalProjectPage = Boolean(window.projectSlug);
   const zIndexClass = isInternalProjectPage
     ? isActive
@@ -282,7 +282,7 @@ export default function Window({
   return (
     <div
       ref={windowRef}
-      className={`desktop-window-shell absolute rounded-md overflow-hidden drop-shadow-md drop-shadow-black/60 transition-shadow ${contentBgClass} ${zIndexClass}`}
+      className={`desktop-window-shell absolute rounded-sm overflow-hidden drop-shadow-md drop-shadow-black/60 transition-shadow ${contentBgClass} ${zIndexClass}`}
       style={{
         left: `${position.x}px`,
         top: `${position.y}px`,

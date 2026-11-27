@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import { headers } from 'next/headers';
 import '@/styles/globals.css';
 import type React from 'react';
-import { rethink } from '@/app/fonts';
+import { dmSans } from '@/app/fonts';
 import { getPortfolioJsonLd, SEO_CONFIG, SITE_URL } from '@/lib/seo';
 
 export const viewport: Viewport = {
@@ -114,7 +114,7 @@ export default async function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`blue font-sans scroll-auto ${rethink.className}`}
+      className={`blue font-sans scroll-auto ${dmSans.className}`}
     >
       <head>
         <link
@@ -135,7 +135,7 @@ export default async function RootLayout({
         />
       </head>
       <body
-        className={`min-h-screen overflow-x-clip overflow-y-auto p-0! m-0! bg-background font-sans antialiased ${rethink.className}`}
+        className={`min-h-screen overflow-x-clip overflow-y-auto p-0! m-0! bg-background font-sans antialiased ${dmSans.className}`}
         style={{
           padding: 0,
           margin: 0,

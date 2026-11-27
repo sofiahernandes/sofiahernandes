@@ -27,7 +27,6 @@ export interface ProjectMediaItem {
 export type ProjectCaseStudySection =
   | {
       type: 'text';
-      eyebrow?: string;
       heading: string;
       lead?: string;
       paragraphs: string[];
@@ -43,7 +42,6 @@ export interface PortfolioProject {
   id: string;
   slug: string;
   title: string;
-  subtitle: string;
   headline?: string;
   category: string;
   year: string;
@@ -61,7 +59,6 @@ export const portfolioProjects: PortfolioProject[] = [
     id: 'project-amazonia',
     slug: 'amazonia',
     title: 'Amazônia',
-    subtitle: 'Living Brand Platform & Digital Rebranding System',
     headline: 'A living brand for a living territory.',
     category: 'Brand Platform & Web Architecture',
     year: '2026',
@@ -125,7 +122,6 @@ export const portfolioProjects: PortfolioProject[] = [
       },
       {
         type: 'text',
-        eyebrow: 'The Solution',
         heading: 'Written by 25,000 kilometers of Amazonian rivers.',
         lead: 'Through deep co-creation with local residents, artists, and stakeholders, the key to the region’s identity was discovered in the Amazon River itself.',
         paragraphs: [
@@ -153,7 +149,6 @@ export const portfolioProjects: PortfolioProject[] = [
       },
       {
         type: 'text',
-        eyebrow: 'Digital Platform & Impact',
         heading: 'Bringing the living territory to the web.',
         lead: 'Engineered to turn an experimental typographic identity into an accessible, interactive digital destination.',
         paragraphs: [
@@ -179,7 +174,6 @@ export const portfolioProjects: PortfolioProject[] = [
     id: 'project-margaret',
     slug: 'margaret',
     title: 'Margaret',
-    subtitle: 'Senior-Engineer Productivity Toolkit for AI Coding Agents',
     category: 'Developer Tools & AI Agent Engineering',
     year: '2026',
     coverImage: '/images/projects/margaret-cover.png',
@@ -232,7 +226,6 @@ export const portfolioProjects: PortfolioProject[] = [
     id: 'project-lumiere',
     slug: 'lumiere',
     title: 'Lumière',
-    subtitle: 'Distributed Healthcare Management & Clinical Triage Ecosystem',
     category: 'Distributed Systems & Healthcare Platform',
     year: '2025',
     coverImage: '/images/projects/lumiere-cover.png',
@@ -279,7 +272,6 @@ export const portfolioProjects: PortfolioProject[] = [
     id: 'project-arkana',
     slug: 'arkana',
     title: 'Arkana',
-    subtitle: 'Social Campaign Manager & Recurring Donation Analytics Platform',
     category: 'Campaign Operations & Financial Validation',
     year: '2025',
     coverImage: '/images/projects/arkana-cover.png',
@@ -322,8 +314,6 @@ export const portfolioProjects: PortfolioProject[] = [
     id: 'project-mana',
     slug: 'mana',
     title: 'Manà',
-    subtitle:
-      'Local Farm-to-Market Network & Agroecological Subscription Platform',
     category: 'Marketplace, Supply Chain & E-Commerce',
     year: '2026',
     coverImage: '/images/projects/mana-cover.png',
